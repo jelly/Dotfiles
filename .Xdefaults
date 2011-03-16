@@ -1,0 +1,105 @@
+! urxvt settings
+
+!--[Title]--!
+
+URxvt*title:            	urxvt
+URxvt*termName:         	rxvt-256color
+URxvt*cursorBlink:      	true
+URxvt*urgentOnBell:    true
+
+!--[URL Select]--!
+URxvt.perl-ext-common:  default,url-select
+URxvt.keysym.M-u:       perl:url-select:select_next
+URxvt.urlLauncher:      firefox
+URxvt.underlineURLs:    true
+
+!--[Fonts]--!
+
+URxvt.font:               xft:terminus:pixelsize=16
+!URxvt*font:         xft:Bitstream Vera Sans Mono:pixelsize=9
+!URxvt*font:         xft:monospace:pixelsize=16
+URxvt.scrollBar:         false
+URxvt.skipBuiltinGlyphs true
+
+!--[Urxvt Options]--!
+
+URxvt.boldMode:          false
+!URxvt.imLocale:          en_US.UTF-8
+URxvt.loginShell:        true
+URxvt.saveLines:         512
+!urxvt.geometry:          110x40
+URxvt.borderless:        true
+!URxvt.xftAntialias:      true
+URxvt.jumpScroll:        true
+URxvt.tintColor:         white
+URxvt.internalBorder:    0
+URxvt.cursorBlink:       false
+URxvt.cursorColor:       #dd9900
+URxvt.cursorColor2:      #000000
+URxvt.background:        #FFFFFF
+URxvt.foreground:        #ddccbb
+URxvt.colorBD:           #ffffff
+URxvt.colorIT:           #bbbbbb
+URxvt.colorUL:           #999999
+URxvt.underlineColor:    #999999
+!Xcursor.theme: CG
+
+!## teh transparency stuff
+URxvt.inheritPixmap: true
+URxvt.tintColor: white
+URxvt.shading: 40
+
+
+! xscreensaver ---------------------------------------------------------------
+
+!font settings
+xscreensaver.Dialog.headingFont:        -*-fixed-bold-r-*-*-*-100-*-*-*-*-iso8859-1
+xscreensaver.Dialog.bodyFont:           -*-fixed-medium-r-*-*-*-120-*-*-*-*-iso8859-1
+xscreensaver.Dialog.labelFont:          -*-fixed-medium-r-*-*-*-120-*-*-*-*-iso8859-1
+xscreensaver.Dialog.unameFont:          -*-fixed-medium-r-*-*-*-120-*-*-*-*-iso8859-1
+xscreensaver.Dialog.buttonFont:         -*-fixed-bold-r-*-*-*-120-*-*-*-*-iso8859-1
+xscreensaver.Dialog.dateFont:           -*-fixed-medium-r-*-*-*-100-*-*-*-*-iso8859-1
+xscreensaver.passwd.passwdFont:         -*-fixed-bold-r-*-*-*-100-*-*-*-*-iso8859-1
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #ffffff
+xscreensaver.Dialog.background:         #111111
+xscreensaver.Dialog.topShadowColor:     #111111
+xscreensaver.Dialog.bottomShadowColor:  #111111
+xscreensaver.Dialog.Button.foreground:  #666666
+xscreensaver.Dialog.Button.background:  #ffffff
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #666666
+xscreensaver.Dialog.text.background:    #ffffff
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        20
+xscreensaver.Dialog.shadowThickness:    2
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #ff0000
+xscreensaver.passwd.thermometer.background:  #000000
+xscreensaver.passwd.thermometer.width:       8
+!datestamp format--see the strftime(3) manual page for details
+xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
+
+! terminal colors ------------------------------------------------------------
+
+
+URxvt*background: #000000
+URxvt*foreground: #bfbdc0
+
+URxvt*color0: #000000
+URxvt*color1: #8a110e
+URxvt*color2: #669f3d
+URxvt*color3: #b3751e
+URxvt*color4: #493d9f
+URxvt*color5: #9216a3
+URxvt*color6: #198a9c
+URxvt*color7: #bfbdc0
+
+URxvt*color8: #686773
+URxvt*color9: #fc5166
+URxvt*color10: #63ff54
+URxvt*color11: #ffd75c
+URxvt*color12: #766eff
+URxvt*color13: #e151ff
+URxvt*color14: #57ffec
+URxvt*color15: #ffffff
