@@ -81,20 +81,14 @@ mySPFloat = customFloating scratchpadSize
 myManageHook :: ManageHook
 myManageHook = scratchpadManageHook scratchpadSize <+> ( composeAll . concat $
                 [[isFullscreen                  --> doFullFloat
-                , className =? "spotify.exe" --> doFullFloat
-		, className =? "OpenOffice.org 3.2" --> doShift "5:doc" 
 		, className =?  "Xmessage" 	--> doCenterFloat 
-		, className =? "feh" 	--> doCenterFloat 
                 , className =? "Gimp"           --> doShift "9:gimp"
-                , className =? "Gpicview"           --> doShift "2:web"
+                , className =? "Evolution"           --> doShift "2:web"
                 , className =? "Pidgin"           --> doShift "1:chat"
                 , className =? "Skype"           --> doShift "1:chat"
 		, className =? "MPlayer"	--> doShift "8:vid"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
-		, className =? "spotify.exe"	--> doShift "8:vid"
-		, className =? "VirtualBox"	--> doShift "6:virtual"]
-
-                ]
+                ]]
                           ) <+> manageDocks 
             
 
