@@ -47,10 +47,6 @@ import XMonad.Layout.IM
 import XMonad.Layout.Tabbed
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Layout.Grid
-import DBus
-import DBus.Connection
-import DBus.Message
-import XMonad.Config.Gnome
 import Control.OldException(catchDyn,try)
 
 -- Data.Ratio for IM layout
@@ -58,19 +54,19 @@ import Data.Ratio ((%))
 
 
 -- Main --
-main = withConnection Session $ \ dbus -> do
-  getWellKnownName dbus
-  xmonad $ withUrgencyHook NoUrgencyHook gnomeConfig {  manageHook = myManageHook <+> manageHook  gnomeConfig
+main = do
+    xmproc <- spawnPipe "xmobar"
+    xmonad defaultConfig  {  manageHook = myManageHook  
         	, layoutHook = myLayoutHook   
 		, borderWidth = myBorderWidth
 		, normalBorderColor = myNormalBorderColor
 		, focusedBorderColor = myFocusedBorderColor
 		, keys = myKeys
-		, logHook = dynamicLogWithPP (myPrettyPrinter dbus)
         	, modMask = myModMask  
         	, terminal = myTerminal
 		, workspaces = myWorkspaces
                 , focusFollowsMouse = False
+                , logHook = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc , ppTitle = xmobarColor "green" "" . shorten 50}
 		}
 
 
@@ -126,15 +122,6 @@ myXPConfig = defaultXPConfig
         , historyFilter = deleteConsecutive
     }
 
-myPrettyPrinter :: Connection -> PP
-myPrettyPrinter dbus = defaultPP {
-    ppOutput  = outputThroughDBus dbus
-  , ppTitle   = pangoColor "#FF0000" . shorten 50 . pangoSanitize
-  , ppCurrent = pangoColor "#306EFF" . wrap "[" "]" . pangoSanitize
-  , ppVisible = pangoColor "#7D1B7E" . wrap "(" ")" . pangoSanitize
-  , ppHidden  = pangoColor "#4CC417" 
-  , ppUrgent  = pangoColor "red"
-  }
 
 
 --LayoutHook
@@ -196,47 +183,8 @@ myFocusedBorderColor = "#306EFF"
 
 --Workspaces
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = ["1:chat", "2:web", "3:code", "4:pdf", "5:doc", "6:vbox" ,"7:games", "8:vid", "9:gimp"] 
+myWorkspaces = ["1:chat", "2:web", "3:code", "4:pdf", "5:doc", "6:vm" ,"7:games", "8:vid", "9:gimp"] 
 --
-
--- This retry is really awkward, but sometimes DBus won't let us get our
--- name unless we retry a couple times.
-getWellKnownName :: Connection -> IO ()
-getWellKnownName dbus = tryGetName `catchDyn` (\ (DBus.Error _ _) ->
-                                                getWellKnownName dbus)
- where
-  tryGetName = do
-    namereq <- newMethodCall serviceDBus pathDBus interfaceDBus "RequestName"
-    addArgs namereq [String "org.xmonad.Log", Word32 5]
-    sendWithReplyAndBlock dbus namereq 0
-    return ()
-
-outputThroughDBus :: Connection -> String -> IO ()
-outputThroughDBus dbus str = do
-  let str' = "<span font=\"-bitstream-*-bold-*-*-*-8-*-*-*-*-*-*-*\">" ++ str ++ "</span>"
-  msg <- newSignal "/org/xmonad/Log" "org.xmonad.Log" "Update"
-  addArgs msg [String str']
-  send dbus msg 0 `catchDyn` (\ (DBus.Error _ _ ) -> return 0)
-  return ()
-
-pangoColor :: String -> String -> String
-pangoColor fg = wrap left right
- where
-  left  = "<span foreground=\"" ++ fg ++ "\">"
-  right = "</span>"
-
-pangoSanitize :: String -> String
-pangoSanitize = foldr sanitize ""
- where
-  sanitize '>'  acc = "&gt;" ++ acc
-  sanitize '<'  acc = "&lt;" ++ acc
-  sanitize '\"' acc = "&quot;" ++ acc
-  sanitize '&'  acc = "&amp;" ++ acc
-  sanitize x    acc = x:acc
-
-
-try_ :: MonadIO m => IO a -> m ()
-try_ action = liftIO $ try action >> return ()
 
 
 -- keys
