@@ -51,12 +51,13 @@ import Control.OldException(catchDyn,try)
 
 -- Data.Ratio for IM layout
 import Data.Ratio ((%))
+import Data.List (isInfixOf)
 
 
 -- Main --
 main = do
     xmproc <- spawnPipe "xmobar"
-    xmonad defaultConfig  {  manageHook = myManageHook  
+    xmonad defaultConfig  {  manageHook = myManageHook  <+> manageDocks
         	, layoutHook = myLayoutHook   
 		, borderWidth = myBorderWidth
 		, normalBorderColor = myNormalBorderColor
@@ -72,6 +73,8 @@ main = do
 
 scratchpadSize = W.RationalRect (1/4) (1/4) (1/2) (1/2)
 mySPFloat = customFloating scratchpadSize
+
+cname = stringProperty "WM_NAME"
 -- hooks
 -- automaticly switching app to workspace 
 myManageHook :: ManageHook
@@ -83,9 +86,11 @@ myManageHook = scratchpadManageHook scratchpadSize <+> ( composeAll . concat $
                 , className =? "Pidgin"           --> doShift "1:chat"
                 , className =? "Skype"           --> doShift "1:chat"
 		, className =? "MPlayer"	--> doShift "8:vid"
+		, className =? "rdesktop"	--> doShift "6:vm"
+		, appName =? "localhost:5556 - freerdp" --> doShift "6:vm"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
                 ]]
-                          ) <+> manageDocks 
+                          )  
             
 
 
@@ -240,11 +245,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask ,  0xfe50), scratchpadSpawnAction defaultConfig  {terminal = myTerminal}) 
 
     --MPD
-    , ((0 			, 0x1008ff16 ), spawn "rhythmbox-client --previous")
-    , ((0 			, 0x1008ff14 ), spawn "rhythmbox-client --play-pause")
-    , ((0 			, 0x1008ff17 ), spawn "rhythmbox-client --next")
-    , ((0 			, 0x1008ff19 ), runOrRaise "evolution" (className =? "Evolution"))
-    , ((0 			, 0x1008ff18 ), spawn "nautilus")
+    , ((0 			, 0x1008ff16 ), spawn "ncmpcpp prev")
+    , ((0 			, 0x1008ff14 ), spawn "ncmpcpp toggle")
+    , ((0 			, 0x1008ff17 ), spawn "ncmpcpp next")
+    , ((0 			, 0x1008ff19 ), runOrRaise "thunderbird" (className =? "Lanikai"))
 
 
 
