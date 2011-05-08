@@ -57,6 +57,7 @@ import Data.List (isInfixOf)
 -- Main --
 main = do
     xmproc <- spawnPipe "xmobar"
+    spawn "sh /home/jelle/.xmonad/autostart.sh"
     xmonad defaultConfig  {  manageHook = myManageHook  <+> manageDocks
         	, layoutHook = myLayoutHook   
 		, borderWidth = myBorderWidth
@@ -253,8 +254,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 
     -- volume control
-    , ((0 			, 0x1008ff13 ), spawn "amixer -q set Master 2dB+ ")
-    , ((0 			, 0x1008ff11 ), spawn "amixer -q set Master 2dB- ")
+    , ((0 			, 0x1008ff13 ), spawn "amixer -q set Master 2dB+ && amixer -q set PCM 2dB+")
+    , ((0 			, 0x1008ff11 ), spawn "amixer -q set Master 2dB-  && amixer -q set PCM 2dB-")
     , ((0 			, 0x1008ff12 ), spawn "amixer -q set Master toggle")
 
     -- brightness control
