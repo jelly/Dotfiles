@@ -1,5 +1,5 @@
 {- xmonad.hs
- - Author: Jelle van der Waa ( jelly12gen )
+ - Author: Jelle van der Waa ( jelly1 )
  -}
 
 -- Import stuff
@@ -86,20 +86,22 @@ myManageHook = scratchpadManageHook scratchpadSize <+> ( composeAll . concat $
                 , className =? "Evolution"           --> doShift "2:web"
                 , className =? "Pidgin"           --> doShift "1:chat"
                 , className =? "Skype"           --> doShift "1:chat"
+                , className =? "Mail"           --> doShift "2:mail"
+                , className =? "Thunderbird"           --> doShift "2:mail"
 		, className =? "MPlayer"	--> doShift "8:vid"
 		, className =? "rdesktop"	--> doShift "6:vm"
+		, className =? "Wine"	--> doShift "7:games"
 		, appName =? "localhost:5556 - freerdp" --> doShift "6:vm"
+                , fmap ("libreoffice"  `isInfixOf`) className --> doShift "5:doc"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
                 ]]
                           )  
             
 
-
-
 --logHook
 myLogHook :: Handle -> X ()
 myLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
- 
+         
 
 
 ---- Looks --
@@ -131,7 +133,7 @@ myXPConfig = defaultXPConfig
 
 
 --LayoutHook
-myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:web" webL $ onWorkspace "6:VM" fullL $ onWorkspace "8:vid" fullL $ standardLayouts 
+myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ onWorkspace "6:VM" fullL $ onWorkspace "8:vid" fullL $ standardLayouts 
    where
 	standardLayouts =   avoidStruts  $ (tiled |||  reflectTiled ||| Mirror tiled ||| Grid ||| Full) 
 
@@ -189,7 +191,7 @@ myFocusedBorderColor = "#306EFF"
 
 --Workspaces
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = ["1:chat", "2:web", "3:code", "4:pdf", "5:doc", "6:vm" ,"7:games", "8:vid", "9:gimp"] 
+myWorkspaces = ["1:chat", "2:mail", "3:code", "4:pdf", "5:doc", "6:vm" ,"7:games", "8:vid", "9:gimp"] 
 --
 
 
@@ -250,6 +252,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0 			, 0x1008ff14 ), spawn "ncmpcpp toggle")
     , ((0 			, 0x1008ff17 ), spawn "ncmpcpp next")
     , ((0 			, 0x1008ff19 ), runOrRaise "thunderbird" (className =? "Lanikai"))
+    , ((0 			, 0x1008ff18 ), runOrRaise "firefox" (className =? "Firefox"))
 
 
 
