@@ -22,8 +22,6 @@ import XMonad.Actions.FloatKeys
 import XMonad.Actions.Submap
 
 -- utils
-import XMonad.Util.NamedScratchpad
-import XMonad.Util.Scratchpad
 
 import XMonad.Util.Run(spawnPipe)
 import qualified XMonad.Prompt 		as P
@@ -72,14 +70,11 @@ main = do
 		}
 
 
-scratchpadSize = W.RationalRect (1/4) (1/4) (1/2) (1/2)
-mySPFloat = customFloating scratchpadSize
 
-cname = stringProperty "WM_NAME"
 -- hooks
 -- automaticly switching app to workspace 
 myManageHook :: ManageHook
-myManageHook = scratchpadManageHook scratchpadSize <+> ( composeAll . concat $
+myManageHook =  composeAll . concat $
                 [[isFullscreen                  --> doFullFloat
 		, className =?  "Xmessage" 	--> doCenterFloat 
                 , className =? "Gimp"           --> doShift "9:gimp"
@@ -91,11 +86,12 @@ myManageHook = scratchpadManageHook scratchpadSize <+> ( composeAll . concat $
 		, className =? "MPlayer"	--> doShift "8:vid"
 		, className =? "rdesktop"	--> doShift "6:vm"
 		, className =? "Wine"	--> doShift "7:games"
+		, className =? "mono"	--> doShift "7:games"
 		, appName =? "localhost:5556 - freerdp" --> doShift "6:vm"
                 , fmap ("libreoffice"  `isInfixOf`) className --> doShift "5:doc"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
                 ]]
-                          )  
+                            
             
 
 --logHook
@@ -168,8 +164,6 @@ myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ on
 myTerminal :: String
 myTerminal = "urxvt -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb"
 
-scratchTerminal :: String
-scratchTerminal = "urxvt -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb"
 
 -------------------------------------------------------------------------------
 -- Keys/Button bindings --
@@ -244,8 +238,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_h ), sendMessage MirrorShrink)
     , ((modMask .|. shiftMask, xK_l ), sendMessage MirrorExpand)
  
-    -- scratchpad
-    , ((modMask ,  0xfe50), scratchpadSpawnAction defaultConfig  {terminal = myTerminal}) 
 
     --MPD
     , ((0 			, 0x1008ff16 ), spawn "ncmpcpp prev")
