@@ -65,6 +65,11 @@ alias aurs='cower -cs'
 alias aurd='cower -cd'
 alias aurup='cower -cu'
 
+# translate
+alias trnlen='~/bin/gettranslate.sh nl en '
+alias trennl='~/bin/gettranslate.sh en nl '
+alias translate='~/bin/gettranslate.sh'
+
 # nos
 alias journaal24='mplayer -playlist http://livestreams.omroep.nl/nos/journaal24-bb -cache 6000'
 alias politiek24='mplayer -playlist http://livestreams.omroep.nl/nos/politiek24-bb -cache 6000'
@@ -202,15 +207,6 @@ status() {
     print "System: $(cat /etc/[A-Za-z]*[_-][rv]e[lr]*)"
     print "Uptime:$(uptime)"
     print
-}
-
-#- Manage services
-service() {
-  if [ $# -lt 2 ]; then
-    echo "usage: service [service] [stop|start|restart]"
-  else
-    sudo /etc/rc.d/$1 $2
-  fi
 }
 
 
