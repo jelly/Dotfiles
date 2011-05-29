@@ -1,4 +1,5 @@
-colorscheme wombat256mod
+"colorscheme wombat256mod
+colorscheme candycode
 
 set tags+=~/.vim/tags/cpp
 
@@ -27,7 +28,7 @@ command -range=% Share :<line1>,<line2>write !curl -F "sprunge=<-" http://sprung
 
 " LaTeX Live Preview
 " "--------------------------------
-autocmd FileType tex silent :! (file="%"; pdflatex % &>/dev/null && evince "${file/.tex/.pdf}" &>/dev/null) &
+autocmd FileType tex silent :! (file="%"; pdflatex % &>/dev/null && zathura "${file/.tex/.pdf}" &>/dev/null) &
 command! Reload :! (pdflatex % &>/dev/null) &
 au BufWritePost *.tex silent Reload 
 set spell
@@ -65,4 +66,3 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
-
