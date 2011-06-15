@@ -46,17 +46,23 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Layout.Grid
 import Control.OldException(catchDyn,try)
+import XMonad.Layout.ComboP
+import XMonad.Layout.Column
+import XMonad.Layout.Named
+import XMonad.Layout.TwoPane
 
 -- Data.Ratio for IM layout
 import Data.Ratio ((%))
 import Data.List (isInfixOf)
+
+import XMonad.Hooks.EwmhDesktops
 
 
 -- Main --
 main = do
     xmproc <- spawnPipe "xmobar"
     spawn "sh /home/jelle/.xmonad/autostart.sh"
-    xmonad defaultConfig  {  manageHook = myManageHook  <+> manageDocks
+    xmonad $ withUrgencyHook NoUrgencyHook $ ewmh $ defaultConfig  {  manageHook = myManageHook  <+> manageDocks
         	, layoutHook = myLayoutHook   
 		, borderWidth = myBorderWidth
 		, normalBorderColor = myNormalBorderColor
@@ -87,6 +93,7 @@ myManageHook =  composeAll . concat $
 		, className =? "rdesktop"	--> doShift "6:vm"
 		, className =? "Wine"	--> doShift "7:games"
 		, className =? "mono"	--> doShift "7:games"
+		, className =? "SeamlessRDP"	--> doShift "5:doc"
 		, appName =? "localhost:5556 - freerdp" --> doShift "6:vm"
                 , fmap ("libreoffice"  `isInfixOf`) className --> doShift "5:doc"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
@@ -129,7 +136,7 @@ myXPConfig = defaultXPConfig
 
 
 --LayoutHook
-myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ onWorkspace "6:VM" fullL $ onWorkspace "8:vid" fullL $ standardLayouts 
+myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ onWorkspace "6:VM" fullL $ onWorkspace "8:vid" fullL $ onWorkspace "9:gimp" gimpLayout $ standardLayouts 
    where
 	standardLayouts =   avoidStruts  $ (tiled |||  reflectTiled ||| Mirror tiled ||| Grid ||| Full) 
 
@@ -148,10 +155,10 @@ myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ on
                                (Not (Title "Options")) `And`
                                               (Not (Role "Chats"))    `And`
                                                              (Not (Role "CallWindowForm"))
-         --       skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
-
 	webL      = avoidStruts $  full ||| tiled ||| reflectHoriz tiled  
-
+	gimpLayout = named "Gimp" $ split 0.135 Grid gimpMainAndRight (Role "gimp-toolbox")
+	gimpMainAndRight = split (0.73 / (0.73 + 0.135)) simpleTabbed (Column 1.6) (Role "gimp-image-window")
+	split x = combineTwoP (TwoPane 0.03 x)
         --VirtualLayout
         fullL = avoidStruts $ full
 
