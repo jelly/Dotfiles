@@ -3,11 +3,7 @@ loadplugins
 set guioptions=bCs
 set titlestring=Firefox
 set history=900
-set incsearch
-set hlsearch
-set smartcase
 set showmode
-set showtabline=2
 set activate=quickmark,paste
 set editor="gvim -f"
 set followhints=0
@@ -15,5 +11,4 @@ set newtab=all
 set visualbell
 "set complete=ltSsf
 set wildmode=list:longest,full
-set showstatuslinks=2
 set mapleader=","
