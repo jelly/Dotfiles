@@ -1,5 +1,6 @@
 ! urxvt settings
 
+
 !--[Title]--!
 
 URxvt*title:            	urxvt
@@ -15,11 +16,12 @@ URxvt.underlineURLs:    true
 
 !--[Fonts]--!
 
-URxvt.font:               xft:terminus:pixelsize=16
-!URxvt*font:         xft:Bitstream Vera Sans Mono:pixelsize=9
-!URxvt*font:         xft:monospace:pixelsize=16
+!URxvt.font: -*-terminus-*-*-*-*-14-*-*-*-*-*-*-u
+!URxvt.font: -*-droid sans mono-*-*-*-*-14-*-*-*-*-*-*-u
+URxvt.font:               xft:terminus:pixelsize=16:antialias=false
+!
 URxvt.scrollBar:         false
-URxvt.skipBuiltinGlyphs true
+URxvt.skipBuiltinGlyphs: true
 
 !--[Urxvt Options]--!
 
