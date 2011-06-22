@@ -156,9 +156,9 @@ myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ on
                                               (Not (Role "Chats"))    `And`
                                                              (Not (Role "CallWindowForm"))
 	webL      = avoidStruts $  full ||| tiled ||| reflectHoriz tiled  
-	gimpLayout = named "Gimp" $ split 0.135 Grid gimpMainAndRight (Role "gimp-toolbox")
-	gimpMainAndRight = split (0.73 / (0.73 + 0.135)) simpleTabbed (Column 1.6) (Role "gimp-image-window")
-	split x = combineTwoP (TwoPane 0.03 x)
+        gimpLayout = withIM (0.11) (Role "gimp-toolbox") $
+       		reflectHoriz $
+	        withIM (0.15) (Role "gimp-dock") Full
         --VirtualLayout
         fullL = avoidStruts $ full
 
@@ -169,7 +169,7 @@ myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ on
 -------------------------------------------------------------------------------
 ---- Terminal --
 myTerminal :: String
-myTerminal = "urxvt -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb"
+myTerminal = "urxvtc -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb"
 
 
 -------------------------------------------------------------------------------
