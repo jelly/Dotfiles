@@ -1,0 +1,10 @@
+browser firefox
+player mplayer
+max-items 100 
+reload-time 30
+reload-threads 3
+refresh-on-startup yes
+auto-reload yes
+bind-key j down
+bind-key k up
+article-sort-order date-asc
