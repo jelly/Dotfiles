@@ -36,6 +36,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
 
 -- layouts
 import XMonad.Layout.NoBorders
@@ -72,6 +73,7 @@ main = do
         	, terminal = myTerminal
 		, workspaces = myWorkspaces
                 , focusFollowsMouse = False
+		, startupHook = ewmhDesktopsStartup >> setWMName "LG3D"
                 , logHook = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc , ppTitle = xmobarColor "green" "" . shorten 50}
 		}
 
@@ -91,7 +93,9 @@ myManageHook =  composeAll . concat $
                 , className =? "Thunderbird"           --> doShift "2:mail"
 		, className =? "MPlayer"	--> doShift "8:vid"
 		, className =? "rdesktop"	--> doShift "6:vm"
+		, className =? "NXAgent"	--> doShift "6:vm"
 		, className =? "Wine"	--> doShift "7:games"
+		, className =? "Springlobby"	--> doShift "7:games"
 		, className =? "mono"	--> doShift "7:games"
 		, className =? "SeamlessRDP"	--> doShift "5:doc"
 		, appName =? "localhost:5556 - freerdp" --> doShift "6:vm"
@@ -247,6 +251,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
  
 
     --MPD
+    , ((modMask, xK_a), spawn "ncmpcpp prev")
+    , ((modMask, xK_s), spawn "ncmpcpp toggle")
+    , ((modMask, xK_d), spawn "ncmpcpp next")
     , ((0 			, 0x1008ff16 ), spawn "ncmpcpp prev")
     , ((0 			, 0x1008ff14 ), spawn "ncmpcpp toggle")
     , ((0 			, 0x1008ff17 ), spawn "ncmpcpp next")
@@ -272,25 +279,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     , ((0,               0x1008FF2A), spawn "sudo pm-suspend")
 
- -- Floating window square move
-    , ((modMask, xK_a), withFocused (keysMoveWindow (-8, 0)))
-    , ((modMask, xK_s), withFocused (keysMoveWindow (0, 8)))
-    , ((modMask, xK_d), withFocused (keysMoveWindow (0, -8)))
-    , ((modMask, xK_f), withFocused (keysMoveWindow (8, 0)))
-    , ((modMask .|. shiftMask, xK_a), withFocused (keysResizeWindow (-8, 0) (0, 0)))
-    , ((modMask .|. shiftMask, xK_s), withFocused (keysResizeWindow (0, 8) (0, 0)))
-    , ((modMask .|. shiftMask, xK_d), withFocused (keysResizeWindow (0, -8) (0, 0)))
-    , ((modMask .|. shiftMask, xK_f), withFocused (keysResizeWindow (8, 0) (0, 0)))
-    , ((modMask .|. controlMask, xK_s), submap . M.fromList $
-        [ ((0, xK_q), withFocused (keysMoveWindowTo (0, 17) (0, 0)))
-        , ((0, xK_w), withFocused (keysMoveWindowTo (720, 17) (1/2, 0)))
-        , ((0, xK_e), withFocused (keysMoveWindowTo (1400, 17) (1, 0)))
-        , ((0, xK_a), withFocused (keysMoveWindowTo (0, 533) (0, 1/2)))
-        , ((0, xK_s), withFocused (keysMoveWindowTo (720, 533) (1/2, 1/2)))
-        , ((0, xK_d), withFocused (keysMoveWindowTo (1400, 533) (1, 1/2)))
-        , ((0, xK_z), withFocused (keysMoveWindowTo (0, 1050) (0, 1)))
-        , ((0, xK_x), withFocused (keysMoveWindowTo (720, 1050) (1/2, 1)))
-        , ((0, xK_c), withFocused (keysMoveWindowTo (1400, 1050) (1, 1)))])
 
 
 
@@ -311,3 +299,4 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_e, xK_w] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+
