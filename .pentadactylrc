@@ -1,6 +1,6 @@
 "" ==================== Settings ==================== "
 loadplugins
-set guioptions=bCs
+set guioptions=Cs
 set titlestring=Firefox
 set history=900
 set showmode
