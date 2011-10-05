@@ -13,6 +13,6 @@ Config { font = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-u"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "              %StdinReader% }{ %EHRD%<fc=#429942>|</fc>%coretemp%<fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %eth0% <fc=#429942>|</fc> %date%"
+       , template = "                     %StdinReader% }{ %EHRD%<fc=#429942>|</fc>%coretemp%<fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %eth0% <fc=#429942>|</fc> %date%"
        }
 
