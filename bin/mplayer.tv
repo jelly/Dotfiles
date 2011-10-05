@@ -1,0 +1,2 @@
+#!/bin/bash
+xinit /usr/bin/xterm -ut -e /usr/bin/mplayer -fs -display :1 "$@" --  :1 -layout tv
