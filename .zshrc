@@ -9,10 +9,17 @@ SAVEHIST=1000
 # Variables
 #------------------------------
 export EDITOR="vim"
-export LANG="en_US.UTF-8"
+export LANG="en_GB.UTF-8"
 export BROWSER="firefox"
-export PATH="${PATH}:/bin:/sbin/:/usr/sbin/:/usr/bin:/usr/lib/perl5/core_perl/bin/:${HOME}/bin:/opt/java/jre/bin/:/opt/NX/bin/"
+export PATH="${PATH}:/bin:/sbin/:/usr/sbin/:/usr/bin:/usr/lib/perl5/core_perl/bin/:${HOME}/bin:/opt/java/jre/bin/:/opt/NX/bin/:/home/jelle/build/netkit/bin"
 
+# NETKIT
+export NETKIT_HOME=/home/jelle/build/netkit
+export MANPATH=:/home/jelle/build/netkit/man
+
+
+alias iscsilogin='sudo iscsiadm --mode node --targetname iqn.2000-01.com.synology:diskstation.name --portal 192.168.1.200:3260 --login'
+alias iscsilogout='sudo iscsiadm --mode node --targetname iqn.2000-01.com.synology:diskstation.name --portal 192.168.1.200:3260 --logout'
 
 #-----------------------------
 # Dircolors
@@ -56,24 +63,16 @@ alias ll="ls --color -lh"
 alias pacup='sudo pacman -Syu '
 alias pacs='pacman -Ss'
 alias pacins='sudo pacman -S'
-alias pacss='sudo pacman -Syy'
 alias pacr='sudo pacman -Rs'
 alias pacq='pacman -Q'
-alias pacl='pacman -Ql'
 alias pacu='sudo pacman -U'
-alias aurs='cower -cs'
-alias aurd='cower -cd'
-alias aurup='cower -cu'
 
 # translate
 alias trnlen='~/bin/gettranslate.sh nl en '
 alias trennl='~/bin/gettranslate.sh en nl '
 alias translate='~/bin/gettranslate.sh'
 
-# nos
-alias journaal24='mplayer -playlist http://livestreams.omroep.nl/nos/journaal24-bb -cache 6000'
-alias politiek24='mplayer -playlist http://livestreams.omroep.nl/nos/politiek24-bb -cache 6000'
-alias 3fm='mplayer   http://shoutcast.omroep.nl:8104/ -nocache   '
+alias 3fm='mplayer   -playlist http://livestreams.omroep.nl/npo/mp3/3fm-bb.pls -nocache   '
 
 # moving in dirs
 alias ..="cd .."
