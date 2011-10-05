@@ -23,7 +23,7 @@ command -range=% Share :<line1>,<line2>write !curl -F "sprunge=<-" http://sprung
 
 " LaTeX Live Preview
 " "--------------------------------
-autocmd FileType tex silent :! (file="%"; pdflatex % &>/dev/null && zathura "${file/.tex/.pdf}" &>/dev/null) &
+autocmd FileType tex silent :! (file="%"; pdflatex % &>/dev/null && evince "${file/.tex/.pdf}" &>/dev/null) &
 command! Reload :! (pdflatex % &>/dev/null) &
 au BufWritePost *.tex silent Reload 
 
@@ -43,6 +43,10 @@ set smartindent
 set autoindent
 set complete+=s
 
+"Spell
+set spell spelllang=nl 
+set nospell
+let g:tex_comment_nospell= 1
 
 " Python stuff
 autocmd FileType python let python_highlight_all = 1
@@ -59,8 +63,7 @@ autocmd FileType sh set expandtab shiftwidth=2 softtabstop=4
 
 " LaTeX
 autocmd Filetype tex,latex set grepprg=grep\ -nH\ $
-autocmd Filetype tex,latex set spell
-autocmd Filetype tex,latex set setlocal spell spelllang=nl
+autocmd Filetype tex,latex setlocal spell 
 autocmd Filetype tex,latex set grepprg=grep\ -nH\ $
 autocmd Filetype tex,latex let g:tex_flavor = "latex"
 
@@ -70,9 +73,10 @@ let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_enable_smart_case =1
 
 
-
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+inoremap <expr><TAB> pumvisible() ? “\<Down>” : “\<TAB>”
+
