@@ -274,9 +274,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- toggle trackpad
     , ((modMask .|. shiftMask, xK_t ), spawn "/sbin/trackpad-toggle.sh")
 
+    -- toggle flash video script
+    , ((modMask .|. shiftMask, xK_f ), spawn "/home/jelle/bin/flashvideo")
+
     -- python-notify info
     , ((0 			, 0x1008ff93 ), spawn "/home/jelle/bin/battery-notification.py")
-
     , ((0,               0x1008FF2A), spawn "sudo pm-suspend")
 
 
