@@ -9,6 +9,7 @@ eval `gnome-keyring-daemon`
 export GNOME_KEYRING_PID
 export GNOME_KEYRING_SOCKET
 export SSH_AUTH_SOCK
+export GPG_AGENT_INFO
 
 # start urxvt daemon
 urxvtd -q -f -o & 
