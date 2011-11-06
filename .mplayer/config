@@ -1,0 +1,7 @@
+# Write your default config options here!
+
+ao=alsa
+lavdopts=threads=2
+vc=ffh264vdpau,ffodivxvdpau,ffmpeg12vdpau,
+#heartbeat-cmd="xscreensaver-command -deactivate &" # stop xscreensaver
+#stop-xscreensaver="yes" # stop gnome-screensaver
