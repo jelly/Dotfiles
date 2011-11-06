@@ -1,0 +1,3 @@
+#!/bin/bash
+foo="/usr/bin/"
+xinit $foo$@ -- :1 -layout single 
