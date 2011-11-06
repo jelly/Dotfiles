@@ -94,6 +94,7 @@ myManageHook =  composeAll . concat $
 		, className =? "MPlayer"	--> doShift "8:vid"
 		, className =? "rdesktop"	--> doShift "6:vm"
 		, className =? "NXAgent"	--> doShift "6:vm"
+		, fmap ("NX" `isInfixOf`) title --> doShift "6:vm"
 		, className =? "Wine"	--> doShift "7:games"
 		, className =? "Springlobby"	--> doShift "7:games"
 		, className =? "mono"	--> doShift "7:games"
@@ -259,6 +260,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0 			, 0x1008ff17 ), spawn "ncmpcpp next")
     , ((0 			, 0x1008ff19 ), runOrRaise "thunderbird" (className =? "Lanikai"))
     , ((0 			, 0x1008ff18 ), runOrRaise "firefox" (className =? "Firefox"))
+    , ((0 			, 0x1008ff1b ), runOrRaise "pidgin" (className =? "Pidgin"))
 
 
 
