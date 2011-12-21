@@ -1,4 +1,5 @@
 http://www.mytvrss.com/tvrss.xml?id=41419938442 video
+http://beta.uitzendinggemist.nl/programmas/113-paul-rosenmoller-en.rss video
 http://www.reddit.com/.rss news
 http://lxer.com/module/newswire/headlines.rss linux
 http://www.nytimes.com/services/xml/rss/nyt/GlobalHome.xml news
@@ -15,3 +16,4 @@ http://xkcd.com/rss.xml comic
 http://www.zdnet.co.uk/rss/news-and-analysis/n-6c8/ news
 http://www.reddit.com/r/worldnews/.rss news
 http://planet.archlinux.org/atom.xml linux
+https://lwn.net/headlines/newrss linux
