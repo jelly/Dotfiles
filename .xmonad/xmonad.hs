@@ -99,6 +99,7 @@ myManageHook =  composeAll . concat $
 		, className =? "Springlobby"	--> doShift "7:games"
 		, className =? "mono"	--> doShift "7:games"
 		, className =? "SeamlessRDP"	--> doShift "5:doc"
+		, className =? "Calibre"	--> doShift "5:doc"
 		, appName =? "localhost:5556 - freerdp" --> doShift "6:vm"
                 , fmap ("libreoffice"  `isInfixOf`) className --> doShift "5:doc"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
