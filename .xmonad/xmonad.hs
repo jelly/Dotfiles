@@ -92,6 +92,7 @@ myManageHook =  composeAll . concat $
                 , className =? "Mail"           --> doShift "2:mail"
                 , className =? "Thunderbird"           --> doShift "2:mail"
 		, className =? "MPlayer"	--> doShift "8:vid"
+		, className =? "mplayer2"	--> doShift "8:vid"
 		, className =? "rdesktop"	--> doShift "6:vm"
 		, className =? "NXAgent"	--> doShift "6:vm"
 		, fmap ("NX" `isInfixOf`) title --> doShift "6:vm"
