@@ -12,14 +12,13 @@ export EDITOR="vim"
 export LANG="en_GB.UTF-8"
 export BROWSER="firefox"
 export PATH="${PATH}:/bin:/sbin/:/usr/sbin/:/usr/bin:/usr/lib/perl5/core_perl/bin/:${HOME}/bin:/opt/java/jre/bin/:/opt/NX/bin/:/home/jelle/build/netkit/bin"
+export WINEDLLOVERRIDES=winemenubuilder.exe=d
 
 # NETKIT
 export NETKIT_HOME=/home/jelle/build/netkit
 export MANPATH=:/home/jelle/build/netkit/man
 
 
-alias iscsilogin='sudo iscsiadm --mode node --targetname iqn.2000-01.com.synology:diskstation.name --portal 192.168.1.200:3260 --login'
-alias iscsilogout='sudo iscsiadm --mode node --targetname iqn.2000-01.com.synology:diskstation.name --portal 192.168.1.200:3260 --logout'
 
 #-----------------------------
 # Dircolors
@@ -73,6 +72,7 @@ alias trennl='~/bin/gettranslate.sh en nl '
 alias translate='~/bin/gettranslate.sh'
 
 alias 3fm='mplayer   -playlist http://livestreams.omroep.nl/npo/mp3/3fm-bb.pls -nocache   '
+alias linuxactionshow=' rtmpdump -v -r rtmp://us.videocdn.scaleengine.net/jblive-origin/jblive/jblive | mplayer -cache 1000 -vo xv '
 
 # moving in dirs
 alias ..="cd .."
