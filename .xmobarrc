@@ -4,6 +4,7 @@ Config { font = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-u"
        , position = Top 
        , lowerOnStart = True
        , commands = [ Run Weather "EHRD" ["-t","<tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000 
+                    ,Run Network "wlan0" ["-L", "8", "-H", "32", "-l", "#C9A34E", "-n", "#429942" ,"-h", "#A36666", "-t", "<dev>: <rx> : <tx>"] 10
                     ,Run Network "eth0" ["-L", "8", "-H", "32", "-l", "#C9A34E", "-n", "#429942" ,"-h", "#A36666", "-t", "<dev>: <rx> : <tx>"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","#429942","--high","#A36666"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
@@ -14,6 +15,6 @@ Config { font = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-u"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "                     %StdinReader% }{ %EHRD%<fc=#429942>|</fc>%top%<fc=#429942>|</fc>%topmem%<fc=#429942>|</fc>%cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %eth0% <fc=#429942>|</fc> %date%"
+       , template = "                     %StdinReader% }{ %EHRD%<fc=#429942>|</fc>%top%<fc=#429942>|</fc>%topmem%<fc=#429942>|</fc>%cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %wlan0% <fc=#429942>|</fc> %eth0%<fc=#429942>|</fc> %date%"
        }
 
