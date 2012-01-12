@@ -35,12 +35,24 @@ url = "https://bugs.archlinux.org/index.php?string=&project=1&search_name=&type%
 url2= "https://bugs.archlinux.org/index.php?string=&project=5&search_name=&type%5B%5D=&sev%5B%5D=&pri%5B%5D=&due%5B%5D=0&reported%5B%5D=&cat%5B%5D=&status%5B%5D=1&percent%5B%5D=&opened=&dev=&closed=&duedatefrom=&duedateto=&changedfrom=&changedto=&openedfrom=&openedto=&closedfrom=&closedto=&do=index"
 
 
-def parse_bugtrackerpage(url):
+def parse_bugtrackerpage(url,count=1):
+    print url
     # open bugtracker / parse 
     page = urllib2.urlopen(url)
     soup =  BeautifulSoup(page)
     data = soup.findAll('td',{'class':'task_id'})
     msg = ""
+    pages = False
+
+    # Is there another page with unassigned bugs
+    if soup.findAll('a',{'id': 'next' }) == []:
+        page = False
+    else:
+        print soup.findAll('a',{'id': 'next'})
+        count += 1
+        pages = True
+
+    print count
 
     # print all found bugs
     for f in data:
@@ -48,9 +60,15 @@ def parse_bugtrackerpage(url):
         title = f.a['title'].replace('| 0%','')
         msg += '* [http://bugs.archlinux.org/task/%s FS#%s] %s \n' % (f.a.string,f.a.string,title)
 
+    if pages == True:
+        new = "%s&pagenum=%s" % (url,count)
+        msg += parse_bugtrackerpage(new,count)
+
     return msg
 
+msg += '\n\nArchlinux: \n\n'
 msg += parse_bugtrackerpage(url)
+
 msg += '\n\nCommunity: \n\n'
 msg += parse_bugtrackerpage(url2)
 
