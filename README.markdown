@@ -4,6 +4,7 @@ This git  repo contains my dotfiles for popular software like mplayer,vim,xmonad
 
 ## Bin
 The bin directory contains some usefull scripts that i made in the past. 
+
 -   flashvideo: plays a flash video loaded in firefox with mplayer 
 -   mplayer.tv: a script to start mplayer on my TV instead of my dual monitor setup
 -   SeperateX: creates a seperate X  session for games
