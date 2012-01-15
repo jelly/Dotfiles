@@ -58,7 +58,7 @@ def parse_bugtrackerpage(url,count=1):
     for f in data:
         title = f.a['title'].replace('Assigned |','')
         title = f.a['title'].replace('| 0%','')
-        msg += '* [http://bugs.archlinux.org/task/%s FS#%s] %s \n' % (f.a.string,f.a.string,title)
+        msg += '* [https://bugs.archlinux.org/task/%s FS#%s] %s \n' % (f.a.string,f.a.string,title)
 
     if pages == True:
         new = "%s&pagenum=%s" % (url,count)
