@@ -12,3 +12,4 @@ set visualbell
 "set complete=ltSsf
 set wildmode=list:longest,full
 set mapleader=","
+autocmd LocationChange ^https?://(docs|mail)\.google\.com/ :normal! <C-z>
