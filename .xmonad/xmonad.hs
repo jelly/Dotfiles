@@ -261,7 +261,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0 			, 0x1008ff14 ), spawn "ncmpcpp toggle")
     , ((0 			, 0x1008ff17 ), spawn "ncmpcpp next")
     , ((0 			, 0x1008ff19 ), runOrRaise "thunderbird" (className =? "Lanikai"))
-    , ((0 			, 0x1008ff18 ), runOrRaise "firefox" (className =? "Firefox"))
+    , ((0 			, 0x1008ff18 ), runOrRaise "aurora" (className =? "Aurora"))
     , ((0 			, 0x1008ff1b ), runOrRaise "pidgin" (className =? "Pidgin"))
 
 
