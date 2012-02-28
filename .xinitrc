@@ -31,4 +31,7 @@ setxkbmap -layout us  -option compose:ralt
 # disable trackpad while typing
 syndaemon -t -k -i 2 -d &
 
+# xscreensaver
+/usr/bin/xscreensaver -no-splash &
+
 exec ck-launch-session dbus-launch xmonad
