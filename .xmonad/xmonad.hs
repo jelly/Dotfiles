@@ -253,6 +253,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_l ), sendMessage MirrorExpand)
  
 
+    -- xscreensaver
+    , ((modMask .|.  mod1Mask, xK_l ), spawn "xscreensaver-command --lock")
     --MPD
     , ((modMask, xK_a), spawn "ncmpcpp prev")
     , ((modMask, xK_s), spawn "ncmpcpp toggle")
