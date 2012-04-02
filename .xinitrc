@@ -19,7 +19,6 @@ urxvtd -q -f -o &
 /usr/bin/autocutsel -selection PRIMARY -fork &
 
 # networkmanager
-/usr/lib/notification-daemon-1.0/notification-daemon &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
 
 # set mouse pointer
