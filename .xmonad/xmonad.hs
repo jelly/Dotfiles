@@ -85,6 +85,7 @@ myManageHook :: ManageHook
 myManageHook =  composeAll . concat $
                 [[isFullscreen                  --> doFullFloat
 		, className =?  "Xmessage" 	--> doCenterFloat 
+		, className =? "Xfce4-notifyd" --> doIgnore
                 , className =? "Gimp"           --> doShift "9:gimp"
                 , className =? "Evolution"           --> doShift "2:web"
                 , className =? "Pidgin"           --> doShift "1:chat"
@@ -256,12 +257,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- xscreensaver
     , ((modMask .|.  mod1Mask, xK_l ), spawn "xscreensaver-command --lock")
     --MPD
-    , ((modMask, xK_a), spawn "ncmpcpp prev")
-    , ((modMask, xK_s), spawn "ncmpcpp toggle")
-    , ((modMask, xK_d), spawn "ncmpcpp next")
-    , ((0 			, 0x1008ff16 ), spawn "ncmpcpp prev")
-    , ((0 			, 0x1008ff14 ), spawn "ncmpcpp toggle")
-    , ((0 			, 0x1008ff17 ), spawn "ncmpcpp next")
+    , ((modMask, xK_a), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+    , ((modMask, xK_s), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop")
+    , ((modMask, xK_d), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
+    , ((0 			, 0x1008ff16 ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+    , ((0 			, 0x1008ff14 ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
+    , ((0 			, 0x1008ff17 ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
     , ((0 			, 0x1008ff19 ), runOrRaise "thunderbird" (className =? "Lanikai"))
     , ((0 			, 0x1008ff18 ), runOrRaise "aurora" (className =? "Aurora"))
     , ((0 			, 0x1008ff1b ), runOrRaise "pidgin" (className =? "Pidgin"))
