@@ -98,11 +98,11 @@ myManageHook =  composeAll . concat $
 		, className =? "NXAgent"	--> doShift "6:vm"
 		, fmap ("NX" `isInfixOf`) title --> doShift "6:vm"
 		, className =? "Wine"	--> doShift "7:games"
+		, className =? "pyrogenesis"	--> doShift "7:games"
 		, className =? "Springlobby"	--> doShift "7:games"
 		, className =? "mono"	--> doShift "7:games"
 		, className =? "SeamlessRDP"	--> doShift "5:doc"
 		, className =? "Calibre"	--> doShift "5:doc"
-		, appName =? "localhost:5556 - freerdp" --> doShift "6:vm"
                 , fmap ("libreoffice"  `isInfixOf`) className --> doShift "5:doc"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
                 ]]
@@ -200,7 +200,7 @@ myFocusedBorderColor = "#306EFF"
 
 --Workspaces
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = ["1:chat", "2:mail", "3:code", "4:pdf", "5:doc", "6:vm" ,"7:games", "8:vid", "9:gimp"] 
+myWorkspaces = ["1:chat", "2:mail", "3:code", "4:pdf", "5:doc", "6:vm" ,"7:games", "8:vid", "9:gimp","10:spotify"] 
 --
 
 
@@ -213,9 +213,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- opening program launcher / search engine
     ,((modMask , xK_p), shellPrompt myXPConfig)
-
-
-
     
     -- GridSelect
     , ((modMask, xK_g), goToSelected defaultGSConfig)
@@ -284,14 +281,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- toggle flash video script
     , ((modMask .|. shiftMask, xK_f ), spawn "/home/jelle/bin/flashvideo")
 
-    -- python-notify info
-    , ((0 			, 0x1008ff93 ), spawn "/home/jelle/bin/battery-notification.py")
-    , ((0,               0x1008FF2A), spawn "sudo pm-suspend")
 
-
-
-
- 
     -- quit, or restart
     , ((modMask .|. shiftMask, xK_q ), io (exitWith ExitSuccess))
     , ((modMask , xK_q ), restart "xmonad" True)
