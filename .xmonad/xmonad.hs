@@ -29,7 +29,7 @@ import XMonad.Prompt.Shell
 import XMonad.Prompt
 import XMonad.Prompt.AppendFile (appendFilePrompt)
 import XMonad.Prompt.RunOrRaise
-
+import XMonad.Util.Scratchpad
 
 -- hooks
 import XMonad.Hooks.DynamicLog
@@ -82,7 +82,7 @@ main = do
 -- hooks
 -- automaticly switching app to workspace 
 myManageHook :: ManageHook
-myManageHook =  composeAll . concat $
+myManageHook =  (composeAll . concat $
                 [[isFullscreen                  --> doFullFloat
 		, className =?  "Xmessage" 	--> doCenterFloat 
 		, className =? "Xfce4-notifyd" --> doIgnore
@@ -106,9 +106,11 @@ myManageHook =  composeAll . concat $
 		, className =? "Spotify"	--> doShift "10:spotify"
                 , fmap ("libreoffice"  `isInfixOf`) className --> doShift "5:doc"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
-                ]]
-                            
-            
+                ]]) <+> manageScratchPad
+
+manageScratchPad :: ManageHook
+manageScratchPad = scratchpadManageHook (W.RationalRect (1/4) (1/4) (1/2) (1/2)) 
+
 
 --logHook
 myLogHook :: Handle -> X ()
@@ -180,6 +182,10 @@ myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ on
 myTerminal :: String
 myTerminal = "urxvtc -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb"
 
+-------------------------------------------------------------------------------
+---- Terminal --
+myScratchTerminal :: String
+myScratchTerminal = "urxvtc -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb "
 
 -------------------------------------------------------------------------------
 -- Keys/Button bindings --
@@ -192,17 +198,13 @@ myModMask = mod4Mask
 -- borders
 myBorderWidth :: Dimension
 myBorderWidth = 1
---  
 myNormalBorderColor, myFocusedBorderColor :: String
 myNormalBorderColor = "#333333"
 myFocusedBorderColor = "#306EFF"
---
-
 
 --Workspaces
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = ["1:chat", "2:mail", "3:code", "4:pdf", "5:doc", "6:vm" ,"7:games", "8:vid", "9:gimp","10:spotify"] 
---
 
 
 -- keys
@@ -250,6 +252,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_l ), sendMessage Expand)
     , ((modMask .|. shiftMask, xK_h ), sendMessage MirrorShrink)
     , ((modMask .|. shiftMask, xK_l ), sendMessage MirrorExpand)
+
+    --  scratchpad
+    , ((modMask, xK_grave ), scratchpadSpawnAction defaultConfig  {terminal = myScratchTerminal})  
  
 
     -- xscreensaver
