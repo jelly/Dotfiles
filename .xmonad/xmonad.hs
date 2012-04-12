@@ -78,15 +78,19 @@ main = do
                 , logHook = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc , ppTitle = xmobarColor "green" "" . shorten 50}
 		}
 
+getSpecialName ::String -> [String]
+getSpecialName name = if "weechat" `isInfixOf` name then ["-i" ,"/home/jelle/.icons/Weechat_logo.png"]  else []
+
+
 data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
  
 instance UrgencyHook LibNotifyUrgencyHook where
     urgencyHook LibNotifyUrgencyHook w = do
-        name <- getName w
+    	name <- getName w
         ws <- gets windowset
         whenJust (W.findTag w ws) (flash name)
       where flash name index =
-            	safeSpawn "notify-send" [(show name ++ " requests your attention on workspace " ++ index)]
+            	safeSpawn "notify-send" (getSpecialName(show(name)) ++ [( show(name) ++ " requests your attention on workspace " ++ index)])
 
 
 -- hooks
