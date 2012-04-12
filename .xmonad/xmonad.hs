@@ -23,13 +23,14 @@ import XMonad.Actions.Submap
 
 -- utils
 
-import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.Run
 import qualified XMonad.Prompt 		as P
 import XMonad.Prompt.Shell
 import XMonad.Prompt
 import XMonad.Prompt.AppendFile (appendFilePrompt)
 import XMonad.Prompt.RunOrRaise
 import XMonad.Util.Scratchpad
+import XMonad.Util.NamedWindows (getName)
 
 -- hooks
 import XMonad.Hooks.DynamicLog
@@ -63,7 +64,7 @@ import XMonad.Hooks.EwmhDesktops
 main = do
     xmproc <- spawnPipe "xmobar"
     spawn "sh /home/jelle/.xmonad/autostart.sh"
-    xmonad $ withUrgencyHook NoUrgencyHook $ ewmh $ defaultConfig  {  manageHook = myManageHook  <+> manageDocks
+    xmonad $ withUrgencyHook LibNotifyUrgencyHook  $ ewmh $ defaultConfig  {  manageHook = myManageHook  <+> manageDocks
         	, layoutHook = myLayoutHook   
 		, borderWidth = myBorderWidth
 		, normalBorderColor = myNormalBorderColor
@@ -77,6 +78,15 @@ main = do
                 , logHook = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc , ppTitle = xmobarColor "green" "" . shorten 50}
 		}
 
+data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
+ 
+instance UrgencyHook LibNotifyUrgencyHook where
+    urgencyHook LibNotifyUrgencyHook w = do
+        name <- getName w
+        ws <- gets windowset
+        whenJust (W.findTag w ws) (flash name)
+      where flash name index =
+            	safeSpawn "notify-send" [(show name ++ " requests your attention on workspace " ++ index)]
 
 
 -- hooks
@@ -273,8 +283,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 
     -- volume control
-    , ((0 			, 0x1008ff13 ), spawn "amixer -q set Master 2dB+ && amixer -q set PCM 2dB+")
-    , ((0 			, 0x1008ff11 ), spawn "amixer -q set Master 2dB-  && amixer -q set PCM 2dB-")
+    , ((0 			, 0x1008ff13 ), spawn "amixer -q set Master 4dB+ && amixer -q set PCM 2dB+")
+    , ((0 			, 0x1008ff11 ), spawn "amixer -q set Master 4dB-  && amixer -q set PCM 2dB-")
     , ((0 			, 0x1008ff12 ), spawn "amixer -q set Master toggle")
 
     -- brightness control
