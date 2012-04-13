@@ -33,4 +33,6 @@ syndaemon -t -k -i 2 -d &
 # xscreensaver
 /usr/bin/xscreensaver -no-splash &
 
+(sleep 10&& /usr/lib/xfce4/notifyd/xfce4-notifyd)&
+(sleep 60&& /home/jelle/bin/spotifynp.py)&
 exec ck-launch-session dbus-launch xmonad
