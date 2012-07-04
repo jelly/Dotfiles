@@ -9,10 +9,12 @@ SAVEHIST=1000
 # Variables
 #------------------------------
 export EDITOR="vim"
-export LANG="en_GB.UTF-8"
 export BROWSER="firefox"
 export PATH="${PATH}:/bin:/sbin/:/usr/sbin/:/usr/bin:/usr/lib/perl5/core_perl/bin/:${HOME}/bin:/opt/java/jre/bin/:/opt/NX/bin/:/home/jelle/build/netkit/bin"
+
+# Fix wine
 export WINEDLLOVERRIDES=winemenubuilder.exe=d
+export WINEDEBUG=-all
 
 # NETKIT
 export NETKIT_HOME=/home/jelle/build/netkit
@@ -219,12 +221,24 @@ case $TERM in
         ;;
     screen)
         precmd () { 
-                        print -Pn "\e]83;title \"$1\"\a" 
-                        print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a" 
+                       # print -Pn "\e]83;title \"$1\"\a" 
+                       # print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a" 
+			                [[ $a = zsh ]] && print -Pn "\ek$2\e\\" # show the path if no program is running
+                [[ $a != zsh ]] && print -Pn "\ek$a\e\\" # if a program is running show that
+
+                # Terminal title
+                if [[ -n $STY ]] ; then
+                        [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:S\[$WINDOW\]:$2\a"
+                        [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:S\[$WINDOW\]:${a//\%/\%\%}\a"
+                elif [[ -n $TMUX ]] ; then
+                        # We're running in tmux, not screen
+                        [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:$2\a"
+                        [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:${a//\%/\%\%}\a"
+                fi
                 }
                 preexec () { 
-                        print -Pn "\e]83;title \"$1\"\a" 
-                        print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a" 
+                       # print -Pn "\e]83;title \"$1\"\a" 
+                       # print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a" 
                 }
         ;; 
 esac
