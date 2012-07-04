@@ -194,12 +194,14 @@ myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ on
 -------------------------------------------------------------------------------
 ---- Terminal --
 myTerminal :: String
-myTerminal = "urxvtc -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb"
+--myTerminal = "urxvtc -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb"
+myTerminal = "/home/jelle/build/term/termite"
 
 -------------------------------------------------------------------------------
 ---- Terminal --
 myScratchTerminal :: String
-myScratchTerminal = "urxvtc -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb "
+myScratchTerminal = "urxvt -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb "
+--myScratchTerminal = "/home/jelle/build/term/termite"
 
 -------------------------------------------------------------------------------
 -- Keys/Button bindings --
@@ -273,6 +275,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- xscreensaver
     , ((modMask .|.  mod1Mask, xK_l ), spawn "xscreensaver-command --lock")
+    , ((modMask, xK_u ), spawn "firefox $(xclip -out)")
     --MPD
     , ((modMask, xK_a), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
     , ((modMask, xK_s), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
