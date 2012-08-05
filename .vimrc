@@ -1,12 +1,19 @@
 "colors
 colorscheme candycode
 
-"pathogen
-call pathogen#infect()
+"
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-"vim notes 
-:let g:notes_directory = '~/Documenten/Notes'
-:let g:notes_suffix = '.txt'
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+
+" Bundles
+
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
 
 " Autocmd options
 " "--------------------------------
@@ -108,7 +115,7 @@ inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " SuperTab like snippets behavior.
-"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -122,14 +129,14 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " AutoComplPop like behavior.
-"let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_auto_select = 1
 
 " Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
-"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+set completeopt+=longest
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_disable_auto_complete = 1
+inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -143,7 +150,7 @@ if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
