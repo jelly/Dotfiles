@@ -10,11 +10,12 @@ Config { font = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-u"
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Date "%a %_d %b %Y %H:%M:%S" "date" 10
 		    , Run TopProc [] 30
+		    , Run BatteryP ["BAT0"] [] 600
 		    , Run TopMem [] 30
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "                     %StdinReader% }{ %EHRD%<fc=#429942>|</fc>%top%<fc=#429942>|</fc>%topmem%<fc=#429942>|</fc>%cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %wlan0% <fc=#429942>|</fc> %eth0%<fc=#429942>|</fc> %date%"
+       , template = "                     %StdinReader% }{ %EHRD%<fc=#429942>|</fc>%top%<fc=#429942>|</fc>%topmem%<fc=#429942>|</fc>%battery% <fc=#429942>|</fc>%cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %wlan0% <fc=#429942>|</fc> %eth0%<fc=#429942>|</fc> %date%"
        }
 
