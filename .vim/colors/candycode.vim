@@ -145,9 +145,8 @@ hi Identifier   guifg=#eecc44       guibg=NONE          gui=NONE
 hi Statement    guifg=#66d077       guibg=NONE          gui=bold
             \   ctermfg=green       ctermbg=NONE        cterm=bold
 
-hi PreProc      guifg=#0000ff       guibg=NONE          gui=NONE
-            \   ctermfg=darkblue ctermbg=NONE        cterm=NONE
-
+hi PreProc      guifg=#bb88dd       guibg=NONE          gui=NONE
+            \   ctermfg=darkmagenta ctermbg=NONE        cterm=NONE
 
 hi Type         guifg=#4093cc       guibg=NONE          gui=bold
             \   ctermfg=lightblue   ctermbg=NONE        cterm=bold
