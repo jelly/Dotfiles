@@ -116,7 +116,7 @@ myManageHook =  (composeAll . concat $
 		, className =? "Springlobby"	--> doShift "7:games"
 		, className =? "mono"	--> doShift "7:games"
 		, className =? "SeamlessRDP"	--> doShift "5:doc"
-		, className =? "Calibre"	--> doShift "5:doc"
+		, className =? "Calibre-gui"	--> doShift "5:doc"
 		, className =? "Spotify"	--> doShift "10:spotify"
                 , fmap ("libreoffice"  `isInfixOf`) className --> doShift "5:doc"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
@@ -161,7 +161,7 @@ myXPConfig = defaultXPConfig
 
 
 --LayoutHook
-myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ onWorkspace "6:VM" fullL $ onWorkspace "8:vid" fullL $ onWorkspace "9:gimp" gimpLayout $ standardLayouts 
+myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ onWorkspace "6:VM" fullL $ onWorkspace "8:vid" fullL  $ standardLayouts 
    where
 	standardLayouts =   avoidStruts  $ (tiled |||  reflectTiled ||| Mirror tiled ||| Grid ||| Full) 
 
@@ -171,6 +171,7 @@ myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ on
 	full 	  = noBorders Full
 
         --Im Layout
+	--Show pidgin tiled left and skype right
         imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (tiled ||| reflectTiled ||| Grid) where
                 chatLayout      = Grid
 	        ratio = (1%9)
@@ -180,35 +181,30 @@ myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ on
                                (Not (Title "Options")) `And`
                                               (Not (Role "Chats"))    `And`
                                                              (Not (Role "CallWindowForm"))
+	--Weblayout
 	webL      = avoidStruts $  full ||| tiled ||| reflectHoriz tiled  
-        gimpLayout = withIM (0.11) (Role "gimp-toolbox") $
-       		reflectHoriz $
-	        withIM (0.15) (Role "gimp-dock") Full
+
         --VirtualLayout
         fullL = avoidStruts $ full
-
-
 
 
 
 -------------------------------------------------------------------------------
 ---- Terminal --
 myTerminal :: String
---myTerminal = "urxvtc -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb"
-myTerminal = "/home/jelle/build/term/termite"
+myTerminal = "termite"
 
 -------------------------------------------------------------------------------
 ---- Terminal --
 myScratchTerminal :: String
-myScratchTerminal = "urxvt -depth 32 -fg white -bg rgba:0000/0000/0000/bbbb "
---myScratchTerminal = "/home/jelle/build/term/termite"
+myScratchTerminal = "termite"
+
 
 -------------------------------------------------------------------------------
 -- Keys/Button bindings --
 -- modmask
 myModMask :: KeyMask
 myModMask = mod4Mask
-
 
 
 -- borders
@@ -276,34 +272,33 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- xscreensaver
     , ((modMask .|.  mod1Mask, xK_l ), spawn "xscreensaver-command --lock")
     , ((modMask, xK_u ), spawn "firefox $(xclip -out)")
-    --MPD
+    --Spotify
     , ((modMask, xK_a), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
     , ((modMask, xK_s), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
     , ((modMask, xK_d), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
     , ((0 			, 0x1008ff16 ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
     , ((0 			, 0x1008ff14 ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
     , ((0 			, 0x1008ff17 ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
+
+    --Launching programs
     , ((0 			, 0x1008ff19 ), runOrRaise "thunderbird" (className =? "Lanikai"))
-    , ((0 			, 0x1008ff18 ), runOrRaise "aurora" (className =? "Aurora"))
+    , ((0 			, 0x1008ff18 ), runOrRaise "firefox" (className =? "Firefox"))
     , ((0 			, 0x1008ff1b ), runOrRaise "pidgin" (className =? "Pidgin"))
 
-
-
     -- volume control
-    , ((0 			, 0x1008ff13 ), spawn "amixer -q set Master 4dB+ && amixer -q set PCM 2dB+")
-    , ((0 			, 0x1008ff11 ), spawn "amixer -q set Master 4dB-  && amixer -q set PCM 2dB-")
+    , ((0 			, 0x1008ff13 ), spawn "amixer -q set Master 2dB+")
+    , ((0 			, 0x1008ff11 ), spawn "amixer -q set Master 2dB-")
     , ((0 			, 0x1008ff12 ), spawn "amixer -q set Master toggle")
 
     -- brightness control
-    , ((0 			, 0x1008ff03 ), spawn "nvclock -S -5")
-    , ((0 			, 0x1008ff02 ), spawn "nvclock -S +5")
+    , ((0 			, 0x1008ff03 ), spawn "xcalib -co 50 -a")
+    , ((0 			, 0x1008ff02 ), spawn "xcalib -c -a")
 
     -- toggle trackpad
-    , ((modMask .|. shiftMask, xK_t ), spawn "/sbin/trackpad-toggle.sh")
+    , ((modMask .|. shiftMask, xK_t ), spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
 
     -- toggle flash video script
     , ((modMask .|. shiftMask, xK_f ), spawn "/home/jelle/bin/flashvideo")
-
 
     -- quit, or restart
     , ((modMask .|. shiftMask, xK_q ), io (exitWith ExitSuccess))
