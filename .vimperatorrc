@@ -1,0 +1,5 @@
+autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader).*/.test(buffer.URL)
+" remove the right and bottom scrollbars
+
+set noscrollbars
+colorscheme zenburn
