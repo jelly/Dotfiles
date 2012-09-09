@@ -1,4 +1,5 @@
-autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader).*/.test(buffer.URL)
+autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader).*/.test(buffer.URL) 
+autocmd LocationChange .* echo ""
 " remove the right and bottom scrollbars
 
 set noscrollbars
