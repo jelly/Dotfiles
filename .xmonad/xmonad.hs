@@ -29,7 +29,6 @@ import XMonad.Prompt.Shell
 import XMonad.Prompt
 import XMonad.Prompt.AppendFile (appendFilePrompt)
 import XMonad.Prompt.RunOrRaise
-import XMonad.Util.Scratchpad
 import XMonad.Util.NamedWindows (getName)
 
 -- hooks
@@ -47,7 +46,6 @@ import XMonad.Layout.IM
 import XMonad.Layout.Tabbed
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Layout.Grid
-import Control.OldException(catchDyn,try)
 import XMonad.Layout.ComboP
 import XMonad.Layout.Column
 import XMonad.Layout.Named
@@ -64,7 +62,7 @@ import XMonad.Hooks.EwmhDesktops
 main = do
     xmproc <- spawnPipe "xmobar"
     spawn "sh /home/jelle/.xmonad/autostart.sh"
-    xmonad $ withUrgencyHook LibNotifyUrgencyHook  $ ewmh $ defaultConfig  {  manageHook = myManageHook  <+> manageDocks
+    xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig  {  manageHook = myManageHook  <+> manageDocks
         	, layoutHook = myLayoutHook   
 		, borderWidth = myBorderWidth
 		, normalBorderColor = myNormalBorderColor
@@ -74,23 +72,8 @@ main = do
         	, terminal = myTerminal
 		, workspaces = myWorkspaces
                 , focusFollowsMouse = False
-		, startupHook = ewmhDesktopsStartup >> setWMName "LG3D"
                 , logHook = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc , ppTitle = xmobarColor "green" "" . shorten 50}
 		}
-
-getSpecialName ::String -> [String]
-getSpecialName name = if "weechat" `isInfixOf` name then ["-i" ,"/home/jelle/.icons/Weechat_logo.png"]  else []
-
-
-data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
- 
-instance UrgencyHook LibNotifyUrgencyHook where
-    urgencyHook LibNotifyUrgencyHook w = do
-    	name <- getName w
-        ws <- gets windowset
-        whenJust (W.findTag w ws) (flash name)
-      where flash name index =
-            	safeSpawn "notify-send" (getSpecialName(show(name)) ++ [( show(name) ++ " requests your attention on workspace " ++ index)])
 
 
 -- hooks
@@ -99,6 +82,7 @@ myManageHook :: ManageHook
 myManageHook =  (composeAll . concat $
                 [[isFullscreen                  --> doFullFloat
 		, className =?  "Xmessage" 	--> doCenterFloat 
+		--, className =?  "Steam" 	--> doFloat 
 		, className =? "Xfce4-notifyd" --> doIgnore
                 , className =? "Gimp"           --> doShift "9:gimp"
                 , className =? "Evolution"           --> doShift "2:web"
@@ -114,16 +98,15 @@ myManageHook =  (composeAll . concat $
 		, className =? "Wine"	--> doShift "7:games"
 		, className =? "pyrogenesis"	--> doShift "7:games"
 		, className =? "Springlobby"	--> doShift "7:games"
+		, className =? "Steam"	--> doShift "7:games"
 		, className =? "mono"	--> doShift "7:games"
 		, className =? "SeamlessRDP"	--> doShift "5:doc"
 		, className =? "Calibre-gui"	--> doShift "5:doc"
 		, className =? "Spotify"	--> doShift "10:spotify"
                 , fmap ("libreoffice"  `isInfixOf`) className --> doShift "5:doc"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
-                ]]) <+> manageScratchPad
+                ]]) 
 
-manageScratchPad :: ManageHook
-manageScratchPad = scratchpadManageHook (W.RationalRect (1/4) (1/4) (1/2) (1/2)) 
 
 
 --logHook
@@ -194,11 +177,6 @@ myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ on
 myTerminal :: String
 myTerminal = "termite"
 
--------------------------------------------------------------------------------
----- Terminal --
-myScratchTerminal :: String
-myScratchTerminal = "termite"
-
 
 -------------------------------------------------------------------------------
 -- Keys/Button bindings --
@@ -265,13 +243,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_h ), sendMessage MirrorShrink)
     , ((modMask .|. shiftMask, xK_l ), sendMessage MirrorExpand)
 
-    --  scratchpad
-    , ((modMask, xK_grave ), scratchpadSpawnAction defaultConfig  {terminal = myScratchTerminal})  
- 
-
     -- xscreensaver
     , ((modMask .|.  mod1Mask, xK_l ), spawn "xscreensaver-command --lock")
-    , ((modMask, xK_u ), spawn "firefox $(xclip -out)")
     --Spotify
     , ((modMask, xK_a), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
     , ((modMask, xK_s), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
@@ -282,7 +255,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     --Launching programs
     , ((0 			, 0x1008ff19 ), runOrRaise "thunderbird" (className =? "Lanikai"))
-    , ((0 			, 0x1008ff18 ), runOrRaise "firefox" (className =? "Firefox"))
+    , ((0 			, 0x1008ff18 ), runOrRaise "aurora" (className =? "Aurora"))
     , ((0 			, 0x1008ff1b ), runOrRaise "pidgin" (className =? "Pidgin"))
 
     -- volume control
@@ -291,8 +264,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0 			, 0x1008ff12 ), spawn "amixer -q set Master toggle")
 
     -- brightness control
-    , ((0 			, 0x1008ff03 ), spawn "xcalib -co 50 -a")
-    , ((0 			, 0x1008ff02 ), spawn "xcalib -c -a")
+    --, ((0 			, 0x1008ff03 ), spawn "xcalib -co 50 -a")
+    --, ((0 			, 0x1008ff02 ), spawn "xcalib -c -a")
 
     -- toggle trackpad
     , ((modMask .|. shiftMask, xK_t ), spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
@@ -314,6 +287,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- mod-[w,e] %! switch to twinview screen 1/2
     -- mod-shift-[w,e] %! move window to screen 1/2
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_e, xK_w] [0..]
+        | (key, sc) <- zip [xK_e, xK_w, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
