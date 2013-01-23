@@ -259,9 +259,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0 			, 0x1008ff1b ), runOrRaise "pidgin" (className =? "Pidgin"))
 
     -- volume control
-    , ((0 			, 0x1008ff13 ), spawn "amixer -q set Master 2dB+")
-    , ((0 			, 0x1008ff11 ), spawn "amixer -q set Master 2dB-")
-    , ((0 			, 0x1008ff12 ), spawn "amixer -q set Master toggle")
+    , ((0 			, 0x1008ff13 ), spawn "ponymix increase 1")
+    , ((0 			, 0x1008ff11 ), spawn "ponymix decrease 1")
+    , ((0 			, 0x1008ff12 ), spawn "ponymix toggle")
 
     -- brightness control
     --, ((0 			, 0x1008ff03 ), spawn "xcalib -co 50 -a")
