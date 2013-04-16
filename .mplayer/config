@@ -1,9 +1,23 @@
-# Write your default config options here!
-
-ao=alsa
-lavdopts=threads=2
-#vc=ffh264vdpau,ffodivxvdpau,ffmpeg12vdpau,
-#heartbeat-cmd="xscreensaver-command -deactivate &" # stop xscreensaver
-#stop-xscreensaver="yes" # stop gnome-screensaver
-heartbeat-cmd="xscreensaver-command -deactivate >&- 2>&- &"
+[default]
+gapless-audio=yes
+key-fifo-size=3
+ao=pulse
+fixed-vo=no
+#vo=vdpau:hqscaling=1:queuetime_fs=500:output_surfaces=10:denoise=1,xvmc,gl,xv
+#vc=ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,ffodivx,ffodivxvdpau,
+ontop=yes
+aspect=1.77
+lavdopts="threads=9:idct=99"
+slices=no
+cache=32768
+cache-min=20
+idx=yes
+stop-xscreensaver=yes
+nomouseinput=yes
+sub-fuzziness=2
+lirc=no
+use-pts-title=yes
+joystick=no
+subfont-text-scale=3
+fstype=none
 
