@@ -30,6 +30,7 @@ import XMonad.Prompt
 import XMonad.Prompt.AppendFile (appendFilePrompt)
 import XMonad.Prompt.RunOrRaise
 import XMonad.Util.NamedWindows (getName)
+import Graphics.X11.ExtraTypes.XF86
 
 -- hooks
 import XMonad.Hooks.DynamicLog
@@ -82,20 +83,20 @@ myManageHook :: ManageHook
 myManageHook =  (composeAll . concat $
                 [[isFullscreen                  --> doFullFloat
 		, className =?  "Xmessage" 	--> doCenterFloat 
-		--, className =?  "Steam" 	--> doFloat 
+	--	, className =?  "Steam" 	--> doFloat 
 		, className =? "Xfce4-notifyd" --> doIgnore
+	    	, className =? "stalonetray" --> doIgnore
                 , className =? "Gimp"           --> doShift "9:gimp"
-                , className =? "Evolution"           --> doShift "2:web"
+                , className =? "Thunderbird"          --> doShift "2:web"
                 , className =? "Pidgin"           --> doShift "1:chat"
                 , className =? "Skype"           --> doShift "1:chat"
-                , className =? "Mail"           --> doShift "2:mail"
-                , className =? "Thunderbird"           --> doShift "2:mail"
 		, className =? "MPlayer"	--> doShift "8:vid"
 		, className =? "mplayer2"	--> doShift "8:vid"
 		, className =? "rdesktop"	--> doShift "6:vm"
 		, className =? "NXAgent"	--> doShift "6:vm"
 		, fmap ("NX" `isInfixOf`) title --> doShift "6:vm"
 		, className =? "Wine"	--> doShift "7:games"
+		, className =? "Crossover" --> doShift "7:games"
 		, className =? "pyrogenesis"	--> doShift "7:games"
 		, className =? "Springlobby"	--> doShift "7:games"
 		, className =? "Steam"	--> doShift "7:games"
@@ -144,7 +145,7 @@ myXPConfig = defaultXPConfig
 
 
 --LayoutHook
-myLayoutHook  =  onWorkspace "1:chat" imLayout $  onWorkspace "2:mail" webL $ onWorkspace "6:VM" fullL $ onWorkspace "8:vid" fullL  $ standardLayouts 
+myLayoutHook  =  onWorkspace "1:chat" imLayout  $ onWorkspace "6:VM" fullL $ onWorkspace "8:vid" fullL $ onWorkspace "7:games" fullL  $ standardLayouts 
    where
 	standardLayouts =   avoidStruts  $ (tiled |||  reflectTiled ||| Mirror tiled ||| Grid ||| Full) 
 
@@ -194,7 +195,7 @@ myFocusedBorderColor = "#306EFF"
 
 --Workspaces
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = ["1:chat", "2:mail", "3:code", "4:pdf", "5:doc", "6:vm" ,"7:games", "8:vid", "9:gimp","10:spotify"] 
+myWorkspaces = ["1:chat", "2:web", "3:code", "4:pdf", "5:doc", "6:vm" ,"7:games", "8:vid", "9:gimp","10:spotify"] 
 
 
 -- keys
@@ -209,6 +210,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     
     -- GridSelect
     , ((modMask, xK_g), goToSelected defaultGSConfig)
+
+   -- Display key
+    --, ("<XF86Display>", spawn "xrandr --auto")
 
     -- layouts
     , ((modMask, xK_space ), sendMessage NextLayout)
@@ -244,34 +248,37 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_l ), sendMessage MirrorExpand)
 
     -- xscreensaver
-    , ((modMask .|.  mod1Mask, xK_l ), spawn "xscreensaver-command --lock")
+    , ((modMask .|.  mod1Mask, xK_l ), safeSpawn "xscreensaver-command --lock" [])
+
     --Spotify
-    , ((modMask, xK_a), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
-    , ((modMask, xK_s), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
-    , ((modMask, xK_d), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
-    , ((0 			, 0x1008ff16 ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
-    , ((0 			, 0x1008ff14 ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
-    , ((0 			, 0x1008ff17 ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
+    , ((modMask , xK_a ), safeSpawn "dbus-send" ["--print-reply"," --dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Previous"] )
+    , ((modMask, xK_s ), safeSpawn "dbus-send" ["--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause"] )
+    , ((modMask, xK_d ), safeSpawn "dbus-send" ["--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Next"] )
 
     --Launching programs
-    , ((0 			, 0x1008ff19 ), runOrRaise "thunderbird" (className =? "Lanikai"))
-    , ((0 			, 0x1008ff18 ), runOrRaise "aurora" (className =? "Aurora"))
-    , ((0 			, 0x1008ff1b ), runOrRaise "pidgin" (className =? "Pidgin"))
+    --, ((0, xF86XK_Favorites ), safeSpawn "")
+    -- , ((0, xF86XK_Mail ), runOrRaise "thunderbird" (className =? "Thunderbird"))
+    -- , ((0, xF86XK_Messenger ), runOrRaise "pidgin" (className =? "Pidgin"))
+    
+    , ((0, 0x1008ff18 ), runOrRaise "aurora" (className =? "Aurora"))
+    , ((0, xF86XK_Calculator	), safeSpawn "gcalctool" [])
+    --, ((0, xF86XK_Display	), safeSpawn "xrandr --auto" [])
+    --, ((0, xF86XK_Battery	), safeSpawn "" [])
 
     -- volume control
-    , ((0 			, 0x1008ff13 ), spawn "ponymix increase 1")
-    , ((0 			, 0x1008ff11 ), spawn "ponymix decrease 1")
-    , ((0 			, 0x1008ff12 ), spawn "ponymix toggle")
+    , ((0, xF86XK_AudioRaiseVolume ), safeSpawn "ponymix" ["increase", "5"])
+    , ((0, xF86XK_AudioLowerVolume ), safeSpawn "ponymix" ["decrease", "5"])
+    , ((0, xF86XK_AudioMute ), safeSpawn "ponymix" ["toggle"])
 
     -- brightness control
-    --, ((0 			, 0x1008ff03 ), spawn "xcalib -co 50 -a")
-    --, ((0 			, 0x1008ff02 ), spawn "xcalib -c -a")
+    , ((0 			, 0x1008ff03 ), safeSpawn "bset" ["-i", "10"])
+    , ((0 			, 0x1008ff02 ), safeSpawn "bset" ["-d","10"])
 
     -- toggle trackpad
-    , ((modMask .|. shiftMask, xK_t ), spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
+    , ((modMask .|. shiftMask, xK_t ), safeSpawn "/home/jelle/bin/trackpad-toggle.sh" [] )
 
     -- toggle flash video script
-    , ((modMask .|. shiftMask, xK_f ), spawn "/home/jelle/bin/flashvideo")
+    , ((modMask .|. shiftMask, xK_f ), safeSpawn "/home/jelle/bin/flashvideo" [])
 
     -- quit, or restart
     , ((modMask .|. shiftMask, xK_q ), io (exitWith ExitSuccess))
