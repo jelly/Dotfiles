@@ -1,14 +1,14 @@
 Config { font = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-u"
        , bgColor = "#000000"
+       , borderColor = "#000000"
        , fgColor = "#C9A34E"
-       , position = Top 
+       , position = TopW R 95
        , lowerOnStart = True
-       , commands = [ Run Weather "EHRD" ["-t","<tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000 
-                    ,Run Network "wlan0" ["-L", "8", "-H", "32", "-l", "#C9A34E", "-n", "#429942" ,"-h", "#A36666", "-t", "<dev>: <rx> : <tx>"] 10
-                    ,Run Network "eth0" ["-L", "8", "-H", "32", "-l", "#C9A34E", "-n", "#429942" ,"-h", "#A36666", "-t", "<dev>: <rx> : <tx>"] 10
-                    , Run Cpu ["-L","3","-H","50","--normal","#429942","--high","#A36666"] 10
-                    , Run Memory ["-t","Mem: <usedratio>%"] 10
-                    , Run Date "%a %_d %b %Y %H:%M:%S" "date" 10
+       , commands = [
+                    Run Network "enp0s25" ["-L", "8", "-H", "32", "-l", "#C9A34E", "-n", "#429942" ,"-h", "#A36666", "-t", "<dev>: <rx> : <tx>"] 30
+                    , Run Cpu ["-L","3","-H","50","--normal","#429942","--high","#A36666"] 30
+                    , Run Memory ["-t","Mem: <usedratio>%"] 30
+                    , Run Date "%a %_d %b %Y %H:%M" "date" 30
 		    , Run TopProc [] 30
 		    , Run BatteryP ["BAT0"] [] 600
 		    , Run TopMem [] 30
@@ -16,6 +16,6 @@ Config { font = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-u"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "                     %StdinReader% }{ %EHRD%<fc=#429942>|</fc>%top%<fc=#429942>|</fc>%topmem%<fc=#429942>|</fc>%battery% <fc=#429942>|</fc>%cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %wlan0% <fc=#429942>|</fc> %eth0%<fc=#429942>|</fc> %date%"
+       , template = "%StdinReader% }{ %top%<fc=#429942>|</fc>%topmem%<fc=#429942>|</fc>%battery% <fc=#429942>|</fc>%cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %enp0s25%<fc=#429942>|</fc>%date%"
        }
 
