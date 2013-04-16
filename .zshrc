@@ -20,6 +20,11 @@ export WINEDEBUG=-all
 export NETKIT_HOME=/home/jelle/build/netkit
 export MANPATH=:/home/jelle/build/netkit/man
 
+# SLRN
+export NNTPSERVER='news.gmane.org'
+
+# chroot
+export CHROOT=/home/jelle/media/chroot/jelle
 
 
 #-----------------------------
@@ -54,6 +59,8 @@ bindkey "\e[7~" beginning-of-line
 bindkey "\eOH" beginning-of-line
 bindkey "\eOF" end-of-line
 
+alias wine_steam='WINEDEBUG=-all WINEARCH=win32 WINEPREFIX=~/media/Games/Wineprefix/steam/ wine ~/media/Games/Wineprefix/steam/drive_c/Program\ Files/Steam/Steam.exe -no-dwrite >/dev/null 2>&1 &'
+
 #------------------------------
 # Alias stuff
 #------------------------------
@@ -68,20 +75,15 @@ alias pacr='sudo pacman -Rs'
 alias pacq='pacman -Q'
 alias pacu='sudo pacman -U'
 
-# translate
-alias trnlen='~/bin/gettranslate.sh nl en '
-alias trennl='~/bin/gettranslate.sh en nl '
-alias translate='~/bin/gettranslate.sh'
-
-alias 3fm='mplayer   -playlist http://livestreams.omroep.nl/npo/mp3/3fm-bb.pls -nocache   '
-alias linuxactionshow=' rtmpdump -v -r rtmp://us.videocdn.scaleengine.net/jblive-origin/jblive/jblive | mplayer -cache 1000 -vo xv '
-
 # moving in dirs
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+
+# Dir colors
+eval $(dircolors -b $HOME/.dircolors)
 
 #------------------------------
 # Comp stuff
@@ -91,7 +93,7 @@ autoload -Uz compinit
 compinit
 zstyle :compinstall filename '${HOME}/.zshrc'
 
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
