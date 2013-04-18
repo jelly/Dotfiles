@@ -1,5 +1,14 @@
-http://www.mytvrss.com/tvrss.xml?id=41419938442 video
-http://beta.uitzendinggemist.nl/programmas/113-paul-rosenmoller-en.rss video
+http://feeds.arstechnica.com/arstechnica/index
+http://www.engadget.com/rss.xml
+http://freecode.com/?format=atom
+http://news.ycombinator.com/rss
+http://www.ibm.com/developerworks/views/linux/rss/libraryview.jsp?site_id=1&contentarea_by=Linux&topic_by=&product_by=&type_by=Tutorials&search_by=&industry_by=&sort_by=D
+http://pipes.yahoo.com/pipes/pipe.run?_id=8226cff59b9e9b50bc7c9d5907a45479&_render=rss
+http://rss.packetstormsecurity.org/news/
+http://feeds.nos.nl/nosnieuwsalgemeen
+http://rss.slashdot.org/Slashdot/slashdot
+http://syndication.thedailywtf.com/TheDailyWtf
+http://feeds.feedburner.com/TheGeekStuff
 http://www.reddit.com/.rss news
 http://lxer.com/module/newswire/headlines.rss linux
 http://www.nytimes.com/services/xml/rss/nyt/GlobalHome.xml news
@@ -17,3 +26,7 @@ http://www.zdnet.co.uk/rss/news-and-analysis/n-6c8/ news
 http://www.reddit.com/r/worldnews/.rss news
 http://planet.archlinux.org/atom.xml linux
 https://lwn.net/headlines/newrss linux
+http://www.security.nl/headlines-rss.xml
+http://www.reddit.com/r/linux/.rss
+http://feeds.feedburner.com/tweakers/mixed
+http://feeds.webwereld.nl/webwereld
