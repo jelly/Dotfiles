@@ -1,0 +1,33 @@
+application/octet-stream ; echo %s "can be anything..."                    ; copiousoutput
+#text/html                ; /usr/bin/elinks -dump %s ; nametemplate=%s.html ; copiousoutput
+text/html;               /usr/bin/w3m -dump -T text/html %s; needsterminal; copiousoutput
+application/pdf          ; /usr/bin/evince %s                             ; copiousoutput
+image/*                  ; /usr/bin/eog %s                              ; copiousoutput
+audio/*                  ; /usr/bin/mplayer %s                             ; copiousoutput
+video/*                  ; /usr/bin/mplayer %s                             ; copiousoutput
+
+#text/html;                      mutt_bgrun /usr/bin/firefox -remote 'openURL(file://%s, new-tab)'; copiousoutput
+text/html;                      /usr/bin/aurora -new-tab %s
+text/plain;                     urxvt -name attach -e /usr/bin/vim -f %s;
+text/plain;charset=us-ascii	less; needsterminal
+#text/*;                         less 
+application/msword;             libreoffice %s; copiousoutput
+application/vnd.msword;         libreoffice %s copiousoutput
+application/excel;              libreoffice %s; copiousoutput
+application/msexcel;            libreoffice %s; copiousoutput
+application/vnd.ms-excel;       libreoffice %s; copiousoutput
+application/x-excel;            libreoffice %s; copiousoutput
+application/x-msexcel;          libreoffice %s; copiousoutput
+application/vnd.ms-powerpoint;  libreoffice %s; copiousoutput
+application/x-mspowerpoint;     libreoffice %s; copiousoutput
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; libreoffice '%s';  description="Office Open XML Spreadsheet"; nametemplate=%s.xlsx
+application/ppt;                libreoffice %s; copiousoutput
+application/zip;                file-roller %s; copiousoutput
+application/x-rar;              file-roller %s; copiousoutput
+application/msword;		libreoffice %s; copiousoutput
+application/vnd.msword;         libreoffice %s; copiousoutput
+application/postscript;		evince %s; copiousoutput
+application/rtf;		rtf2text %s; copiousoutput
+application/ms-tnef;		mutt_bgrun tnef -w %s
+application/octet-stream;       less; needsterminal
+*;                              less %s;

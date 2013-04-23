@@ -1,0 +1,79 @@
+color attachment brightmagenta default  
+color error color59 default
+color hdrdefault red default   # headers
+color indicator color253 color241  # currently selected message
+
+color markers brightcyan default  # the + for wrapped pager lines
+color message brightcyan default  # informational messages, not mail
+
+color normal default default    # plain text
+#color quoted green default  # quoted text
+
+color search brightgreen default # hilite search patterns in the pager
+color signature red default    # signature (after "-- ") is red 
+
+color status color30 default
+
+color tilde blue default  # ~'s after message body
+color tree red default    # thread tree in index menu is magenta
+color signature brightred default
+color underline yellow default
+color header cyan default ^(From|Subject|To|Date|Delivered-To|X-Date): # Important headers
+color body magenta default "(ftp|http)://[^ ]+"  # picks up URLs
+color body magenta default [-a-z_0-9.]+@[-a-z_0-9.]+ 
+
+# http://www.jnrowe.ukfsn.org/articles/configs/mutt.html
+# Highlight qsf and SpamAssassin flagged mail
+#color index brightred brightblack "~h '^X-Spam: YES'"
+#color index brightmagenta brightblack "~h '^X-Spam-Status: Yes'"
+## Match dates, both ISO-style and [YY]YY/MM/DD
+color body brightred black "\(19|20\)?[0-9][0-9][/-][01]?[0-9][/-][0123]?[0-9]"
+## ISBNs
+color body yellow default "[-0-9]{9,12}[0-9X]"
+
+# http://wiki.softwarelivre.org/Blogs/BlogPostAntonioTerceiro20090423141108
+
+color body green default "^diff \-.*"
+color body green default "^index [a-f0-9].*"
+color body green default "^\-\-\- .*"
+color body green default "^[\+]{3} .*"
+color body cyan default "^[\+][^\+]+.*"
+color body blue default "^\-[^\-]+.*"
+color body brightblue default "^@@ .*"
+
+#  Coloring quoted text - coloring the first 7 levels:
+color quoted    cyan default
+color quoted1   yellow default
+color quoted2   red default
+color quoted3   green default
+color quoted4   cyan default
+color quoted5   yellow default
+color quoted6   red default
+color quoted7   green default
+
+#  Colorize smileys:  :-)  ;-)  :-/  :-(
+color body  yellow default "[;:]-[)/(|]"
+color body  yellow default "[;:][)/(|]"
+color body  green default "[[:alpha:]]\+://[^ ]*"
+
+color sidebar_new color147 color235
+color index color250 color236 ~N      # New
+#color index color45 color237 ~v     # Part of a thread
+#color index color17 color109 ~p
+
+# http://www.mutt.org/doc/manual/manual-4.html#patterns
+color index color40 color235 '~d <1d ~N'
+#color index color45 color238 '~(~N)'            # unread in a thread with leader read
+#color index color56 default '~R'            # unread in a thread with leader read
+#color index color153 color239 '~p ~N'          # To me
+color index color153  color239 "~(~U ~s TOME)"      # Read
+#color index color151 default '~R'
+color index color31 default ~R       # Read
+#color index color31 default '~p ~R'       # Read
+
+
+#color index magenta default ~F # flagged messages
+color index color197 default ~D     # To be deleted
+color index color253 color93 ~T    # Tagged ones
+
+#color sidebar_new black color151
