@@ -11,7 +11,7 @@ URxvt*urgentOnBell:    true
 !--[URL Select]--!
 URxvt.perl-ext-common:  default,url-select
 URxvt.keysym.M-u:       perl:url-select:select_next
-URxvt.urlLauncher:      firefox
+URxvt.urlLauncher:      aurora
 URxvt.underlineURLs:    true
 
 !--[Fonts]--!
