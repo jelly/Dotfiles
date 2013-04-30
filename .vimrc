@@ -37,6 +37,14 @@ filetype plugin indent on
 command -range=% Share :<line1>,<line2>write !curl -F "sprunge=<-" http://sprunge.us|xclip
 
 
+" YouCompleteMe
+" "-------------------------------
+"" YouCompleteMe
+let g:ycm_key_list_previous_completion=['<Up>']
+
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " LaTeX Live Preview
 " "--------------------------------
 autocmd FileType tex silent :! (file="%"; pdflatex -shell-escape % &>/dev/null && evince "${file/.tex/.pdf}" &>/dev/null) &
