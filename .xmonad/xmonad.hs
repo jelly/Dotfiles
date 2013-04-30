@@ -261,7 +261,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- , ((0, xF86XK_Messenger ), runOrRaise "pidgin" (className =? "Pidgin"))
     
     , ((0, 0x1008ff18 ), runOrRaise "aurora" (className =? "Aurora"))
-    , ((0, xF86XK_Calculator	), safeSpawn "gcalctool" [])
+    , ((0, xF86XK_Calculator	), safeSpawn "gnome-calculator" [])
     --, ((0, xF86XK_Display	), safeSpawn "xrandr --auto" [])
     --, ((0, xF86XK_Battery	), safeSpawn "" [])
 
