@@ -92,6 +92,7 @@ myManageHook =  (composeAll . concat $
                 , className =? "Skype"           --> doShift "1:chat"
 		, className =? "MPlayer"	--> doShift "8:vid"
 		, className =? "mplayer2"	--> doShift "8:vid"
+		, className =? "mpv"	--> doShift "8:vid"
 		, className =? "rdesktop"	--> doShift "6:vm"
 		, className =? "NXAgent"	--> doShift "6:vm"
 		, fmap ("NX" `isInfixOf`) title --> doShift "6:vm"
