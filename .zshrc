@@ -10,7 +10,10 @@ SAVEHIST=1000
 #------------------------------
 export EDITOR="vim"
 export BROWSER="firefox"
-export PATH="${PATH}:/bin:/sbin/:/usr/sbin/:/usr/bin:/usr/lib/perl5/core_perl/bin/:${HOME}/bin:/opt/java/jre/bin/:/opt/NX/bin/:/home/jelle/build/netkit/bin"
+export PATH="${PATH}:/bin:/sbin/:/usr/sbin/:/usr/bin:/usr/lib/perl5/core_perl/bin/:${HOME}/bin:/opt/java/jre/bin/:/opt/NX/bin/:/home/jelle/build/trunk/bin"
+
+# openwrt build root
+export STAGING_DIR="/home/jelle/build/trunk/staging_dir"
 
 # Fix wine
 export WINEDLLOVERRIDES=winemenubuilder.exe=d
@@ -59,7 +62,7 @@ bindkey "\e[7~" beginning-of-line
 bindkey "\eOH" beginning-of-line
 bindkey "\eOF" end-of-line
 
-alias wine_steam='WINEDEBUG=-all WINEARCH=win32 WINEPREFIX=~/media/Games/Wineprefix/steam/ wine ~/media/Games/Wineprefix/steam/drive_c/Program\ Files/Steam/Steam.exe -no-dwrite >/dev/null 2>&1 &'
+alias mplayer='mpv'
 
 #------------------------------
 # Alias stuff
@@ -127,7 +130,7 @@ fi
 
 ac() { # compress a file or folder
     case "$1" in
-           tar.bz2|.tar.bz2) tar cvjf "${2%%/}.tar.bz2" "${2%%/}/"  ;;
+       tar.bz2|.tar.bz2) tar cvjf "${2%%/}.tar.bz2" "${2%%/}/"  ;;
        tbz2|.tbz2)       tar cvjf "${2%%/}.tbz2" "${2%%/}/"     ;;
        tbz|.tbz)         tar cvjf "${2%%/}.tbz" "${2%%/}/"      ;;       
        tar.xz)         tar cvJf "${2%%/}.tar.gz" "${2%%/}/"      ;;       
