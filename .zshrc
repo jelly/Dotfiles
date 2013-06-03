@@ -10,7 +10,7 @@ SAVEHIST=1000
 #------------------------------
 export EDITOR="vim"
 export BROWSER="firefox"
-export PATH="${PATH}:/bin:/sbin/:/usr/sbin/:/usr/bin:/usr/lib/perl5/core_perl/bin/:${HOME}/bin:/opt/java/jre/bin/:/opt/NX/bin/:/home/jelle/build/trunk/bin"
+#export PATH="${PATH}:/bin:/sbin/:/usr/sbin/:/usr/bin:/usr/lib/perl5/core_perl/bin/:/home/jelle/build/trunk/bin"
 
 # openwrt build root
 export STAGING_DIR="/home/jelle/build/trunk/staging_dir"
@@ -18,6 +18,9 @@ export STAGING_DIR="/home/jelle/build/trunk/staging_dir"
 # Fix wine
 export WINEDLLOVERRIDES=winemenubuilder.exe=d
 export WINEDEBUG=-all
+
+# Twinview gaming
+export SDL_VIDEO_FULLSCREEN_HEAD=1
 
 # NETKIT
 export NETKIT_HOME=/home/jelle/build/netkit
