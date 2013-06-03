@@ -94,6 +94,7 @@ myManageHook =  (composeAll . concat $
 		, className =? "mplayer2"	--> doShift "8:vid"
 		, className =? "mpv"	--> doShift "8:vid"
 		, className =? "rdesktop"	--> doShift "6:vm"
+		, className =? "spicec"	--> doShift "6:vm"
 		, className =? "NXAgent"	--> doShift "6:vm"
 		, fmap ("NX" `isInfixOf`) title --> doShift "6:vm"
 		, className =? "Wine"	--> doShift "7:games"
@@ -267,8 +268,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     --, ((0, xF86XK_Battery	), safeSpawn "" [])
 
     -- volume control
-    , ((0, xF86XK_AudioRaiseVolume ), safeSpawn "ponymix" ["increase", "5"])
-    , ((0, xF86XK_AudioLowerVolume ), safeSpawn "ponymix" ["decrease", "5"])
+    , ((0, xF86XK_AudioRaiseVolume ), safeSpawn "ponymix" ["-N","increase", "5"])
+    , ((0, xF86XK_AudioLowerVolume ), safeSpawn "ponymix" ["-N","decrease", "5"])
     , ((0, xF86XK_AudioMute ), safeSpawn "ponymix" ["toggle"])
 
     -- brightness control
