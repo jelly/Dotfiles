@@ -264,8 +264,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     
     , ((0, 0x1008ff18 ), runOrRaise "aurora" (className =? "Aurora"))
     , ((0, xF86XK_Calculator	), safeSpawn "gnome-calculator" [])
-    --, ((0, xF86XK_Display	), safeSpawn "xrandr --auto" [])
-    --, ((0, xF86XK_Battery	), safeSpawn "" [])
+--    , ((0, xF86XK_Display	), safeSpawn "/home/jelle/bin/xrandr-laptop" [])
+    , ((0, xF86XK_Display	), spawn "bash /home/jelle/bin/xrandr-laptop")
 
     -- volume control
     , ((0, xF86XK_AudioRaiseVolume ), safeSpawn "ponymix" ["-N","increase", "5"])
