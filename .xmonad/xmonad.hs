@@ -270,7 +270,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- volume control
     , ((0, xF86XK_AudioRaiseVolume ), safeSpawn "ponymix" ["-N","increase", "5"])
     , ((0, xF86XK_AudioLowerVolume ), safeSpawn "ponymix" ["-N","decrease", "5"])
-    , ((0, xF86XK_AudioMute ), safeSpawn "ponymix" ["toggle"])
+    , ((0, xF86XK_AudioMute ), safeSpawn "ponymix" ["-N","toggle"])
 
     -- brightness control
     , ((0 			, 0x1008ff03 ), safeSpawn "bset" ["-i", "10"])
