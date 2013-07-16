@@ -8,30 +8,12 @@ SAVEHIST=1000
 #------------------------------
 # Variables
 #------------------------------
-export EDITOR="vim"
-export BROWSER="firefox"
-#export PATH="${PATH}:/bin:/sbin/:/usr/sbin/:/usr/bin:/usr/lib/perl5/core_perl/bin/:/home/jelle/build/trunk/bin"
 
 # openwrt build root
 export STAGING_DIR="/home/jelle/build/trunk/staging_dir"
 
-# Fix wine
-export WINEDLLOVERRIDES=winemenubuilder.exe=d
-export WINEDEBUG=-all
-
-# Twinview gaming
-export SDL_VIDEO_FULLSCREEN_HEAD=1
-
-# NETKIT
-export NETKIT_HOME=/home/jelle/build/netkit
-export MANPATH=:/home/jelle/build/netkit/man
-
 # SLRN
 export NNTPSERVER='news.gmane.org'
-
-# chroot
-export CHROOT=/home/jelle/media/chroot/jelle
-
 
 #-----------------------------
 # Dircolors
@@ -65,7 +47,6 @@ bindkey "\e[7~" beginning-of-line
 bindkey "\eOH" beginning-of-line
 bindkey "\eOF" end-of-line
 
-alias mplayer='mpv'
 
 #------------------------------
 # Alias stuff
