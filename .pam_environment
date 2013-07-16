@@ -1,0 +1,30 @@
+# locale
+LANG=en_GB.utf8
+
+# Ruby PATH
+PATH=$PATH:~/.gem/ruby/1.9.1/bin
+
+# default applications
+BROWSER=aurora
+EDITOR=vim
+VISUAL=vim
+PAGER=less
+
+LESS=FRSX
+GREP_OPTIONS=--color=auto
+GREP_COLOR=4;1;31
+
+# use clang
+CC=clang
+CXX=clang++
+
+# sdl fix
+SDL_VIDEO_X11_DGAMOUSE=0
+SDL_VIDEO_FULLSCREEN_HEAD=2
+
+# wine settings
+WINEARCH=win32
+WINDEBUG=-all
+WINEDLLOVERRIDES=winemenubuilder.exe=d
+
+# vim: ft=conf
