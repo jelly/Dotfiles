@@ -30,4 +30,54 @@ application/postscript;		evince %s; copiousoutput
 application/rtf;		rtf2text %s; copiousoutput
 application/ms-tnef;		mutt_bgrun tnef -w %s
 application/octet-stream;       less; needsterminal
+application/x-7z-compressed; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-7z-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-ace; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/unace
+application/x-alz; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/unalz
+application/x-ar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/ar
+application/x-arj; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-bzip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-bzip1; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-bzip-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-bzip1-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-cabinet; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-cbr; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/unrar -o -x /usr/bin/rar
+application/x-cbz; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-cd-image; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-compress; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-cpio; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /bin/cpio
+application/x-deb; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-ear; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-gtar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-gzip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-gzpostscript; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-jar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/zip -o -x /usr/bin/zip
+application/x-java-archive; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/zip -o -x /usr/bin/zip
+application/x-lha; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/lha
+application/x-lhz; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/lhz
+application/x-lrzip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/lrzip
+application/x-lrzip-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/lrzip
+application/x-lzip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-lzip-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-lzma; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-lzma-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-lzop; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /bin/lzop
+application/x-lzop-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /bin/lzop
+application/x-ms-dos-executable; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-rar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-rar-compressed; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-rpm; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/rpm
+application/x-rzip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/rzip
+application/x-stuffit; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-tarz; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-war; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-xz; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-xz-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-zip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-zip-compressed; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-zoo; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -x /usr/bin/zoo
+application/zip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+multipart/x-zip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
 *;                              less %s;
