@@ -74,6 +74,7 @@ main = do
 		, workspaces = myWorkspaces
                 , focusFollowsMouse = False
                 , logHook = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmproc , ppTitle = xmobarColor "green" "" . shorten 50}
+	        , startupHook = ewmhDesktopsStartup >> setWMName "LG3D"
 		}
 
 
@@ -103,6 +104,7 @@ myManageHook =  (composeAll . concat $
 		, className =? "Springlobby"	--> doShift "7:games"
 		, className =? "Steam"	--> doShift "7:games"
 		, className =? "mono"	--> doShift "7:games"
+		, className =? "steam" --> doFullFloat -- bigpicture-mode
 		, className =? "SeamlessRDP"	--> doShift "5:doc"
 		, className =? "Calibre-gui"	--> doShift "5:doc"
 		, className =? "Spotify"	--> doShift "10:spotify"
