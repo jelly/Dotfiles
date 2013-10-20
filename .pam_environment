@@ -2,7 +2,7 @@
 LANG=en_GB.utf8
 
 # Ruby PATH
-PATH=$PATH:~/.gem/ruby/1.9.1/bin
+PATH=/home/jelle/.gem/ruby/1.9.1/bin:$PATH
 
 # default applications
 BROWSER=aurora
@@ -15,12 +15,18 @@ GREP_OPTIONS=--color=auto
 GREP_COLOR=4;1;31
 
 # use clang
-CC=clang
-CXX=clang++
+#CC=clang
+#CXX=clang++
 
 # sdl fix
 SDL_VIDEO_X11_DGAMOUSE=0
 SDL_VIDEO_FULLSCREEN_HEAD=2
+
+# Compress ccache
+CCACHE_COMPRESS=1
+
+# ccache + clang
+CCACHE_CPP2=1
 
 # wine settings
 WINEARCH=win32
