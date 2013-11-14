@@ -14,7 +14,6 @@ export GPG_AGENT_INFO
 export GNOME_KEYRING_CONTROL
 export GNOME_KEYRING_PID
 
-
 # pulseaudio
 start-pulseaudio-x11  &
 
@@ -29,10 +28,7 @@ start-pulseaudio-x11  &
 xsetroot -cursor_name left_ptr &
 
 # set keyboard layout
-setxkbmap -layout us  -option compose:ralt 
-
-# xscreensaver
-#/usr/bin/xscreensaver -no-splash &
+setxkbmap -layout us  -option compose:ralt -option caps:escape &
 
 # screen powersave
 xset +dpms
