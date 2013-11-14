@@ -1,4 +1,9 @@
+# Write your default config options here!
+user-agent="Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3"
+
+# Write your default config options here!
 [default]
+vd-lavc-threads=4
 gapless-audio=yes
 key-fifo-size=3
 ao=pulse
@@ -7,24 +12,16 @@ fixed-vo=no
 #vc=ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,ffodivx,ffodivxvdpau,
 ontop=yes
 aspect=1.77
-lavdopts="threads=9:idct=99"
-slices=no
 cache=32768
 cache-min=20
 idx=yes
-stop-xscreensaver=yes
-nomouseinput=yes
-sub-fuzziness=2
 lirc=no
-use-pts-title=yes
 joystick=no
-subfont-text-scale=3
 fstype=none
-
 
 [live]
 profile-desc="Prevent A/V desync during live streams"
 mc=0
 autosync=4
-stop-xscreensaver=yes
+
 
