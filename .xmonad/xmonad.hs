@@ -98,6 +98,7 @@ myManageHook =  (composeAll . concat $
 		, className =? "spicec"	--> doShift "6:vm"
 		, className =? "NXAgent"	--> doShift "6:vm"
 		, fmap ("NX" `isInfixOf`) title --> doShift "6:vm"
+		, className =? "qemu-system-x86_64" --> doShift "6:vm"
 		, className =? "Wine"	--> doShift "7:games"
 		, className =? "Crossover" --> doShift "7:games"
 		, className =? "pyrogenesis"	--> doShift "7:games"
