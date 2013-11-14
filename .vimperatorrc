@@ -2,5 +2,53 @@ autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.goog
 autocmd LocationChange .* echo ""
 " remove the right and bottom scrollbars
 
+nnoremap K 20k
+nnoremap J 20j
+
 set noscrollbars
 colorscheme zenburn
+
+
+
+" Open current url as an argument to quvi
+nmap <S-q> :js openwithquvi()<CR>
+nmap <S-l> :js openwithytdl()<CR>
+
+" Custom url hints
+js <<EOF
+hints.addMode("q", "Launch video (quvi) from hint", function(elem, loc)
+              io.system('quvi dump -b mute "'
+                        + loc.replace(/([$`"\\])/g, "\\$1") + '" &'));
+
+hints.addMode("u", "Launch video (youtube-dl) from hint", function(elem, loc)
+              io.system('yt-dl "'
+                        + loc.replace(/([$`"\\])/g, "\\$1") + '" &'));
+EOF
+
+" Functions
+:js <<EOF
+function toggleStatusbar() {
+    var bb = document.getElementById('liberator-bottombar');
+    if (!bb)
+        return;
+    bb.style.height = (bb.style.height == '') ? '0px' : '';
+    bb.style.overflow = (bb.style.height == '') ? '' : 'hidden';
+}
+
+function openwithquvi() {
+    io.system('quvi dump -b mute "'
+              + content.location.href.replace(/([$`"\\])/g, "\\$1") + '" &');
+}
+
+function openwithytdl() {
+    io.system('yt-dl "'
+              + content.location.href.replace(/([$`"\\])/g, "\\$1") + '" &');
+}
+EOF
+
+
+
+
+set! pdfjs.disabled=true
+set! middlemouse.paste=false
+set! middlemouse.contentLoadURL=false
