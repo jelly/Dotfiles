@@ -9,37 +9,46 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Terminus 12
+font = Terminus 8
 scrollback_lines = 1000
+search_wrap = true
 #icon_name = terminal
 
 # 0.0: opaque, 1.0: transparent
 transparency = 0.0
 
 # SYSTEM, ON or OFF
-cursor_blink = SYSTEM
+cursor_blink = system
 
 # BLOCK, UNDERLINE or IBEAM
-cursor_shape = BLOCK
+cursor_shape = block
 
 # $BROWSER is used by default
-#browser = /usr/bin/firefox
 
 # vte-256color has the correct terminfo, but some applications (vim, weechat)
 # still need patches for mouse/title support
 term = screen-256color
 
 [colors]
-foreground = #ffffff
+foreground = #bfbdc0
+foreground_bold = #ffffff
 background = #000000
 # cursor = #dcdccc
 
-# color = normal;bold
-black = #000000;#686773
-red = #8a110e;#fc5166
-green = #669f3d;#63ff54
-yellow = #b3751e;#ffd75c
-blue = #493d9f;#766eff
-magenta = #9216a3;#e151ff
-cyan = #198a9c;#57ffec
-white = #bfbdc0;#ffffff
+color0 = #000000
+color1 = #8a110e
+color2 = #669f3d
+color3 = #b3751e
+color4 = #493d9f
+color5 = #9216a3
+color6 = #198a9c
+color7 = #bfbdc0
+color8 = #686773
+color9 = #fc5166
+color10 = #63ff54
+color11 = #ffd75c
+color12 = #766eff
+color13 = #e151ff
+color14 = #57ffec
+color15 = #ffffff
+
