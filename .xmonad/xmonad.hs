@@ -98,7 +98,6 @@ myManageHook = composeAll
 		, className =? "mpv"	--> doShift "8:vid"
 		, className =? "rdesktop"	--> doShift "6:vm"
 		, className =? "spicec"	--> doShift "6:vm"
-		, fmap ("NX" `isInfixOf`) title --> doShift "6:vm"
 		, className =? "qemu-system-x86_64" --> doShift "6:vm"
 		, className =? "Wine"	--> doShift "7:games"
 		, className =? "Crossover" --> doShift "7:games"
@@ -112,7 +111,6 @@ myManageHook = composeAll
 		, manageDocks
 	    	, scratchpadManageHook (W.RationalRect 0.125 0.25 0.75 0.5)
                 ]
-
 
 -- scratchpads
 scratchpads = [ NS "gvim" "gvim -S ~/.vim/sessions/Session.vim" (className =? "Gvim") (customFloating $ W.RationalRect (0) (0) (0) (0)) ]
