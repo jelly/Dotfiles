@@ -66,7 +66,7 @@ main = do
     xmproc <- spawnPipe "xmobar"
     spawn "sh /home/jelle/.xmonad/autostart.sh"
     xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig  {  
-	    	manageHook = myManageHook
+          	  manageHook = myManageHook
         	, layoutHook = myLayoutHook   
 		, borderWidth = myBorderWidth
 		, normalBorderColor = myNormalBorderColor
@@ -98,15 +98,11 @@ myManageHook = composeAll
 		, className =? "mpv"	--> doShift "8:vid"
 		, className =? "rdesktop"	--> doShift "6:vm"
 		, className =? "spicec"	--> doShift "6:vm"
-		, className =? "NXAgent"	--> doShift "6:vm"
 		, fmap ("NX" `isInfixOf`) title --> doShift "6:vm"
 		, className =? "qemu-system-x86_64" --> doShift "6:vm"
 		, className =? "Wine"	--> doShift "7:games"
 		, className =? "Crossover" --> doShift "7:games"
-		, className =? "pyrogenesis"	--> doShift "7:games"
-		, className =? "Springlobby"	--> doShift "7:games"
 		, className =? "Steam"	--> doShift "7:games"
-		, className =? "mono"	--> doShift "7:games"
 		, className =? "steam" --> doFullFloat -- bigpicture-mode
 		, className =? "SeamlessRDP"	--> doShift "5:doc"
 		, className =? "Calibre-gui"	--> doShift "5:doc"
@@ -114,7 +110,9 @@ myManageHook = composeAll
                 , fmap ("libreoffice"  `isInfixOf`) className --> doShift "5:doc"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
 		, manageDocks
+	    	, scratchpadManageHook (W.RationalRect 0.125 0.25 0.75 0.5)
                 ]
+
 
 
 
@@ -262,7 +260,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_d ), safeSpawn "dbus-send" ["--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Next"] )
 
     --Launching programs
-    --, ((0, xF86XK_Favorites ), safeSpawn "")
+    -- , ((0, xF86XK_Favorites ), safeSpawn "")
     -- , ((0, xF86XK_Mail ), runOrRaise "thunderbird" (className =? "Thunderbird"))
     -- , ((0, xF86XK_Messenger ), runOrRaise "pidgin" (className =? "Pidgin"))
     
@@ -293,8 +291,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) ([xK_1 .. xK_9] ++ [xK_0])
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
     ++
-    -- mod-[w,e] %! switch to twinview screen 1/2
-    -- mod-shift-[w,e] %! move window to screen 1/2
+    -- mod-[w,e,r] %! switch to twinview screen 1/2/3
+    -- mod-shift-[w,e] %! move window to screen 1/2/3
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_e, xK_w, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
