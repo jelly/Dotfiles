@@ -253,9 +253,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_h ), sendMessage MirrorShrink)
     , ((modMask .|. shiftMask, xK_l ), sendMessage MirrorExpand)
 
-    -- xscreensaver
-    , ((modMask .|.  mod1Mask, xK_l ), safeSpawn "xscreensaver-command --lock" [])
-
     -- scratchpad 
     --, ((modMask,  xK_f ),  scratchpadSpawnActionTerminal "termite")
 
@@ -271,7 +268,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     
     , ((0, 0x1008ff18 ), runOrRaise "aurora" (className =? "Aurora"))
     , ((0, xF86XK_Calculator	), safeSpawn "gnome-calculator" [])
---    , ((0, xF86XK_Display	), safeSpawn "/home/jelle/bin/xrandr-laptop" [])
     , ((0, xF86XK_Display	), spawn "bash /home/jelle/bin/xrandr-laptop")
 
     -- volume control
@@ -280,8 +276,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0, xF86XK_AudioMute ), safeSpawn "ponymix" ["-N","toggle"])
 
     -- brightness control
-    , ((0 			, 0x1008ff03 ), safeSpawn "bset" ["-i", "10"])
-    , ((0 			, 0x1008ff02 ), safeSpawn "bset" ["-d","10"])
+    , ((0 			, 0x1008ff03 ), safeSpawn "xbacklight" ["-inc", "10"])
+    , ((0 			, 0x1008ff02 ), safeSpawn "xbacklight" ["-dec","10"])
 
     -- toggle trackpad
     , ((modMask .|. shiftMask, xK_t ), safeSpawn "/home/jelle/bin/trackpad-toggle.sh" [] )
