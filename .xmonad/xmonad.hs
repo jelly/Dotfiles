@@ -31,6 +31,8 @@ import XMonad.Prompt.AppendFile (appendFilePrompt)
 import XMonad.Prompt.RunOrRaise
 import XMonad.Util.NamedWindows (getName)
 import Graphics.X11.ExtraTypes.XF86
+import XMonad.Util.Scratchpad
+import XMonad.Util.NamedScratchpad
 
 -- hooks
 import XMonad.Hooks.DynamicLog
@@ -63,7 +65,8 @@ import XMonad.Hooks.EwmhDesktops
 main = do
     xmproc <- spawnPipe "xmobar"
     spawn "sh /home/jelle/.xmonad/autostart.sh"
-    xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig  {  manageHook = myManageHook  <+> manageDocks
+    xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig  {  
+	    	manageHook = myManageHook
         	, layoutHook = myLayoutHook   
 		, borderWidth = myBorderWidth
 		, normalBorderColor = myNormalBorderColor
@@ -81,10 +84,9 @@ main = do
 -- hooks
 -- automaticly switching app to workspace 
 myManageHook :: ManageHook
-myManageHook =  (composeAll . concat $
-                [[isFullscreen                  --> doFullFloat
+myManageHook = composeAll
+                [ isFullscreen                  --> doFullFloat
 		, className =?  "Xmessage" 	--> doCenterFloat 
-	--	, className =?  "Steam" 	--> doFloat 
 		, className =? "Xfce4-notifyd" --> doIgnore
 	    	, className =? "stalonetray" --> doIgnore
                 , className =? "Gimp"           --> doShift "9:gimp"
@@ -111,15 +113,14 @@ myManageHook =  (composeAll . concat $
 		, className =? "Spotify"	--> doShift "10:spotify"
                 , fmap ("libreoffice"  `isInfixOf`) className --> doShift "5:doc"
 		, className =? "MPlayer"	--> (ask >>= doF . W.sink) 
-                ]]) 
+		, manageDocks
+                ]
 
 
 
 --logHook
 myLogHook :: Handle -> X ()
 myLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
-         
-
 
 ---- Looks --
 ---- bar
@@ -255,6 +256,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- xscreensaver
     , ((modMask .|.  mod1Mask, xK_l ), safeSpawn "xscreensaver-command --lock" [])
 
+    -- scratchpad 
+    --, ((modMask,  xK_f ),  scratchpadSpawnActionTerminal "termite")
+
     --Spotify
     , ((modMask , xK_a ), safeSpawn "dbus-send" ["--print-reply"," --dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Previous"] )
     , ((modMask, xK_s ), safeSpawn "dbus-send" ["--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause"] )
@@ -281,9 +285,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- toggle trackpad
     , ((modMask .|. shiftMask, xK_t ), safeSpawn "/home/jelle/bin/trackpad-toggle.sh" [] )
-
-    -- toggle flash video script
-    , ((modMask .|. shiftMask, xK_f ), safeSpawn "/home/jelle/bin/flashvideo" [])
 
     -- quit, or restart
     , ((modMask .|. shiftMask, xK_q ), io (exitWith ExitSuccess))
