@@ -114,6 +114,8 @@ myManageHook = composeAll
                 ]
 
 
+-- scratchpads
+scratchpads = [ NS "gvim" "gvim -S ~/.vim/sessions/Session.vim" (className =? "Gvim") (customFloating $ W.RationalRect (0) (0) (0) (0)) ]
 
 
 --logHook
@@ -252,7 +254,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_l ), sendMessage MirrorExpand)
 
     -- scratchpad 
-    --, ((modMask,  xK_f ),  scratchpadSpawnActionTerminal "termite")
+    , ((modMask,  xK_t ),  namedScratchpadAction scratchpads "gvim")
 
     --Spotify
     , ((modMask , xK_a ), safeSpawn "dbus-send" ["--print-reply"," --dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Previous"] )
