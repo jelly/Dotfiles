@@ -11,6 +11,7 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
+Bundle 'walm/jshint.vim'
 
 
 " Bundles
@@ -50,7 +51,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " --------------------------------
 autocmd FileType tex silent :! (file="%"; pdflatex -shell-escape % &>/dev/null && evince "${file/.tex/.pdf}" &>/dev/null) &
 command! Reload :! (pdflatex -shell-escape % &>/dev/null) &
-au BufWritePost *.tex silent Reload 
+au BufWritePost *.tex silent Reload
+
+" RST Live Preview
+" --------------------------------
+autocmd FileType rst silent :! (file="%"; rst2pdf % &>/dev/null && evince "${file/.rst/.pdf}" &>/dev/null) &
+command! Reload :! (rst2pdf  % &>/dev/null) &
+au BufWritePost *.rst silent Reload
+
 
 " Vim-airline
 let g:airline#extensions#tabline#enabled = 1
