@@ -2,10 +2,10 @@
 LANG=en_GB.utf8
 
 # Ruby PATH
-PATH=/home/jelle/.gem/ruby/1.9.1/bin:$PATH
+#PATH  DEFAULT=${HOME}/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl OVERRIDE=${HOME}/.gem/ruby/1.9.1/bin:${HOME}/bin:${PATH}
 
 # default applications
-BROWSER=aurora
+BROWSER=firefox
 EDITOR=vim
 VISUAL=vim
 PAGER=less
