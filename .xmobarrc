@@ -12,7 +12,7 @@ Config { font = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-u"
                     , Run Memory ["-t","Mem: <usedratio>%"] 30
                     , Run Date "%a %_d %b %Y %H:%M" "date" 30
 		    , Run TopProc [] 30
-		    , Run BatteryP ["BAT0"] [] 600
+		    , Run BatteryP ["BAT0"] ["-L","31","-H","90","-l","orange","-n","red","-h","green"]  400
 		    , Run TopMem [] 30
                     , Run StdinReader
                     ]
