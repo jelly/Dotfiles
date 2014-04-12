@@ -102,7 +102,6 @@ myManageHook = composeAll
 		, className =? "Wine"	--> doShift "7:games"
 		, className =? "Crossover" --> doShift "7:games"
 		, className =? "Steam"	--> doShift "7:games"
-		, className =? "steam" --> doFullFloat -- bigpicture-mode
 		, className =? "SeamlessRDP"	--> doShift "5:doc"
 		, className =? "Calibre-gui"	--> doShift "5:doc"
 		, className =? "Spotify"	--> doShift "10:spotify"
@@ -253,6 +252,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- scratchpad 
     , ((modMask,  xK_f ),  namedScratchpadAction scratchpads "gvim")
+    , ((modMask,  xK_x ),  safeSpawn "xscreensaver-command" ["--lock"] )
 
     --Spotify
     , ((modMask , xK_a ), safeSpawn "dbus-send" ["--print-reply"," --dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Previous"] )
@@ -270,8 +270,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0, xF86XK_Display	), spawn "bash /home/jelle/bin/xrandr-laptop")
 
     -- volume control
-    , ((0, xF86XK_AudioRaiseVolume ), safeSpawn "ponymix" ["-N","increase", "5"])
-    , ((0, xF86XK_AudioLowerVolume ), safeSpawn "ponymix" ["-N","decrease", "5"])
+    , ((0, xF86XK_AudioRaiseVolume ), safeSpawn "ponymix" ["-N","increase", "2"])
+    , ((0, xF86XK_AudioLowerVolume ), safeSpawn "ponymix" ["-N","decrease", "2"])
     , ((0, xF86XK_AudioMute ), safeSpawn "ponymix" ["-N","toggle"])
 
     -- brightness control
