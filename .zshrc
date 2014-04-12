@@ -12,6 +12,8 @@ SAVEHIST=1000
 # openwrt build root
 export STAGING_DIR="/home/jelle/build/trunk/staging_dir"
 
+export PATH=/bin:${HOME}/bin:${HOME}/.gem/ruby/1.9.1/bin:${PATH}
+
 # SLRN
 export NNTPSERVER='news.gmane.org'
 
@@ -199,6 +201,10 @@ status() {
     print
 }
 
+# svn diff
+svndiff() {
+  svn diff "${@}" | colordiff
+}
 
 #------------------------------
 # Window title
