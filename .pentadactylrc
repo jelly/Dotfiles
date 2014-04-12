@@ -13,3 +13,5 @@ set visualbell
 set wildmode=list:longest,full
 autocmd LocationChange ^https?://(docs|mail)\.google\.com/ :normal! <C-z>
 autocmd LocationChange ^http://www\.google\.com/reader/ :normal! <C-z>
+set middlemouse.contentLoadURL=false
+set middlemouse.paste=false
