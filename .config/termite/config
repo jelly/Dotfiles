@@ -27,6 +27,8 @@ cursor_shape = block
 # still need patches for mouse/title support
 term = screen-256color
 
+browser = firefox
+
 [colors]
 foreground = #bfbdc0
 foreground_bold = #ffffff
