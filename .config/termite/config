@@ -4,11 +4,11 @@ scroll_on_output = false
 scroll_on_keystroke = true
 audible_bell = false
 visible_bell = false
-mouse_autohide = false
+mouse_autohide = true
 allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
-clickable_url = true
+clickable_url = false
 font = Terminus 8
 scrollback_lines = 1000
 search_wrap = true
@@ -22,8 +22,6 @@ cursor_blink = system
 
 # BLOCK, UNDERLINE or IBEAM
 cursor_shape = block
-
-# $BROWSER is used by default
 
 # vte-256color has the correct terminfo, but some applications (vim, weechat)
 # still need patches for mouse/title support
@@ -52,3 +50,4 @@ color13 = #e151ff
 color14 = #57ffec
 color15 = #ffffff
 
+# vim: ft=dosini
