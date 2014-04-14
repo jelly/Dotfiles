@@ -9,9 +9,6 @@ SAVEHIST=1000
 # Variables
 #------------------------------
 
-# openwrt build root
-export STAGING_DIR="/home/jelle/build/trunk/staging_dir"
-
 export PATH=/bin:${HOME}/bin:${HOME}/.gem/ruby/1.9.1/bin:${PATH}
 
 # SLRN
