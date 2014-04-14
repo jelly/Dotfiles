@@ -3,7 +3,10 @@
 "colorscheme hybrid
 colorscheme jellybeans
 
-"
+set nocompatible "turn off vi compatibility, required for vundle"
+filetype off
+
+" vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -12,13 +15,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'walm/jshint.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'vim-scripts/vcscommand.vim'
 
-
-" Bundles
-
-"Bundle 'Shougo/neocomplcache'
-"Bundle 'Shougo/neocomplcache-snippets-complete'
-"Bundle  'Valloric/YouCompleteMe'
 
 " Autocmd options
 " "--------------------------------
@@ -38,20 +37,15 @@ filetype plugin indent on
 " -------------------------------
 command -range=% Share :<line1>,<line2>write !curl -F "sprunge=<-" http://sprunge.us|xclip
 
-
 " YouCompleteMe
 " -------------------------------
 let g:ycm_key_list_previous_completion=['<Up>']
 
+set runtimepath+=/home/jelle/.vim/bundle/ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-" LaTeX Live Preview
-" --------------------------------
-autocmd FileType tex silent :! (file="%"; pdflatex -shell-escape % &>/dev/null && evince "${file/.tex/.pdf}" &>/dev/null) &
-command! Reload :! (pdflatex -shell-escape % &>/dev/null) &
-au BufWritePost *.tex silent Reload
+let g:UltiSnipsUsePythonVersion=2
 
 " RST Live Preview
 " --------------------------------
@@ -59,12 +53,13 @@ autocmd FileType rst silent :! (file="%"; rst2pdf % &>/dev/null && evince "${fil
 command! Reload :! (rst2pdf  % &>/dev/null) &
 au BufWritePost *.rst silent Reload
 
-
 " Vim-airline
+" -------------------------------
+
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_powerline_fonts = 1
+set laststatus=2
+let g:airline_theme = 'jellybeans'
+
 
 syntax on
 
