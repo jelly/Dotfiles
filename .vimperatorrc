@@ -8,8 +8,6 @@ nnoremap J 30j
 set noscrollbars
 colorscheme zenburn
 
-
-
 " Open current url as an argument to quvi
 nmap <S-q> :js openwithquvi()<CR>
 nmap <S-l> :js openwithytdl()<CR>
