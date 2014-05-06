@@ -17,7 +17,7 @@ Bundle 'bling/vim-airline'
 Bundle 'walm/jshint.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/vcscommand.vim'
-
+Bundle 'glanotte/vim-jasmine'
 
 " Autocmd options
 " "--------------------------------
@@ -40,6 +40,22 @@ command -range=% Share :<line1>,<line2>write !curl -F "sprunge=<-" http://sprung
 " YouCompleteMe
 " -------------------------------
 let g:ycm_key_list_previous_completion=['<Up>']
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'objc' : ['->', '.'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+  \   'ruby' : ['.', '::'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \ }
+
+" Search
+" -------------------------------
+set hlsearch
 
 set runtimepath+=/home/jelle/.vim/bundle/ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
