@@ -9,9 +9,9 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = false
-font = Terminus 8
+font = Terminus 12px
 scrollback_lines = 1000
-search_wrap = true
+search_wrap = false
 #icon_name = terminal
 
 # 0.0: opaque, 1.0: transparent
