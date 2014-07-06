@@ -28,7 +28,7 @@ start-pulseaudio-x11  &
 xsetroot -cursor_name left_ptr &
 
 # set keyboard layout
-setxkbmap -layout us  -option compose:ralt -option caps:escape &
+setxkbmap -layout us  -option compose:ralt -option caps:hyper &
 
 # screen powersave
 xset +dpms
@@ -41,6 +41,9 @@ xset dpms 0 0 300
 # export x info http://dev.gentoo.org/~tomka/mail.html
 # Export the session id of the dbus session so offlineimap's unit can read it
 /home/jelle/bin/export_x_info.sh 
+
+# xscreen saver
+/usr/bin/xscreensaver -no-splash &
 
 #(sleep 10&& /usr/lib/xfce4/notifyd/xfce4-notifyd)&
 #(sleep 60&& /home/jelle/bin/spotifynp.py)&

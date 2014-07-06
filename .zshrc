@@ -14,6 +14,8 @@ export PATH=/bin:${HOME}/bin:${HOME}/.gem/ruby/1.9.1/bin:${PATH}
 # SLRN
 export NNTPSERVER='news.gmane.org'
 
+export EDITOR=vim
+
 #-----------------------------
 # Dircolors
 #-----------------------------
