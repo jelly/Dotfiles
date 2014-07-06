@@ -16,7 +16,10 @@ Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'walm/jshint.vim'
 Bundle 'SirVer/ultisnips'
+" SVN integration
 Bundle 'vim-scripts/vcscommand.vim'
+" Git integration
+Bundle 'tpope/vim-fugitive'
 
 
 " Autocmd options
