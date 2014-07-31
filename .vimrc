@@ -1,10 +1,7 @@
 "colors
-"colorscheme candycode
-"colorscheme hybrid
 colorscheme jellybeans
 
 set nocompatible "turn off vi compatibility, required for vundle"
-filetype off
 
 " vundle
 set rtp+=~/.vim/bundle/vundle/
