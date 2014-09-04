@@ -19,6 +19,7 @@ Bundle 'vim-scripts/vcscommand.vim'
 Bundle 'tpope/vim-fugitive'
 " JS unittests
 Bundle 'glanotte/vim-jasmine'
+Bundle 'edkolev/tmuxline.vim'
 
 " Autocmd options
 " "--------------------------------
@@ -75,6 +76,7 @@ au BufWritePost *.rst silent Reload
 
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
+let g:airline_powerline_fonts = 1
 let g:airline_theme = 'jellybeans'
 
 
