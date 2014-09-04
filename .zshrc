@@ -9,7 +9,7 @@ SAVEHIST=1000
 # Variables
 #------------------------------
 
-export PATH=/bin:${HOME}/bin:${HOME}/.gem/ruby/1.9.1/bin:${PATH}
+export PATH=/bin:${HOME}/bin:${HOME}/.gem/ruby/1.9.1/bin:/home/jelle/.gem/ruby/2.1.0/bin:${PATH}
 
 # SLRN
 export NNTPSERVER='news.gmane.org'
@@ -28,8 +28,8 @@ export LS_COLORS
 bindkey -v
 typeset -g -A key
 #bindkey '\e[3~' delete-char
-bindkey '\e[1~' beginning-of-line
-bindkey '\e[4~' end-of-line
+bindkey '\e[1~' beginning-of-line # home
+bindkey '\e[4~' end-of-line # end
 #bindkey '\e[2~' overwrite-mode
 bindkey '^?' backward-delete-char
 bindkey '^[[1~' beginning-of-line
@@ -48,6 +48,8 @@ bindkey "\e[7~" beginning-of-line
 bindkey "\eOH" beginning-of-line
 bindkey "\eOF" end-of-line
 
+# Ctrl+r history search
+bindkey "^R" history-incremental-search-backward
 
 #------------------------------
 # Alias stuff
