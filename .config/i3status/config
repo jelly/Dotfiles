@@ -1,0 +1,36 @@
+general { 
+	colors = true 
+	interval = 1 
+} 
+ 
+order += "disk /" 
+order += "wireless wlp12s0" 
+order += "ethernet enp9s0" 
+order += "battery 0" 
+order += "cpu_temperature 0" 
+order += "load" 
+order += "time" 
+ 
+disk "/" { 
+    	format = "%free" 
+} 
+wireless wlp12s0 { 
+	format_up = "W: (%quality at %essid) %ip" 
+	format_down = "W: down" 
+} 
+ethernet enp9s0 { 
+	format_up = "E: %ip" 
+	format_down = "E: down" 
+} 
+battery 0 { 
+     format = "%status %percentage %remaining" 
+} 
+cpu_temperature 0 { 
+     format = "T: %degrees °C" 
+} 
+load { 
+    format = "%1min %5min %15min" 
+} 
+time { 
+    format = "%Y-%m-%d %H:%M:%S" 
+} 
