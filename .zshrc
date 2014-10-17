@@ -51,6 +51,9 @@ bindkey "\eOF" end-of-line
 # Ctrl+r history search
 bindkey "^R" history-incremental-search-backward
 
+# Share history between terminals
+setopt share_history
+
 #------------------------------
 # Alias stuff
 #------------------------------
