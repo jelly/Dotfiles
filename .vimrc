@@ -20,6 +20,8 @@ Bundle 'tpope/vim-fugitive'
 " JS unittests
 Bundle 'glanotte/vim-jasmine'
 Bundle 'edkolev/tmuxline.vim'
+Bundle 'joonty/vdebug.git' 
+
 
 " Autocmd options
 " "--------------------------------
@@ -71,6 +73,7 @@ autocmd FileType rst silent :! (file="%"; rst2pdf % &>/dev/null && evince "${fil
 command! Reload :! (rst2pdf  % &>/dev/null) &
 au BufWritePost *.rst silent Reload
 
+
 " Vim-airline
 " -------------------------------
 
@@ -118,3 +121,7 @@ autocmd Filetype tex,latex set grepprg=grep\ -nH\ $
 autocmd Filetype tex,latex setlocal spell 
 autocmd Filetype tex,latex set grepprg=grep\ -nH\ $
 autocmd Filetype tex,latex let g:tex_flavor = "latex"
+
+" Vim-debug
+" ------------------------------
+"let g:vdebug_options["break_on_open"] = 0
