@@ -8,20 +8,19 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
 Bundle 'gmarik/vundle'
+
 Bundle 'bling/vim-airline'
-Bundle 'walm/jshint.vim'
 Bundle 'SirVer/ultisnips'
 " SVN integration
 Bundle 'vim-scripts/vcscommand.vim'
 " Git integration
 Bundle 'tpope/vim-fugitive'
-" JS unittests
-Bundle 'glanotte/vim-jasmine'
-Bundle 'edkolev/tmuxline.vim'
+" Xdebug integration
 Bundle 'joonty/vdebug.git' 
 
+" Tagbar
+Bundle 'majutsushi/tagbar'
 
 " Autocmd options
 " "--------------------------------
@@ -82,6 +81,9 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'jellybeans'
 
+" Tagbar
+" ------------------------------
+nmap <F8> :TagbarToggle<CR>
 
 syntax on
 
@@ -125,3 +127,6 @@ autocmd Filetype tex,latex let g:tex_flavor = "latex"
 " Vim-debug
 " ------------------------------
 "let g:vdebug_options["break_on_open"] = 0
+
+" Tags
+set tags=./tags,tags;$HOME
