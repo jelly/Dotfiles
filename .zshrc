@@ -59,6 +59,7 @@ setopt share_history
 #------------------------------
 alias ls="ls --color -F"
 alias ll="ls --color -lh"
+alias grep="grep --color=always"
 
 # pacman
 alias pacup='sudo pacman -Syu '
