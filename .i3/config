@@ -26,6 +26,9 @@ font pango:Terminus 10px
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Let wine float
+for_window [class="Wine"] floating enable
+
 # start a terminal
 bindsym $mod+Return exec termite
 
