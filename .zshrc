@@ -124,7 +124,7 @@ ac() { # compress a file or folder
        tar.bz2|.tar.bz2) tar cvjf "${2%%/}.tar.bz2" "${2%%/}/"  ;;
        tbz2|.tbz2)       tar cvjf "${2%%/}.tbz2" "${2%%/}/"     ;;
        tbz|.tbz)         tar cvjf "${2%%/}.tbz" "${2%%/}/"      ;;       
-       tar.xz)         tar cvJf "${2%%/}.tar.gz" "${2%%/}/"      ;;       
+       tar.xz)         tar cvJf "${2%%/}.tar.xz" "${2%%/}/"      ;;       
        tar.gz|.tar.gz)   tar cvzf "${2%%/}.tar.gz" "${2%%/}/"   ;;
        tgz|.tgz)         tar cvjf "${2%%/}.tgz" "${2%%/}/"      ;;
        tar|.tar)         tar cvf  "${2%%/}.tar" "${2%%/}/"        ;;
@@ -208,7 +208,7 @@ status() {
 
 # svn diff
 svndiff() {
-  svn diff "${@}" | colordiff
+  svn diff "${@}" | colordiff | less -R
 }
 
 #------------------------------
