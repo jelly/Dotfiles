@@ -126,7 +126,7 @@ autocmd Filetype tex,latex let g:tex_flavor = "latex"
 
 " Vim-debug
 " ------------------------------
-"let g:vdebug_options["break_on_open"] = 0
+let g:vdebug_options = { "break_on_open" : 0, }
 
 " Tags
 set tags=./tags,tags;$HOME
