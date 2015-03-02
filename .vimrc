@@ -18,6 +18,7 @@ Bundle 'vim-scripts/vcscommand.vim'
 Bundle 'tpope/vim-fugitive'
 " Xdebug integration
 Bundle 'joonty/vdebug.git' 
+Bundle 'tpope/vim-surround'
 
 " Tagbar
 Bundle 'majutsushi/tagbar'
