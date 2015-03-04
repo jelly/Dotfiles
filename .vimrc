@@ -18,6 +18,7 @@ Bundle 'vim-scripts/vcscommand.vim'
 Bundle 'tpope/vim-fugitive'
 " Xdebug integration
 Bundle 'joonty/vdebug.git' 
+Bundle 'tpope/vim-surround'
 
 " Tagbar
 Bundle 'majutsushi/tagbar'
@@ -72,6 +73,23 @@ autocmd FileType rst silent :! (file="%"; rst2pdf % &>/dev/null && evince "${fil
 command! Reload :! (rst2pdf  % &>/dev/null) &
 au BufWritePost *.rst silent Reload
 
+" fugitive git bindings
+" http://www.reddit.com/r/vim/comments/21f4gm/best_workflow_when_using_fugitive/
+nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <space>gs :Gstatus<CR>
+nnoremap <space>gc :Gcommit -v -q<CR>
+nnoremap <space>gt :Gcommit -v -q %:p<CR>
+nnoremap <space>gd :Gdiff<CR>
+nnoremap <space>ge :Gedit<CR>
+nnoremap <space>gr :Gread<CR>
+nnoremap <space>gw :Gwrite<CR><CR>
+nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <space>gp :Ggrep<Space>
+nnoremap <space>gm :Gmove<Space>
+nnoremap <space>gb :Git branch<Space>
+nnoremap <space>go :Git checkout<Space>
+nnoremap <space>gps :Git push<CR>
+nnoremap <space>gpl :Git pull<CR>
 
 " Vim-airline
 " -------------------------------
@@ -126,7 +144,7 @@ autocmd Filetype tex,latex let g:tex_flavor = "latex"
 
 " Vim-debug
 " ------------------------------
-"let g:vdebug_options["break_on_open"] = 0
+let g:vdebug_options = { "break_on_open" : 0, }
 
 " Tags
 set tags=./tags,tags;$HOME
