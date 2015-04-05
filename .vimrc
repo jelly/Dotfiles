@@ -1,7 +1,8 @@
 "colors
 colorscheme jellybeans
 
-set nocompatible "turn off vi compatibility, required for vundle"
+set nocompatible
+filetype off
 
 " vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -11,7 +12,10 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'bling/vim-airline'
+
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+
 " SVN integration
 Bundle 'vim-scripts/vcscommand.vim'
 " Git integration
@@ -22,6 +26,9 @@ Bundle 'tpope/vim-surround'
 
 " Tagbar
 Bundle 'majutsushi/tagbar'
+
+call vundle#end()
+filetype plugin indent on
 
 " Autocmd options
 " "--------------------------------
@@ -35,7 +42,6 @@ autocmd BufReadPost *.rtf silent %!unrtf --text "%"
 autocmd BufWriteCmd *.rtf set readonly
 autocmd BufRead,BufNewFile ~/.mutt/tmp/* set filetype=mail | set textwidth=72 | set spell |  set wrap | setlocal spell spelllang=nl,en
 
-filetype plugin indent on
 
 " Sprunge
 " -------------------------------
@@ -44,6 +50,7 @@ command -range=% Share :<line1>,<line2>write !curl -F "sprunge=<-" http://sprung
 " YouCompleteMe
 " -------------------------------
 let g:ycm_key_list_previous_completion=['<Up>']
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_semantic_triggers =  {
   \   'c' : ['->', '.'],
   \   'objc' : ['->', '.'],
@@ -61,10 +68,10 @@ let g:ycm_semantic_triggers =  {
 " -------------------------------
 set hlsearch
 
-set runtimepath+=/home/jelle/.vim/bundle/ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsListSnippets        = "<c-l>" "List possible snippets based on current file
 let g:UltiSnipsUsePythonVersion=2
 
 " RST Live Preview
