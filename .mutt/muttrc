@@ -1,0 +1,98 @@
+# vim: ft=muttrc
+
+# Account details
+source ~/.mutt/account
+
+# cache
+  set header_cache = ~/.mutt/cache/headers
+  set message_cachedir = ~/.mutt/cache/bodies
+  set sleep_time = 0
+  set alias_format      = "%4n %t %-20a %r"
+  set beep_new
+unset confirmappend
+  set date_format       = "%m/%d/%y at %I:%M%P"
+  set delete 		= yes
+  set edit_headers
+  set editor            = "vim +:silent+?^$"
+  set fast_reply
+  set forward_format    = "Fwd: %s"
+  set forward_quote
+  set include
+  set index_format      = "%3C %Z %[!%m/%d] %-17.17F %s"
+  set ispell            = "aspell -e -c"
+  set mail_check        = 0
+  set mailcap_path      = ~/.mutt/mailcap
+  set imap_check_subscribed = yes
+  set mail_check 	= 120
+  set timeout 		= 30
+  set imap_keepalive    = 120
+  set move = no
+unset mark_old
+unset markers
+  set menu_scroll
+  set pager_context     = 5
+  set pager_index_lines = 10
+  set pager_stop
+  set pipe_decode
+  set print_command     = "enscript -p - | psselect -r | lp"
+  set quote_regexp      = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+  set reply_regexp      = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+  set reply_to
+  set reverse_alias
+  set reverse_name
+  set sort              = threads
+  set sort_aux          = reverse-last-date-received
+  set thorough_search
+  set thread_received
+  set timeout           = 10
+  set tmpdir            = ~/.mutt/temp
+unset wait_key
+
+# non-standard
+  set sidebar_delim     = '|'
+  set sidebar_visible   = yes
+  set sidebar_width     = 35
+
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+ignore *
+unignore from: to: cc: date: subject:
+hdr_order from: to: cc: date: subject:
+
+bind index i  noop
+bind index gg first-entry
+bind index G  last-entry
+bind pager i  exit
+bind pager q  toggle-quoted
+bind pager /  search
+bind pager j  next-line
+bind pager k  previous-line
+bind pager \ek previous-entry
+bind pager \ej next-entry
+bind pager gg top
+bind pager G  bottom
+bind index,pager \# noop
+bind index,pager \& noop
+bind index,pager R  group-reply
+
+# non-standard, sidebar
+bind index,pager J sidebar-next
+bind index,pager K sidebar-prev
+bind index,pager O sidebar-open
+
+macro index ,i "<change-folder>!<return>" "go to inbox"
+macro index ,p "<pipe-message>cat > ~/" "save message as"
+macro index ,r "<tag-pattern>all<return><tag-prefix><clear-flag>N<untag-pattern>all<return>" "mark all as read"
+macro index ,R "<collapse-all><tag-pattern>all<return><tag-prefix><clear-flag>N<untag-pattern>all<return><collapse-all>" "mark all as read (collapsed)"
+macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
+macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
+
+color status  green default
+color sidebar green default
+
+macro index gi "<change-folder> =INBOX<enter>" "Go to inbox"
+
+#source $alias_file
+source ~/.mutt/colors
+source ~/.mutt/crypto
