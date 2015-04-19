@@ -27,10 +27,8 @@ export LS_COLORS
 #------------------------------
 bindkey -v
 typeset -g -A key
-#bindkey '\e[3~' delete-char
 bindkey '\e[1~' beginning-of-line # home
 bindkey '\e[4~' end-of-line # end
-#bindkey '\e[2~' overwrite-mode
 bindkey '^?' backward-delete-char
 bindkey '^[[1~' beginning-of-line
 bindkey '^[[5~' up-line-or-history
@@ -41,15 +39,15 @@ bindkey '^[[A' up-line-or-search
 bindkey '^[[D' backward-char
 bindkey '^[[B' down-line-or-search
 bindkey '^[[C' forward-char 
-# for rxvt
-bindkey "\e[8~" end-of-line
-bindkey "\e[7~" beginning-of-line
-# for gnome-terminal
-bindkey "\eOH" beginning-of-line
-bindkey "\eOF" end-of-line
+
+# Beginning of line also ctrl+e/a ctrl+up/down
+bindkey "^E" end-of-line
+bindkey "^A" beginning-of-line
 
 # Ctrl+r history search
 bindkey "^R" history-incremental-search-backward
+bindkey "^[[1;5D" emacs-backward-word
+bindkey "^[[1;5C" emacs-forward-word
 
 # Share history between terminals
 setopt share_history
