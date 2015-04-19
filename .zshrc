@@ -118,7 +118,7 @@ ac() { # compress a file or folder
        tar.gz|.tar.gz)   tar cvzf "${2%%/}.tar.gz" "${2%%/}/"   ;;
        tgz|.tgz)         tar cvjf "${2%%/}.tgz" "${2%%/}/"      ;;
        tar|.tar)         tar cvf  "${2%%/}.tar" "${2%%/}/"        ;;
-           rar|.rar)         rar a "${2}.rar" "$2"            ;;
+       rar|.rar)         rar a "${2}.rar" "$2"            ;;
        zip|.zip)         zip -9 "${2}.zip" "$2"            ;;
        7z|.7z)         7z a "${2}.7z" "$2"            ;;
        lzo|.lzo)         lzop -v "$2"                ;;   
@@ -128,7 +128,7 @@ ac() { # compress a file or folder
        lzma|.lzma)         lzma -v "$2"                ;;  
            *)           echo "ac(): compress a file or directory."
             echo "Usage:   ac <archive type> <filename>"
-                echo "Example: ac tar.bz2 PKGBUILD"
+            echo "Example: ac tar.bz2 PKGBUILD"
             echo "Please specify archive type and source."
             echo "Valid archive types are:"
             echo "tar.bz2, tar.gz, tar.gz, tar, bz2, gz, tbz2, tbz,"
