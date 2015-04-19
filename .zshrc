@@ -211,9 +211,7 @@ case $TERM in
         ;;
     screen)
         precmd () { 
-                       # print -Pn "\e]83;title \"$1\"\a" 
-                       # print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a" 
-			                [[ $a = zsh ]] && print -Pn "\ek$2\e\\" # show the path if no program is running
+		[[ $a = zsh ]] && print -Pn "\ek$2\e\\" # show the path if no program is running
                 [[ $a != zsh ]] && print -Pn "\ek$a\e\\" # if a program is running show that
 
                 # Terminal title
@@ -232,10 +230,6 @@ case $TERM in
                 }
         ;; 
 esac
-
-#------------------- Battery Display Using ACPI -------------------
-#RPROMPT=$(showbat)
-
 
 #------------------------------
 # Prompt
@@ -266,9 +260,6 @@ setprompt () {
         if [[ -z "$SSH_CLIENT"  ||  -z "$SSH2_CLIENT" ]]; then 
                 eval PR_HOST='${PR_GREEN}%M${PR_NO_COLOR}' # no SSH
         else 
-                eval PR_HOST='${PR_YELLOW}%M${PR_NO_COLOR}' #SSH
-        fi
-        if [[ -f /inchroot ]]; then
                 eval PR_HOST='${PR_YELLOW}%M${PR_NO_COLOR}' #SSH
         fi
         # set the prompt
