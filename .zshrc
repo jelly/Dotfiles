@@ -28,6 +28,8 @@ export LS_COLORS
 bindkey -v
 typeset -g -A key
 
+bindkey '^[[3~' delete-char
+
 # Up/Down line history arrow up/down
 bindkey '^[[B' down-line-or-history
 bindkey '^[[A' up-line-or-search
