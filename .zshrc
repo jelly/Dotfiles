@@ -244,7 +244,7 @@ setprompt () {
         setopt prompt_subst
 
         # make some aliases for the colours: (coud use normal escap.seq's too)
-        for color in RED GREEN YELLOW LIGHTBLUE MAGENTA CYAN WHITE; do
+        for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
                 eval PR_$color='%{$fg[${(L)color}]%}'
         done
         PR_NO_COLOR="%{$terminfo[sgr0]%}"
