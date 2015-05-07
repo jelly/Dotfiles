@@ -37,6 +37,7 @@ bindkey '^[[A' up-line-or-search
 # Beginning of line also ctrl+e/a ctrl+up/down
 bindkey "^E" end-of-line
 bindkey "^A" beginning-of-line
+bindkey "^[^?" backward-kill-word
 
 # Ctrl+r history search
 bindkey "^R" history-incremental-search-backward
