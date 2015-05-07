@@ -8,6 +8,10 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon-localeexec
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authenticatior-1
+exec nm-applet
 
 set $mod Mod4
 

@@ -21,9 +21,6 @@ start-pulseaudio-x11  &
 /usr/bin/autocutsel -fork &
 /usr/bin/autocutsel -selection PRIMARY -fork &
 
-# networkmanager
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
-
 # set keyboard layout
 setxkbmap -layout us  -option compose:ralt -option caps:hyper &
 
