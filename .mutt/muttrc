@@ -27,8 +27,8 @@ unset confirmappend
   set timeout 		= 30
   set imap_keepalive    = 120
   set move = no
-unset mark_old
 unset markers
+unset mark_old
   set menu_scroll
   set pager_context     = 5
   set pager_index_lines = 10
@@ -93,6 +93,5 @@ color sidebar green default
 
 macro index gi "<change-folder> =INBOX<enter>" "Go to inbox"
 
-#source $alias_file
 source ~/.mutt/colors
 source ~/.mutt/crypto
