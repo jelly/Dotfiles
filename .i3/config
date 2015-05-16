@@ -36,6 +36,7 @@ for_window [class="Wine"] floating enable
 # Assign certain programs to a certain workspace
 assign [class="Spotify" instance="spotify"] 10
 assign [class="Chromium"] 2
+assign [class="Steam"] 8
 
 # start a terminal
 bindsym $mod+Return exec termite
