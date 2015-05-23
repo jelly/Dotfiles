@@ -27,7 +27,7 @@ cursor_shape = block
 # still need patches for mouse/title support
 term = screen-256color
 
-browser = /home/jelle/.config/termite/parse_url.sh
+browser = chromium
 
 [colors]
 foreground = #bfbdc0
