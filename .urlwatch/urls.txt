@@ -21,3 +21,8 @@ http://repository.spotify.com/pool/non-free/s/spotify/
 https://github.com/scipy/scipy/releases
 https://github.com/kjellmf/dot2tex/releases
 https://github.com/dateutil/dateutil/releases
+http://jwilk.net/software/pdf2djvu
+https://github.com/html5lib/html5lib-python/releases
+https://pypi.python.org/pypi/decorator
+https://pypi.python.org/pypi/CherryPy
+https://pypi.python.org/pypi/cssutils/
