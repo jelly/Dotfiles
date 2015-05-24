@@ -7,27 +7,27 @@ from urlwatch import html2txt
 from BeautifulSoup import BeautifulSoup
 
 def filter(url, data):
-        if 'github' in url:
-                soup = BeautifulSoup(data)
-
-                if soup.find('span', {'class': 'tag-name'}):
-                        return str(soup.find('span', {'class': 'tag-name'}))
-                elif soup.find('h1', {'class': 'release-title'}):
-                        return str(soup.find('h1', {'class': 'release-title'}))
-                else:
-                        return data
-        else:
-                return data
-
-
-
-'''
-def filter(url, data):
     if 'github' in url:
         soup = BeautifulSoup(data)
-        print 'github ', url
-        print str(soup.find('div', {'class': 'main'}))
-        return str(soup.find('div', {'class': 'main'}))
+
+        tag = soup.find('span', {'class': 'tag-name'})
+        if tag:
+            return str(tag)
+
+        tag = soup.find('h1', {'class': 'release-title'})
+        if tag:
+            return str(tag)
+
+        tag = soup.find('div', {'class': 'site'})
+        if tag:
+            return str(tag)
+
+    elif 'pypi.python.org' in url:
+        soup = BeautifulSoup(data)
+
+        tag = soup.find('table', {'class': 'list'})
+        if tag:
+            return str(tag)
+
     else:
         return data
-'''
