@@ -173,6 +173,8 @@ bindsym XF86Launch7 exec "keepassx"
 # m5
 bindsym XF86Launch8 exec "spotify"
 
+bindsym Mod1 + l exec "i3lock -c 000000"
+
 # Spotify keys using media keys
 bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
