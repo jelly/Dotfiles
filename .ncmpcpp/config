@@ -1,0 +1,28 @@
+#
+# ~/.ncmpcpp/config - My ncmpcpp preferences
+# 
+
+mpd_host                   = "127.0.0.1"
+mpd_port                   = "6600"
+song_list_format           = "$3{%A }|{%a }$7{%b }$0{%t}| $4$R{%7l}$9"
+now_playing_prefix         = "$4"
+now_playing_suffix         = "$9"
+song_columns_list_format   = "(34)[green]{a} (34)[]{t|f} (32)[cyan]{b}"
+playlist_display_mode      = "columns"
+browser_display_mode       = "columns"
+search_engine_display_mode = "columns"
+autocenter_mode            = "yes"
+centered_cursor            = "yes"
+progressbar_look           = "   "
+user_interface             = "alternative"
+default_space_mode         = "select"
+header_visibility          = "no"
+statusbar_visibility       = "no"
+titles_visibility           = "no"
+follow_now_playing_lyrics   = "yes"
+store_lyrics_in_song_dir    = "yes"
+ignore_leading_the          = "yes"
+empty_tag_marker            = "[empty]"
+main_window_color           = "default"
+main_window_highlight_color = "default"
+visualizer_color            = "default"
