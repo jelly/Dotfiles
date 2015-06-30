@@ -13,6 +13,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'bling/vim-airline'
 
+" Snippets
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 
@@ -26,6 +27,11 @@ Bundle 'tpope/vim-surround'
 
 " Tagbar
 Bundle 'majutsushi/tagbar'
+
+" PHPComplete
+Bundle 'shawncplus/phpcomplete.vim'
+
+Bundle 'scrooloose/nerdcommenter'
 
 call vundle#end()
 filetype plugin indent on
