@@ -9,7 +9,7 @@ SAVEHIST=50000
 # Variables
 #------------------------------
 
-export PATH=/bin:${HOME}/bin:/home/jelle/.gem/ruby/2.1.0/bin:${PATH}
+export PATH=/bin:${HOME}/bin:/home/jelle/.gem/ruby/2.2.0/bin:${PATH}
 
 # SLRN
 export NNTPSERVER='news.gmane.org'
