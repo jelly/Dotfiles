@@ -216,6 +216,13 @@ svndiff() {
   svn diff "${@}" | colordiff | less -R
 }
 
+hist_dedup() {
+  sort ~/.histfile > ~/.histfile.old
+  uniq ~/.histfile.old > ~/.histfile
+}
+
+# histfile deduplicate
+
 #------------------------------
 # Window title
 #------------------------------
