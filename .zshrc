@@ -2,8 +2,8 @@
 # History stuff
 #------------------------------
 HISTFILE=~/.histfile
-HISTSIZE=50000
-SAVEHIST=50000
+HISTSIZE=500000
+SAVEHIST=500000
 
 #------------------------------
 # Variables
