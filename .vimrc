@@ -68,6 +68,8 @@ let g:ycm_semantic_triggers =  {
   \   'ruby' : ['.', '::'],
   \   'lua' : ['.', ':'],
   \   'erlang' : [':'],
+  \   'html': ['<'],
+  \   'css': ['.'],
   \ }
 
 " Search
