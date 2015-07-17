@@ -31,6 +31,7 @@ Bundle 'majutsushi/tagbar'
 " PHPComplete
 Bundle 'shawncplus/phpcomplete.vim'
 
+" Multi-line commenting
 Bundle 'scrooloose/nerdcommenter'
 
 call vundle#end()
