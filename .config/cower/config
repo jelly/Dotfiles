@@ -1,0 +1,20 @@
+#
+# example cower config file
+#
+# All options here can be overriden with flags on the command line. All options
+# are case sensitive. This file will be read per user, and should be located at
+# $XDG_CONFIG_HOME/cower/config or $HOME/.config/cower/config.
+#
+
+# Use color in the output. This takes an optional arg of auto/never/always,
+# identical to the command line arg --color. If no arg is specified, this is
+# assumed to mean auto.
+Color = always
+
+# Ignore the specified binary repos when checking for updates. Multiple arguments
+# to this option should be space delimited.
+IgnoreRepo = jelle
+
+# Max number of threads cower will use. This is synonymous with the max number
+# of concurrent connections that will be opened to the AUR.
+MaxThreads = 4
