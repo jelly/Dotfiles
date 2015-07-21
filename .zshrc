@@ -44,6 +44,11 @@ bindkey "^[^?" backward-kill-word
 
 # Ctrl+r history search
 bindkey "^R" history-incremental-search-backward
+
+# History search (usually up/down key)
+bindkey '^P' up-line-or-search
+bindkey '^N' down-line-or-search
+
 bindkey "^[[1;5D" emacs-backward-word
 bindkey "^[[1;5C" emacs-forward-word
 
