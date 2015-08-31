@@ -1,5 +1,3 @@
-from BeautifulSoup import BeautifulSoup
-
 # Additional modules installed with urlwatch
 from urlwatch import ical2txt
 from urlwatch import html2txt
