@@ -4,8 +4,6 @@
 #
 # Executed by startx (run your window manager from here)
 
-# Start a D-Bus session
-source /etc/X11/xinit/xinitrc.d/30-dbus.sh
 # Start GNOME Keyring
 eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
 # You probably need to do this too:
