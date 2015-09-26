@@ -294,3 +294,13 @@ setprompt () {
         PS2=$'%_>'
 }
 setprompt
+
+# SSH Agent
+if ! ps -ef | grep ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-env
+    source ~/.ssh-env
+    ssh-add
+else 
+    source ~/.ssh-env
+fi
+
