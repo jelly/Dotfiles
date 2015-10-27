@@ -152,6 +152,9 @@ autocmd FileType PKGBUILD set expandtab shiftwidth=2 softtabstop=4
 " sh stuff
 autocmd FileType sh set expandtab shiftwidth=2 softtabstop=4 
 
+" html
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+
 " LaTeX
 autocmd Filetype tex,latex set grepprg=grep\ -nH\ $
 autocmd Filetype tex,latex setlocal spell 
