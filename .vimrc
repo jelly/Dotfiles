@@ -17,8 +17,6 @@ Bundle 'bling/vim-airline'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 
-" SVN integration
-Bundle 'vim-scripts/vcscommand.vim'
 " Git integration
 Bundle 'tpope/vim-fugitive'
 " Xdebug integration
