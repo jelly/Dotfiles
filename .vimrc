@@ -1,38 +1,38 @@
 "colors
 colorscheme jellybeans
 
-set nocompatible
-filetype off
+call plug#begin('~/.vim/plugged')
 
-" vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" Group dependencies, vim-snippets depends on ultisnips
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-
-Bundle 'bling/vim-airline'
-
-" Snippets
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
+Plug 'bling/vim-airline'
 
 " Git integration
-Bundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
+
 " Xdebug integration
-Bundle 'joonty/vdebug.git' 
-Bundle 'tpope/vim-surround'
+Plug 'joonty/vdebug', { 'for': 'php' }
+
+Plug 'tpope/vim-surround'
+
+" NERD tree will be loaded on the first invocation of NERDTreeToggle command
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Tagbar
-Bundle 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " PHPComplete
-Bundle 'shawncplus/phpcomplete.vim'
+Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 
 " Multi-line commenting
-Bundle 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
-call vundle#end()
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
+
+" Add plugins to &runtimepath
+call plug#end()
+
 filetype plugin indent on
 
 " Autocmd options
