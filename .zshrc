@@ -9,7 +9,7 @@ SAVEHIST=500000
 # Variables
 #------------------------------
 
-export PATH=/bin:${HOME}/bin:/home/jelle/.gem/ruby/2.2.0/bin:${PATH}
+export PATH=/bin:${HOME}/bin:/home/jelle/.gem/ruby/2.2.0/bin:~/.local/bin/:${PATH}
 
 # SLRN
 export NNTPSERVER='news.gmane.org'
@@ -18,6 +18,9 @@ export EDITOR=vim
 
 # Set DE to gnome for chromium
 export DE=gnome
+
+# For NPM
+export PREFIX=~/.local
 
 # Fancier coloring in neovim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
