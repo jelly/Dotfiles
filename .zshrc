@@ -21,6 +21,7 @@ export DE=gnome
 
 # For NPM
 export PREFIX=~/.local
+export NODE_PATH=~/.local/lib/node_modules/
 
 # Fancier coloring in neovim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
