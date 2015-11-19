@@ -56,6 +56,7 @@ command -range=% Share :<line1>,<line2>write !curl -F "sprunge=<-" http://sprung
 
 " YouCompleteMe
 " -------------------------------
+let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 let g:ycm_key_list_previous_completion=['<Up>']
 let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_semantic_triggers =  {
