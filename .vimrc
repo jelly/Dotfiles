@@ -28,6 +28,9 @@ Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 " Multi-line commenting
 Plug 'scrooloose/nerdcommenter'
 
+" Syntastic: requires jshint/pylint/flow{-bin}
+Plug 'scrooloose/syntastic'
+
 " Requires cmake, clang
 Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --clang-completer --system-libclang --system-boost' }
 
@@ -165,6 +168,16 @@ autocmd Filetype tex,latex let g:tex_flavor = "latex"
 " Vim-debug
 " ------------------------------
 let g:vdebug_options = { "break_on_open" : 0, }
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Tags
 set tags=./tags,tags;$HOME
