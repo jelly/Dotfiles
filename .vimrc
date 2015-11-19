@@ -28,6 +28,7 @@ Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 " Multi-line commenting
 Plug 'scrooloose/nerdcommenter'
 
+" Requires cmake, clang
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
 
 " Add plugins to &runtimepath
