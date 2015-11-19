@@ -303,23 +303,20 @@ setprompt () {
 }
 setprompt
 
-SSH_ENV="$HOME/.ssh/environment"
-
-start_agent() {
-    echo "Initializing new SSH agent..."
-    touch $SSH_ENV
-    chmod 600 "${SSH_ENV}"
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' >> "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add
-}
-
-# Source SSH settings, if applicable
-if [ -f "${SSH_ENV}" ]; then
-    . "${SSH_ENV}" > /dev/null
-    kill -0 $SSH_AGENT_PID 2>/dev/null || {
-        start_agent
-    }
-else
-    start_agent
+  # Start the gpg-agent if not already running
+if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
+  gpg-connect-agent /bye >/dev/null 2>&1
 fi
+
+# Set SSH to use gpg-agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
+fi
+
+# Set GPG TTY
+GPG_TTY=$(tty)
+export GPG_TTY
+
+# Refresh gpg-agent tty in case user switches into an X session
+gpg-connect-agent updatestartuptty /bye >/dev/null
