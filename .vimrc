@@ -89,9 +89,9 @@ let g:UltiSnipsUsePythonVersion=2
 
 " RST Live Preview
 " --------------------------------
-autocmd FileType rst silent :! (file="%"; rst2pdf % &>/dev/null && evince "${file/.rst/.pdf}" &>/dev/null) &
-command! Reload :! (rst2pdf  % &>/dev/null) &
-au BufWritePost *.rst silent Reload
+"autocmd FileType rst silent :! (file="%"; rst2pdf % &>/dev/null && evince "${file/.rst/.pdf}" &>/dev/null) &
+"command! Reload :! (rst2pdf  % &>/dev/null) &
+"au BufWritePost *.rst silent Reload
 
 " fugitive git bindings
 " http://www.reddit.com/r/vim/comments/21f4gm/best_workflow_when_using_fugitive/
@@ -178,6 +178,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = 'python2'
 
 " Tags
 set tags=./tags,tags;$HOME
