@@ -3,9 +3,9 @@ def_key "j"
 def_key "k"
         scroll_up
 
-def_key "ctrl_j"
+def_key "ctrl-j"
         move_selected_items_down
-def_key "ctrl_k"
+def_key "ctrl-k"
         move_selected_items_up
 
 def_key "l"
