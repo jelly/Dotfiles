@@ -52,11 +52,6 @@ autocmd BufReadPost *.rtf silent %!unrtf --text "%"
 autocmd BufWriteCmd *.rtf set readonly
 autocmd BufRead,BufNewFile ~/.mutt/tmp/* set filetype=mail | set textwidth=72 | set spell |  set wrap | setlocal spell spelllang=nl,en
 
-
-" Sprunge
-" -------------------------------
-command -range=% Share :<line1>,<line2>write !curl -F "sprunge=<-" http://sprunge.us|xclip
-
 " YouCompleteMe
 " -------------------------------
 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
