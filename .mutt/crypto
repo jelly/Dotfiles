@@ -27,7 +27,7 @@ set pgp_good_sign="^gpg: Good signature from"
 # automatically sign all outgoing messages
 set crypt_autosign=no
 # sign only replies to signed messages
-#set crypt_replysign
+set crypt_replysign=yes
 
 # automatically encrypt outgoing messages
 set crypt_autoencrypt=no
