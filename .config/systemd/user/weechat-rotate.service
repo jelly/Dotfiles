@@ -1,0 +1,9 @@
+[Unit]
+Description=Logrotate weechat's logs
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/logrotate -s %t/logrotate.state  %h/.local/share/logrotate.d/irc -v
+
+[Install]
+WantedBy=default.target

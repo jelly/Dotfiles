@@ -1,0 +1,8 @@
+# weechat logrorate file
+
+compress
+missingok
+notifempty
+copytruncate
+
+"~/.weechat/logs/**log" {}
