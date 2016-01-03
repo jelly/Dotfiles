@@ -10,7 +10,7 @@ dynamic_title = true
 urgent_on_bell = true
 clickable_url = false
 font = Terminus 12px
-scrollback_lines = 1000
+scrollback_lines = 2000
 search_wrap = false
 #icon_name = terminal
 
