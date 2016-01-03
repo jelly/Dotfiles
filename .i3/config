@@ -20,6 +20,7 @@ set $mod Mod4
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:Terminus 10px
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -206,4 +207,6 @@ bindsym $mod+minus scratchpad show
 # finds out, if available)
 bar {
         status_command i3status
+        tray_output primary
+        strip_workspace_numbers yes
 }
