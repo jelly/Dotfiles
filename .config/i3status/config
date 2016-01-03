@@ -17,6 +17,7 @@ order += "wireless wlp12s0"
 order += "ethernet enp9s0" 
 order += "battery 0" 
 order += "cpu_temperature 0" 
+order += "volume master"
 order += "load" 
 order += "time" 
  
@@ -24,12 +25,12 @@ disk "/" {
     	format = "%free" 
 } 
 
-wireless wlp12s0 { 
+wireless wlo1 { 
 	format_up = "W: (%quality at %essid) %ip" 
 	format_down = "W: down" 
 } 
 
-ethernet enp9s0 { 
+ethernet enp0s25 { 
 	format_up = "E: %ip" 
 	format_down = "E: down" 
 } 
@@ -49,3 +50,7 @@ load {
 time { 
     format = "%Y-%m-%d %H:%M:%S" 
 } 
+
+volume master {
+        device = "pulse"
+}
