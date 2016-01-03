@@ -13,8 +13,8 @@ general {
 } 
  
 order += "disk /" 
-order += "wireless wlp12s0" 
-order += "ethernet enp9s0" 
+order += "wireless wlo1" 
+order += "ethernet enp0s25" 
 order += "battery 0" 
 order += "volume master"
 order += "load" 
