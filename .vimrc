@@ -72,6 +72,9 @@ let g:ycm_semantic_triggers =  {
   \   'css': ['.'],
   \ }
 
+" Apply YCM FixIt
+map <F9> :YcmCompleter FixIt<CR>
+
 " Search
 " -------------------------------
 set hlsearch
