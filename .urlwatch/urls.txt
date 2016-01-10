@@ -9,13 +9,9 @@ https://www.tarsnap.com/download/
 http://s3tools.org/s3tools
 http://www.scipy.org/Download
 https://github.com/seb-m/pyinotify/tags
-https://pypi.python.org/packages/source/d/decorator/
-https://pypi.python.org/packages/source/c/cssutils/
-http://download.cherrypy.org/cherrypy/3.2.2/
 https://pypi.python.org/packages/source/s/six/
 http://bundles.openttdcoop.org/opengfx/releases/LATEST/
 http://mathema.tician.de/software/pyopencl
-https://pypi.python.org/packages/source/p/pytz/
 http://repository.spotify.com/pool/non-free/s/spotify/
 https://github.com/scipy/scipy/releases
 https://github.com/kjellmf/dot2tex/releases
@@ -32,3 +28,5 @@ https://github.com/giampaolo/psutil/releases
 https://pypi.python.org/pypi/Sphinx
 https://github.com/xmonad/xmonad/releases
 https://github.com/jaor/xmobar/releases
+https://pypi.python.org/pypi/pytz/
+https://github.com/cherrypy/cherrypy/releases
