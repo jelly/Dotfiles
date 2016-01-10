@@ -1,11 +1,12 @@
 # vim: ft=muttrc
 
 # Account details
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account<enter><change-folder>=INBOX<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/arch_account<enter><change-folder>=INBOX<enter>'
+
 source ~/.mutt/account
 
 # cache
-  set header_cache = ~/.mutt/cache/headers
-  set message_cachedir = ~/.mutt/cache/bodies
   set sleep_time = 0
   set alias_format      = "%4n %t %-20a %r"
   set beep_new
