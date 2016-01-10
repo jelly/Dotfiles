@@ -7,7 +7,6 @@ http://xmonad.org/download.html
 http://user-mode-linux.sourceforge.net/
 https://www.tarsnap.com/download/
 http://s3tools.org/s3tools
-https://pypi.python.org/packages/source/S/SQLAlchemy/
 http://www.scipy.org/Download
 https://github.com/seb-m/pyinotify/tags
 https://pypi.python.org/packages/source/d/decorator/
@@ -26,3 +25,10 @@ https://github.com/html5lib/html5lib-python/releases
 https://pypi.python.org/pypi/decorator
 https://pypi.python.org/pypi/CherryPy
 https://pypi.python.org/pypi/cssutils/
+https://github.com/rogerbinns/apsw/releases
+https://github.com/jamesturk/jellyfish/releases
+https://pypi.python.org/pypi/selenium
+https://github.com/giampaolo/psutil/releases
+https://pypi.python.org/pypi/Sphinx
+https://github.com/xmonad/xmonad/releases
+https://github.com/jaor/xmobar/releases
