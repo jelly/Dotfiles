@@ -21,7 +21,6 @@ unset confirmappend
   set include
   set index_format      = "%3C %Z %[!%m/%d] %-17.17F %s"
   set ispell            = "aspell -e -c"
-  set mail_check        = 0
   set mailcap_path      = ~/.mutt/mailcap
   set imap_check_subscribed = yes
   set mail_check 	= 120
