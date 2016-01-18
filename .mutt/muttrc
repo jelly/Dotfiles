@@ -93,6 +93,7 @@ color sidebar green default
 
 macro index gi "<change-folder> =INBOX<enter>" "Go to inbox"
 macro index go "<change-folder> =oss-security<enter>" "Go to oss-security"
+macro index gl "<change-folder> =linux-sunxi<enter>" "Go to linux-sunxi"
 
 source ~/.mutt/colors
 source ~/.mutt/crypto
