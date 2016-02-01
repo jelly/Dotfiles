@@ -178,6 +178,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = 'python2'
 
+let g:syntastic_ignore_files = ['\m^/usr/include/', '.c', '.cpp']
+
 " Make it easier to browser through errors
 nnoremap <space>ln :lnext<CR>
 nnoremap <space>lp :lprev<CR>
