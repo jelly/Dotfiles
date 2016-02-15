@@ -81,7 +81,7 @@ bind index,pager K sidebar-prev
 bind index,pager O sidebar-open
 
 macro index ,i "<change-folder>!<return>" "go to inbox"
-macro index ,p "<pipe-message>cat > ~/" "save message as"
+macro pager,index ,p "<pipe-message>cat > /tmp/" "save message as"
 macro pager,index ,g "<pipe-message>~/.mutt/open_gmane.py<return>" "Open GMAME link"
 macro index ,r "<tag-pattern>all<return><tag-prefix><clear-flag>N<untag-pattern>all<return>" "mark all as read"
 macro index ,R "<collapse-all><tag-pattern>all<return><tag-prefix><clear-flag>N<untag-pattern>all<return><collapse-all>" "mark all as read (collapsed)"
