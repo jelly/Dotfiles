@@ -30,3 +30,4 @@ https://github.com/xmonad/xmonad/releases
 https://github.com/jaor/xmobar/releases
 https://pypi.python.org/pypi/pytz/
 https://github.com/cherrypy/cherrypy/releases
+https://github.com/openstack/bandit/releases
