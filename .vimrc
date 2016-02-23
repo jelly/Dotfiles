@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
