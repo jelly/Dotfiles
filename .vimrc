@@ -178,8 +178,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = 'python2'
-
-let g:syntastic_ignore_files = ['\m^/usr/include/', '.c', '.cpp']
+let g:syntastic_ignore_files = ['\m\c\.h$', '\m\cc.cpp$']
 
 " Make it easier to browser through errors
 nnoremap <space>ln :lnext<CR>
