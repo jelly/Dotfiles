@@ -48,8 +48,8 @@ MULTIHARDLINK         38;5;222;1
 #NORMAL                38;5;254
 ORPHAN                48;5;196;38;5;232;1
 OTHER_WRITABLE        38;5;220;1
-SETGID                48;5;234;38;5;100;1
-SETUID                38;5;137
+SETGID                48;5;3;38;5;0
+SETUID                38;5;220;1;3;100;1
 SOCK                  38;5;197
 STICKY                38;5;86;48;5;234
 STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
@@ -59,9 +59,16 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 # documents {{{1
 *README               38;5;220;1
 *LICENSE              38;5;220;1
+*COPYING              38;5;220;1
+*INSTALL              38;5;220;1
 *COPYRIGHT            38;5;220;1
 *AUTHORS              38;5;220;1
 *HISTORY              38;5;220;1
+*CONTRIBUTORS         38;5;220;1
+*PATENTS              38;5;220;1
+*VERSION              38;5;220;1
+*NOTICE               38;5;220;1
+*CHANGES              38;5;220;1
 .log                  38;5;190
 # plain-text {{{2
 .txt                  38;5;253
@@ -76,11 +83,14 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .tex                  38;5;184
 .textile              38;5;184
 # key-value, non-relational data {{{2
+.json                 38;5;178
 .msg                  38;5;178
 .pgn                  38;5;178
+.rss                  38;5;178
 .xml                  38;5;178
-.json                 38;5;178
 .yml                  38;5;178
+.RData                38;5;178
+.rdata                38;5;178
 # }}}
 # binary {{{2
 .cbr                  38;5;141
@@ -94,12 +104,21 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .doc                  38;5;111
 .docx                 38;5;111
 .eps                  38;5;111
+.ps                   38;5;111
 .odb                  38;5;111
 .odt                  38;5;111
+.rtf                  38;5;111
 # presentation {{{3
 .odp                  38;5;166
 .pps                  38;5;166
 .ppt                  38;5;166
+.pptx                 38;5;166
+#   Powerpoint show
+.ppts                 38;5;166
+#   Powerpoint with enabled macros
+.pptxm                38;5;166;4
+#   Powerpoint show with enabled macros
+.pptsm                38;5;166;4
 # spreadsheet {{{3
 .csv                  38;5;78
 #   Open document spreadsheet
@@ -121,7 +140,6 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 *rc                   1
 .ini                  1
 #   vim
-.vim                  1
 .viminfo              1
 #   cisco VPN client configuration
 .pcf                  1
@@ -144,10 +162,16 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .sed                  38;5;172
 .sh                   38;5;172
 .zsh                  38;5;172
+.vim                  38;5;172
 
 # interpreted {{{2
-.ahk                  38;5;29;1
+.ahk                  38;5;41
+# python
 .py                   38;5;41
+# perl
+.pl                   38;5;208
+.PL                   38;5;160
+.t                    38;5;114
 # sql
 .msql                 38;5;222
 .mysql                38;5;222
@@ -155,6 +179,11 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .sql                  38;5;222
 #   Tool Command Language
 .tcl                  38;5;64;1
+# R language
+.r                    38;5;49
+.R                    38;5;49
+# GrADS script
+.gs                   38;5;81
 
 # compiled {{{2
 #
@@ -165,6 +194,8 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .lisp                 38;5;81
 #   lua
 .lua                  38;5;81
+#   Moonscript
+.moon                 38;5;81
 #   C
 .c                    38;5;81
 .C                    38;5;81
@@ -186,6 +217,10 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .cp                   38;5;81
 .cpp                  38;5;81
 .cxx                  38;5;81
+#   Crystal
+.cr                   38;5;81
+#   Google golang
+.go                   38;5;81
 #   fortran
 .f                    38;5;81
 .for                  38;5;81
@@ -193,16 +228,18 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 #   pascal
 .s                    38;5;110
 .S                    38;5;110
+#   Rust
+.rs                   38;5;81
 #   ?
 .sx                   38;5;81
 #   interface file in GHC - https://github.com/trapd00r/LS_COLORS/pull/9
 .hi                   38;5;110
 #   haskell
 .hs                   38;5;81
+.lhs                  38;5;81
 
 # binaries {{{2
 # compiled apps for interpreted languages
-.PL                   38;5;160
 .pyc                  38;5;240
 # }}}
 # html {{{2
@@ -244,6 +281,9 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 # automake
 .am                   38;5;242
 .in                   38;5;242
+.hin                  38;5;242
+.scan                 38;5;242
+.m4                   38;5;242
 .old                  38;5;242
 .out                  38;5;242
 .SKIP                 38;5;244
@@ -258,7 +298,6 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .TIFF                 38;5;97
 .cdr                  38;5;97
 .gif                  38;5;97
-.go                   38;5;97
 .ico                  38;5;97
 .jpeg                 38;5;97
 .JPG                  38;5;97
@@ -353,6 +392,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .jar                  38;5;215
 .cab                  38;5;215
 .pak                  38;5;215
+.pk3                  38;5;215
 .vdf                  38;5;215
 .vpk                  38;5;215
 .bsp                  38;5;215
@@ -494,6 +534,8 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .localstorage         38;5;60
 .sqlite               38;5;60
 .typelib              38;5;60
+# NetCDF database
+.nc                   38;5;60
 # }}}
 # tempfiles {{{1
 # undo files
@@ -504,6 +546,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .BUP                  38;5;241
 .bak                  38;5;241
 .o                    38;5;241 #   *nix Object file (shared libraries, core dumps etc)
+.rlib                 38;5;241 #   Static rust library
 # temporary files
 .swp                  38;5;244
 .swo                  38;5;244
@@ -553,6 +596,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .directory            38;5;116
 .m3u                  38;5;116
 .m3u8                 38;5;116
+.md5                  38;5;116
 .properties           38;5;116
 .sfv                  38;5;116
 .srt                  38;5;116
@@ -561,13 +605,19 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .urlview              38;5;116
 # }}}
 # encrypted data {{{1
+.asc                  38;5;192;3
+.enc                  38;5;192;3
 .gpg                  38;5;192;3
 .signature            38;5;192;3
 .sig                  38;5;192;3
+.p12                  38;5;192;3
+.pem                  38;5;192;3
 .pgp                  38;5;192;3
 .asc                  38;5;192;3
 .enc                  38;5;192;3
-# }}}
+.sig                  38;5;192;3
+.signature            38;5;192;3
+# 1}}}
 # emulators {{{1
 .32x                  38;5;213
 .cdi                  38;5;213
@@ -609,12 +659,12 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .pod                  38;5;7
 #   GIMP brush
 .gbr                  38;5;7
-#   Linux Shell Executable Binary
-.pl                   38;5;7
 # printer spool file
 .spl                  38;5;7
 #   GIMP project file
 .scm                  38;5;7
+# RStudio project file
+.Rproj                38;5;11
 #   Nokia Symbian OS files
 .sis                  38;5;7
 
