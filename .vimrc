@@ -132,6 +132,9 @@ endif
 " GUI Options GVIM
 set guioptions-=mrL
 
+" Set max tabs to 20
+set tabpagemax=20
+
 " indenting
 set cindent
 set smartindent
