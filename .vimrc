@@ -35,6 +35,8 @@ Plug 'scrooloose/syntastic'
 " Requires cmake, clang
 Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --clang-completer --system-libclang --system-boost' }
 
+" Shows git diff in a sign column
+Plug 'airblade/vim-gitgutter'
 
 " Add plugins to &runtimepath
 call plug#end()
