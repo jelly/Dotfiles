@@ -207,6 +207,5 @@ bindsym $mod+minus scratchpad show
 # finds out, if available)
 bar {
         status_command i3status
-        tray_output primary
         strip_workspace_numbers yes
 }
