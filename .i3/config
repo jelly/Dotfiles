@@ -177,7 +177,7 @@ bindsym XF86Launch8 exec "spotify"
 
 bindsym Mod1 + l exec "i3lock -c 000000"
 
-# Spotify keys using media keys
+# MPD control using media keys
 bindsym XF86AudioPrev exec --no-startup-id "mpc prev"
 bindsym XF86AudioPlay exec --no-startup-id "mpc toggle"
 bindsym XF86AudioNext exec --no-startup-id "mpc next"
