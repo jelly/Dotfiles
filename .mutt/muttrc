@@ -48,9 +48,9 @@ unset mark_old
 unset wait_key
 
 # non-standard
-  set sidebar_delim     = '|'
+  set sidebar_divider_char     = '|'
   set sidebar_visible   = yes
-  set sidebar_width     = 35
+  set sidebar_width     = 30
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
@@ -89,7 +89,7 @@ macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
 macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
 
 color status  green default
-color sidebar green default
+color sidebar_indicator red default
 
 macro index gi "<change-folder> =INBOX<enter>" "Go to inbox"
 macro index go "<change-folder> =oss-security<enter>" "Go to oss-security"
