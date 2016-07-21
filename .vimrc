@@ -78,6 +78,9 @@ let g:ycm_semantic_triggers =  {
 " Apply YCM FixIt
 map <F9> :YcmCompleter FixIt<CR>
 
+" Fix php_sync_method undefined
+let php_sync_method=-1
+
 " Search
 " -------------------------------
 set hlsearch
