@@ -2,3 +2,4 @@ clear lock
 remove mod4 = Super_L
 keysym Caps_Lock = Super_L
 add mod4 = Super_L
+keycode 108 = Multi_key
