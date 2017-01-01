@@ -188,6 +188,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = 'python2'
 let g:syntastic_ignore_files = ['\m\c\.h$', '\m\cc.cpp$']
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--ignore=E501,E225'
 
 " Make it easier to browser through errors
 nnoremap <space>ln :lnext<CR>
