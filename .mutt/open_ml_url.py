@@ -11,10 +11,7 @@ URLS = ['https://www.mail-archive.com/search?l=mid&q={}', 'http://marc.info/?i={
 
 
 if __name__ == "__main__":
-    eml = ''
-    for line in sys.stdin:
-        eml += line
-    headers = Parser().parsestr(eml)
+    headers = Parser().parse(sys.stdin)
     if 'message-id' in headers:
         for base_url in URLS:
             message_id = headers['message-id'].replace('<', '').replace('>', '')
