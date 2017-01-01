@@ -3,7 +3,6 @@ http://www.engadget.com/rss.xml
 http://freecode.com/?format=atom
 http://news.ycombinator.com/rss
 http://www.ibm.com/developerworks/views/linux/rss/libraryview.jsp?site_id=1&contentarea_by=Linux&topic_by=&product_by=&type_by=Tutorials&search_by=&industry_by=&sort_by=D
-http://pipes.yahoo.com/pipes/pipe.run?_id=8226cff59b9e9b50bc7c9d5907a45479&_render=rss
 http://rss.packetstormsecurity.org/news/
 http://feeds.nos.nl/nosnieuwsalgemeen
 http://rss.slashdot.org/Slashdot/slashdot
@@ -12,7 +11,6 @@ http://feeds.feedburner.com/TheGeekStuff
 http://www.reddit.com/.rss news
 http://lxer.com/module/newswire/headlines.rss linux
 http://www.nytimes.com/services/xml/rss/nyt/GlobalHome.xml news
-http://pipes.yahoo.com/pipes/pipe.run?_id=6044acf945f7932ee7251d0ad2b7f559&_render=rss comic
 http://feed.dilbert.com/dilbert/daily_strip?format=xml comic
 http://feeds.guardian.co.uk/theguardian/rss news
 http://feeds.bbci.co.uk/news/rss.xml news
@@ -30,6 +28,5 @@ http://www.security.nl/headlines-rss.xml
 http://www.reddit.com/r/linux/.rss
 http://feeds.feedburner.com/tweakers/mixed
 http://feeds.webwereld.nl/webwereld
-http://pipes.yahoo.com/pipes/pipe.run?_id=a41f01f197a7b89b1fcf6b72b3964a9a&_render=rss&t=2206780
 http://blog.llvm.org/feeds/posts/default
 http://feeds.feedburner.com/dancarlin/history?format=xml podcast
