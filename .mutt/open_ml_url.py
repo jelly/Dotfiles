@@ -23,5 +23,3 @@ if __name__ == "__main__":
             if r.status_code == 200 and b'NOT FOUND' not in r.content:
                 subprocess.call(['xdg-open', url], stdout=subprocess.DEVNULL)
                 break
-
-
