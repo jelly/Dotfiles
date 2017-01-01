@@ -9,7 +9,7 @@ import requests
 
 def open_marc_info(message_id):
     url = 'http://marc.info/?i={}'.format(message_id)
-    r = requests.head(url)
+    r = requests.get(url)
     if r.status_code == 200:
         subprocess.call(['xdg-open', url], stdout=subprocess.DEVNULL)
     return False
