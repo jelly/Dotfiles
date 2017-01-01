@@ -29,7 +29,7 @@ if __name__ == "__main__":
     for line in sys.stdin:
         eml += line
     headers = Parser().parsestr(eml)
-    if headers['message-id']:
+    if 'message-id' in headers:
         message_id = headers['message-id']
         if not open_marc_info(message_id):
             open_gmane(message_id)
