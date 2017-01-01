@@ -1,14 +1,28 @@
 #!/usr/bin/python
 
-# Simple script to open a GMANE URL.
-
 import sys
-import os
 import subprocess
-
 from email.parser import Parser
 
-BASE_URL = 'http://mid.gmane.org/'
+import requests
+
+
+def open_marc_info(message_id):
+    url = 'http://marc.info/?i={}'.format(message_id)
+    r = requests.head(url)
+    if r.status_code == 200:
+        subprocess.call(['xdg-open', url], stdout=subprocess.DEVNULL)
+    return False
+
+
+def open_gmane(message_id):
+    url = 'http://mid.gmane.org/{}'.format(message_id)
+    r = requests.get(url)
+    if b'NOT FOUND' not in r.content:
+        subprocess.call(['xdg-open', url], stdout=subprocess.DEVNULL)
+        return True
+    return False
+
 
 if __name__ == "__main__":
     eml = ''
@@ -16,8 +30,6 @@ if __name__ == "__main__":
         eml += line
     headers = Parser().parsestr(eml)
     if headers['message-id']:
-        url = BASE_URL + headers['message-id']
-        if sys.version_info > (3, 3):
-            subprocess.call(['xdg-open', url], stdout=subprocess.DEVNULL)
-        else:
-            subprocess.call(['xdg-open', url], stdout=open(os.devnull))
+        message_id = headers['message-id']
+        if not open_marc_info(message_id):
+            open_gmane(message_id)
