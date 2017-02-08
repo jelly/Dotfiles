@@ -90,12 +90,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets        = "<c-l>" "List possible snippets based on current file
 let g:UltiSnipsUsePythonVersion=2
 
-" RST Live Preview
-" --------------------------------
-"autocmd FileType rst silent :! (file="%"; rst2pdf % &>/dev/null && evince "${file/.rst/.pdf}" &>/dev/null) &
-"command! Reload :! (rst2pdf  % &>/dev/null) &
-"au BufWritePost *.rst silent Reload
-
 " fugitive git bindings
 " http://www.reddit.com/r/vim/comments/21f4gm/best_workflow_when_using_fugitive/
 nnoremap <space>ga :Git add %:p<CR><CR>
@@ -154,6 +148,7 @@ let g:tex_comment_nospell= 1
 autocmd FileType python let python_highlight_all = 1
 autocmd FileType python let python_slow_sync = 1
 autocmd FileType python set expandtab shiftwidth=4 softtabstop=4
+autocmd FileType php set expandtab shiftwidth=4 softtabstop=4
 autocmd FileType python set completeopt=preview
 
 " PKGBUILD stuff
