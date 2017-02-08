@@ -93,6 +93,7 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'jellybeans'
+let g:airline_skip_empty_sections = 1
 
 syntax on
 
@@ -148,7 +149,7 @@ let g:vdebug_options = { "break_on_open" : 0, }
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '👌']
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
 let g:airline_section_error = '%{ALEGetStatusLine()}'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
