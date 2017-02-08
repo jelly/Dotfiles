@@ -6,6 +6,8 @@ call plug#begin('~/.vim/plugged')
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
+Plug 'w0rp/ale'
+
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -28,9 +30,6 @@ Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 
 " Multi-line commenting
 Plug 'scrooloose/nerdcommenter'
-
-" Syntastic: requires jshint/pylint/flow{-bin}
-Plug 'scrooloose/syntastic'
 
 " Requires cmake, clang
 Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --clang-completer --system-libclang --system-boost' }
@@ -176,20 +175,13 @@ autocmd Filetype tex,latex let g:tex_flavor = "latex"
 " ------------------------------
 let g:vdebug_options = { "break_on_open" : 0, }
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_loc_list_height=5
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = 'python2'
-let g:syntastic_ignore_files = ['\m\c\.h$', '\m\cc.cpp$']
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501,E225'
+" ALE
+" ------------------------------
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:airline_section_error = '%{ALEGetStatusLine()}'
 
 " Make it easier to browser through errors
 nnoremap <space>ln :lnext<CR>
