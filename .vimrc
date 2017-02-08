@@ -158,5 +158,13 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nnoremap <space>ln :lnext<CR>
 nnoremap <space>lp :lprev<CR>
 
+" ack.vim, fuzzy find
+nnoremap <Leader>ff :Ack!<Space>
+
+" Use pacman -S the_silver_searcher if avaliable.
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " Tags
 set tags=./tags,tags;$HOME
