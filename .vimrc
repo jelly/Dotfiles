@@ -152,6 +152,8 @@ let g:ale_sign_warning = '--'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:airline_section_error = '%{ALEGetStatusLine()}'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Make it easier to browser through errors
 nnoremap <space>ln :lnext<CR>
