@@ -147,11 +147,14 @@ let g:vdebug_options = { "break_on_open" : 0, }
 " ALE
 " ------------------------------
 let g:ale_sign_column_always = 1
-let g:ale_sign_error = '>>'
+let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format = ['✘ %d', '⚠ %d', '']
 let g:airline_section_error = '%{ALEGetStatusLine()}'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+highlight clear ALEErrorSign
+
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
