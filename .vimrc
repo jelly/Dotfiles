@@ -92,10 +92,6 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'jellybeans'
 
-" Tagbar
-" ------------------------------
-nmap <F8> :TagbarToggle<CR>
-
 syntax on
 
 " Mouse
@@ -159,6 +155,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " ack.vim, fuzzy find
 nnoremap <space>ff :Ack!<Space>
 nnoremap <space>\\ :NERDTreeToggle<CR>
+nnoremap <space>tt :TagbarToggle<CR>
 
 " Use pacman -S the_silver_searcher if avaliable.
 if executable('ag')
