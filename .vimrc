@@ -29,6 +29,8 @@ Plug 'maralla/completor.vim'
 " Shows git diff in a sign column
 Plug 'airblade/vim-gitgutter'
 
+Plug 'mileszs/ack.vim'
+
 " Add plugins to &runtimepath
 call plug#end()
 
