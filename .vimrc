@@ -31,6 +31,8 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'mileszs/ack.vim'
 
+Plug 'tpope/vim-surround'
+
 " Add plugins to &runtimepath
 call plug#end()
 
