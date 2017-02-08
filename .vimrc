@@ -157,7 +157,8 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " ack.vim, fuzzy find
-nnoremap <Leader>ff :Ack!<Space>
+nnoremap <space>ff :Ack!<Space>
+nnoremap <space>\\ :NERDTreeToggle<CR>
 
 " Use pacman -S the_silver_searcher if avaliable.
 if executable('ag')
