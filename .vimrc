@@ -156,10 +156,6 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" Make it easier to browser through errors
-nnoremap <space>ln :lnext<CR>
-nnoremap <space>lp :lprev<CR>
-
 " ack.vim, fuzzy find
 nnoremap <Leader>ff :Ack!<Space>
 
