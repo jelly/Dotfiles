@@ -17,22 +17,14 @@ Plug 'tpope/vim-fugitive'
 " Xdebug integration
 Plug 'joonty/vdebug', { 'for': 'php' }
 
-Plug 'tpope/vim-surround'
-
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Tagbar
 Plug 'majutsushi/tagbar'
 
-" PHPComplete
-Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
-
-" Multi-line commenting
-Plug 'scrooloose/nerdcommenter'
-
-" Requires cmake, clang
-Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --clang-completer --system-libclang --system-boost' }
+" Completion
+Plug 'maralla/completor.vim'
 
 " Shows git diff in a sign column
 Plug 'airblade/vim-gitgutter'
@@ -54,28 +46,10 @@ autocmd BufReadPost *.rtf silent %!unrtf --text "%"
 autocmd BufWriteCmd *.rtf set readonly
 autocmd BufRead,BufNewFile ~/.mutt/tmp/* set filetype=mail | set textwidth=72 | set spell |  set wrap | setlocal spell spelllang=nl,en
 
-" YouCompleteMe
-" -------------------------------
-let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
-let g:ycm_key_list_previous_completion=['<Up>']
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_semantic_triggers =  {
-  \   'c' : ['->', '.'],
-  \   'objc' : ['->', '.'],
-  \   'ocaml' : ['.', '#'],
-  \   'cpp,objcpp' : ['->', '.', '::'],
-  \   'perl' : ['->'],
-  \   'php' : ['->', '::'],
-  \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
-  \   'ruby' : ['.', '::'],
-  \   'lua' : ['.', ':'],
-  \   'erlang' : [':'],
-  \   'html': ['<'],
-  \   'css': ['.'],
-  \ }
-
-" Apply YCM FixIt
-map <F9> :YcmCompleter FixIt<CR>
+" Completor.vim
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
 " Fix php_sync_method undefined
 let php_sync_method=-1
