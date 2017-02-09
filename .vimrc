@@ -33,6 +33,8 @@ Plug 'mileszs/ack.vim'
 
 Plug 'tpope/vim-surround'
 
+Plug 'editorconfig/editorconfig-vim'
+
 " Add plugins to &runtimepath
 call plug#end()
 
