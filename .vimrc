@@ -24,7 +24,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
 
 " Completion
-Plug 'maralla/completor.vim'
+Plug 'maralla/completor.vim', {'do': 'make js'}
 
 " Shows git diff in a sign column
 Plug 'airblade/vim-gitgutter'
