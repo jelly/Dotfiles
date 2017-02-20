@@ -170,5 +170,9 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+let status = system('git status')
+if shell_error == 0
+	let g:ackprg = 'git grep -Hni'
+endif
 " Tags
 set tags=./tags,tags;$HOME
