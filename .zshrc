@@ -28,6 +28,9 @@ export NODE_PATH=~/.local/lib/node_modules/
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+# Browser
+export BROWSER=chromium
+
 #-----------------------------
 # Dircolors
 #-----------------------------
