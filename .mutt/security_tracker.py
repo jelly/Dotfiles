@@ -27,8 +27,8 @@ if __name__ == "__main__":
                     print("Part of {}".format(group["name"]))
                     print(url.format(group["name"]))
                     print("Status: {}".format(group["status"]))
-                    if group["advisories"]:
-                        for asa in group.advisories:
+                    if 'advisories' in group:
+                        for asa in group['advisories']:
                             print("Published as part of {}".format(asa))
                     else:
                         print("No published ASA for this CVE")
