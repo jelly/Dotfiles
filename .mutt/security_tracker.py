@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 import sys
-import subprocess
 import re
 import requests
 
