@@ -167,6 +167,9 @@ nnoremap <space>ff :Ack!<Space>
 nnoremap <space>\\ :NERDTreeToggle<CR>
 nnoremap <space>tt :TagbarToggle<CR>
 
+" format json
+nnoremap <space>json :%! python -m json.tool<CR>
+
 " Use pacman -S the_silver_searcher if avaliable.
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
