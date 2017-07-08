@@ -92,6 +92,10 @@ alias pacq='pacman -Q'
 alias pacu='sudo pacman -U'
 
 # git
+alias ga='git commit --amend '
+alias grm='git rebase -i master '
+
+# Checkout Github PR function
 gitpr() {
     if (( $# != 2 && $# != 3 ))
     then 
