@@ -94,6 +94,7 @@ alias pacu='sudo pacman -U'
 # git
 alias ga='git commit --amend '
 alias grm='git rebase -i master '
+alias gm='git merge '
 
 # Checkout Github PR function
 gitpr() {
