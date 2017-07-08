@@ -91,6 +91,26 @@ alias pacr='sudo pacman -Rs'
 alias pacq='pacman -Q'
 alias pacu='sudo pacman -U'
 
+# git
+gitpr() {
+    if (( $# != 2 && $# != 3 ))
+    then 
+        echo usage: gitpr id branchname;
+    else
+	if (( $# == 3 )) then
+	    repo=$3
+	else
+	    repo="origin"
+	fi
+
+        if git rev-parse --git-dir > /dev/null 2>&1; then
+	     git fetch $repo pull/$1/head:$2 && git checkout $2 
+	else
+	     echo 'error: not in git repo'
+	fi
+    fi
+}
+
 # moving in dirs
 alias ..="cd .."
 alias ...="cd ../.."
