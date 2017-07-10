@@ -93,6 +93,8 @@ alias pacu='sudo pacman -U'
 
 # git
 alias gam='git commit --amend '
+alias gcm='git checkout master'
+alias gfu='git fetch upstream'
 alias grm='git rebase -i master '
 alias gm='git merge '
 
