@@ -102,7 +102,7 @@ alias gm='git merge '
 gitpr() {
     if (( $# != 2 && $# != 3 ))
     then 
-        echo usage: gitpr id branchname;
+        echo usage: gitpr id branchname [remote];
     else
 	if (( $# == 3 )) then
 	    repo=$3
