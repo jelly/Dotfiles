@@ -21,7 +21,7 @@ Plug 'joonty/vdebug', { 'for': 'php' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Tagbar
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 
 " Completion
 Plug 'maralla/completor.vim', {'do': 'make js'}
@@ -156,6 +156,7 @@ let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format = ['✘ %d', '⚠ %d', '']
 let g:airline_section_error = '%{ALEGetStatusLine()}'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:airline#extensions#tagbar#enabled = 0
 
 highlight clear ALEErrorSign
 
