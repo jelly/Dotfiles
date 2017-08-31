@@ -15,10 +15,6 @@ export GNOME_KEYRING_PID
 # pulseaudio
 start-pulseaudio-x11  &
 
-# sync clipboards
-/usr/bin/autocutsel -fork &
-/usr/bin/autocutsel -selection PRIMARY -fork &
-
 # set keyboard layout
 setxkbmap -layout us  -option compose:ralt -option caps:hyper &
 
