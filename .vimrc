@@ -128,6 +128,12 @@ autocmd FileType python let python_slow_sync = 1
 autocmd FileType python set expandtab shiftwidth=4 softtabstop=4
 autocmd FileType python set completeopt=preview
 
+" set filetype of PKGBUILD
+augroup pkgbuild
+    autocmd!
+    autocmd BufRead,BufNewFile PKGBUILD set filetype=PKGBUILD
+augroup END
+
 " PKGBUILD stuff
 autocmd FileType PKGBUILD set expandtab shiftwidth=2 softtabstop=4
 "
