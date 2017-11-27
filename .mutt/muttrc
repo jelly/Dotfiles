@@ -59,6 +59,7 @@ unignore from: to: cc: date: subject:
 hdr_order from: to: cc: date: subject:
 
 bind index i  noop
+bind index g noop
 bind index gg first-entry
 bind index G  last-entry
 bind pager i  exit
@@ -68,6 +69,7 @@ bind pager j  next-line
 bind pager k  previous-line
 bind pager \ek previous-entry
 bind pager \ej next-entry
+bind pager g noop
 bind pager gg top
 bind pager G  bottom
 bind index,pager \# noop
