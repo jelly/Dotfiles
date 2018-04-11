@@ -98,24 +98,33 @@ alias gfu='git fetch upstream'
 alias grm='git rebase -i master '
 alias gm='git merge '
 
+_fetchpr() {
+    origin=${3:-origin}
+    ref=$1
+    branch=$2
+    program=${funcstack#_fetchpr};
+    if (( $# != 2 && $# != 3 )) then
+        echo usage:$program id branchname \[remote\];
+	return 1
+    fi
+
+    if git rev-parse --git-dir &> /dev/null; then
+         git fetch $origin $ref && git checkout $branch
+    else
+	echo 'error: not in git repo'
+    fi
+}
+
 # Checkout Github PR function
 gitpr() {
-    if (( $# != 2 && $# != 3 ))
-    then 
-        echo usage: gitpr id branchname \[remote\];
-    else
-	if (( $# == 3 )) then
-	    repo=$3
-	else
-	    repo="origin"
-	fi
+    github="pull/$1/head:$2"
+    _fetchpr $github $2 $3
+}
 
-        if git rev-parse --git-dir > /dev/null 2>&1; then
-	     git fetch $repo pull/$1/head:$2 && git checkout $2 
-	else
-	     echo 'error: not in git repo'
-	fi
-    fi
+# Checkout Bitbucket PR function
+bitpr() {
+    bitbucket="refs/pull-requests/$1/from:$2"
+    _fetchpr $bitbucket $2 $3
 }
 
 # moving in dirs
