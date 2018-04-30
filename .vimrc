@@ -35,6 +35,9 @@ Plug 'tpope/vim-surround'
 
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'tbabej/taskwiki'
+Plug 'vimwiki/vimwiki'
+
 " Add plugins to &runtimepath
 call plug#end()
 
