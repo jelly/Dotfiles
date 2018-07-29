@@ -162,9 +162,11 @@ let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format = ['✘ %d', '⚠ %d', '']
-let g:airline_section_error = '%{ALEGetStatusLine()}'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:airline#extensions#tagbar#enabled = 0
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 highlight clear ALEErrorSign
 
