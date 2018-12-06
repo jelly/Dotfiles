@@ -1,12 +1,10 @@
-#text/html                ; /usr/bin/elinks -dump %s ; nametemplate=%s.html ; copiousoutput
 text/html;               /usr/bin/w3m -dump -T text/html %s; needsterminal; copiousoutput
-application/pdf          ; /usr/bin/evince %s                             ; copiousoutput
-image/*                  ; /usr/bin/eog %s                              ; copiousoutput
-audio/*                  ; /usr/bin/mplayer %s                             ; copiousoutput
-video/*                  ; /usr/bin/mplayer %s                             ; copiousoutput
+application/pdf          ; /usr/bin/zathura %s                             ; copiousoutput
+image/*                  ; /usr/bin/sxiv %s                              ; copiousoutput
+audio/*                  ; /usr/bin/mpv %s                             ; copiousoutput
+video/*                  ; /usr/bin/mpv %s                             ; copiousoutput
 
-#text/html;                      mutt_bgrun /usr/bin/firefox -remote 'openURL(file://%s, new-tab)'; copiousoutput
-text/html;                      /usr/bin/aurora -new-tab %s
+text/html;                      /usr/bin/chromium %s
 text/plain;                     urxvt -name attach -e /usr/bin/vim -f %s;
 text/plain;charset=us-ascii	less; needsterminal
 #text/*;                         less 
@@ -25,7 +23,7 @@ application/zip;                file-roller %s; copiousoutput
 application/x-rar;              file-roller %s; copiousoutput
 application/msword;		libreoffice %s; copiousoutput
 application/vnd.msword;         libreoffice %s; copiousoutput
-application/postscript;		evince %s; copiousoutput
+application/postscript;		zathura %s; copiousoutput
 application/rtf;		rtf2text %s; copiousoutput
 application/ms-tnef;		mutt_bgrun tnef -w %s
 application/octet-stream;       less; needsterminal
