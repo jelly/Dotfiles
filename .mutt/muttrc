@@ -4,6 +4,10 @@
 macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account<enter><change-folder>=INBOX<enter>'
 macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/arch_account<enter><change-folder>=INBOX<enter>'
 
+# urlscan
+macro index,pager \cb "<pipe-message> urlscan -c -d<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan -c -d<Enter>" "call urlscan to extract URLs out of a message"
+
 source ~/.mutt/account
 
 # cache
