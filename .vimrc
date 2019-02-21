@@ -168,6 +168,11 @@ let g:airline#extensions#tagbar#enabled = 0
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 
+" Gitgutter
+autocmd BufWritePost * GitGutter
+let g:gitgutter_log=1
+let s:grep_available=0
+
 highlight clear ALEErrorSign
 
 " completor
