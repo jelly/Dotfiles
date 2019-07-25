@@ -152,6 +152,10 @@ autocmd Filetype tex,latex setlocal spell
 autocmd Filetype tex,latex set grepprg=grep\ -nH\ $
 autocmd Filetype tex,latex let g:tex_flavor = "latex"
 
+" yaml
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
+
 " Vim-debug
 " ------------------------------
 let g:vdebug_options = { "break_on_open" : 0, }
