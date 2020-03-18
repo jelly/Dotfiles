@@ -14,9 +14,6 @@ Plug 'vim-airline/vim-airline-themes'
 " Git integration
 Plug 'tpope/vim-fugitive'
 
-" Xdebug integration
-Plug 'joonty/vdebug', { 'for': 'php' }
-
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
@@ -34,9 +31,6 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-surround'
 
 Plug 'editorconfig/editorconfig-vim'
-
-Plug 'tbabej/taskwiki'
-Plug 'vimwiki/vimwiki'
 
 " Add plugins to &runtimepath
 call plug#end()
