@@ -10,7 +10,6 @@ ao=pulse
 
 # use cache for network streams
 cache=auto
-cache-default=4096
 
 [live]
 profile-desc="Prevent A/V desync during live streams"
