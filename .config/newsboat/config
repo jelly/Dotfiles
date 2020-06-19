@@ -1,0 +1,23 @@
+max-items        100 # such comments are possible, too
+browser          chromium
+player mpv
+max-items 100 
+reload-time 30
+reload-threads 3
+refresh-on-startup yes
+show-read-feeds  no
+auto-reload yes
+reload-time 120
+notify-format "RSS - %d new/%n unread articles"
+notify-xterm yes
+bind-key j down
+bind-key k up
+article-sort-order date-asc
+highlight feedlist "^(N)" yellow default
+highlight articlelist "^(N)" yellow default
+highlight article "^Link[s:]|http[s:]//.*" magenta default 
+highlight article "^Title:.*" green default bold
+highlight article ".*URL:" magenta default bold
+highlight article "^Feed:.*" green default
+
+notify-program "notify-send"
