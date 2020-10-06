@@ -4,8 +4,7 @@
 #
 # Executed by startx (run your window manager from here)
 
-# pulseaudio
-start-pulseaudio-x11  &
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 # set keyboard layout
 setxkbmap -layout us  -option compose:ralt -option caps:hyper &
