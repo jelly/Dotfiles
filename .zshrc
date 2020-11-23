@@ -21,6 +21,8 @@ export DE=gnome
 export PREFIX=~/.local
 export NODE_PATH=~/.local/lib/node_modules/
 
+export PATH=$PATH:/home/jelle/bin/
+
 # Fancier coloring in neovim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
