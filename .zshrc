@@ -79,7 +79,6 @@ setopt share_history
 # Alias stuff
 #------------------------------
 alias ls="ls --color -F"
-alias ll="ls --color -lh"
 alias grep="grep --color=always"
 
 # pacman
