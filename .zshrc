@@ -2,8 +2,8 @@
 # History stuff
 #------------------------------
 HISTFILE=~/.histfile
-HISTSIZE=500000
-SAVEHIST=500000
+HISTSIZE=200000
+SAVEHIST=50000
 
 #------------------------------
 # Variables
@@ -233,6 +233,9 @@ setprompt () {
 }
 setprompt
 
+#------------------------------
+# gpg-agent
+#------------------------------
 # Start the gpg-agent if not already running
 if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
   gpg-connect-agent /bye >/dev/null 2>&1
