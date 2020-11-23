@@ -17,9 +17,6 @@ export EDITOR=vim
 # Set DE to gnome for chromium
 export DE=gnome
 
-# msata SSD
-export ASPROOT=/mnt/msata/asp/
-
 # For NPM
 export PREFIX=~/.local
 export NODE_PATH=~/.local/lib/node_modules/
