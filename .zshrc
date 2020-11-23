@@ -85,35 +85,6 @@ alias pacr='sudo pacman -Rs'
 alias pacq='pacman -Q'
 alias pacu='sudo pacman -U'
 
-_fetchpr() {
-    origin=${3:-origin}
-    ref=$1
-    branch=$2
-    program=${funcstack#_fetchpr};
-    if (( $# != 2 && $# != 3 )) then
-        echo usage:$program id branchname \[remote\];
-	return 1
-    fi
-
-    if git rev-parse --git-dir &> /dev/null; then
-         git fetch $origin $ref && git checkout $branch
-    else
-	echo 'error: not in git repo'
-    fi
-}
-
-# Checkout Github PR function
-gitpr() {
-    github="pull/$1/head:$2"
-    _fetchpr $github $2 $3
-}
-
-# Checkout Bitbucket PR function
-bitpr() {
-    bitbucket="refs/pull-requests/$1/from:$2"
-    _fetchpr $bitbucket $2 $3
-}
-
 # moving in dirs
 alias ..="cd .."
 
@@ -164,6 +135,35 @@ fi
 # svn diff
 svndiff() {
   svn diff "${@}" | colordiff | less -R
+}
+
+_fetchpr() {
+    origin=${3:-origin}
+    ref=$1
+    branch=$2
+    program=${funcstack#_fetchpr};
+    if (( $# != 2 && $# != 3 )) then
+        echo usage:$program id branchname \[remote\];
+	return 1
+    fi
+
+    if git rev-parse --git-dir &> /dev/null; then
+         git fetch $origin $ref && git checkout $branch
+    else
+	echo 'error: not in git repo'
+    fi
+}
+
+# Checkout Github PR function
+gitpr() {
+    github="pull/$1/head:$2"
+    _fetchpr $github $2 $3
+}
+
+# Checkout Bitbucket PR function
+bitpr() {
+    bitbucket="refs/pull-requests/$1/from:$2"
+    _fetchpr $bitbucket $2 $3
 }
 
 #------------------------------
