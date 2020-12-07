@@ -32,6 +32,8 @@ Plug 'tpope/vim-surround'
 
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'vimwiki/vimwiki', {'on' : ['VimwikiIndex', 'VimwikiUISelect'], 'for': 'wiki' }
+
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -200,3 +202,32 @@ if shell_error == 0
 endif
 " Tags
 set tags=./tags,tags;$HOME
+
+"{{{3 vimwiki:main
+let main_wiki = {}
+let main_wiki.path = '~/Notes/'
+let main_wiki.path_html = '~/.cache/vimwiki/main/html'
+let main_wiki.automatic_nested_syntaxes = 1
+let main_wiki.list_margin = 0
+let main_wiki.ext = '.md'
+let main_wiki.syntax = 'markdown'
+" TODO: https://cristianpb.github.io/blog/vimwiki-hugo
+let main_wiki.custom_wiki2html = '$HOME/bin/wiki2html.sh'
+let main_wiki.template_ext = '.html'
+"}}}
+"{{{3 vimwiki:blog
+let blog_wiki = {}
+let blog_wiki.path = '~/projects/website/'
+let blog_wiki.automatic_nested_syntaxes = 1
+let blog_wiki.list_margin = 0
+let blog_wiki.ext = '.md'
+let blog_wiki.syntax = 'markdown'
+"}}}
+"{{{ vimwiki
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_use_calendar=1
+let g:vimwiki_listsyms = '✗○◐●✓'
+let g:vimwiki_folding = ''
+let g:vimwiki_list = [main_wiki, blog_wiki]
+"}}}
