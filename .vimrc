@@ -56,9 +56,6 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
-" Fix php_sync_method undefined
-let php_sync_method=-1
-
 " Search
 " -------------------------------
 set hlsearch
