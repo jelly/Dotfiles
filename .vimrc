@@ -200,8 +200,6 @@ let status = system('git status')
 if shell_error == 0
 	let g:ackprg = 'git grep -Hni'
 endif
-" Tags
-set tags=./tags,tags;$HOME
 
 "{{{3 vimwiki:main
 let main_wiki = {}
