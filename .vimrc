@@ -17,9 +17,6 @@ Plug 'tpope/vim-fugitive'
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-" Tagbar
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
-
 " Completion
 Plug 'maralla/completor.vim', {'do': 'make js'}
 
@@ -163,7 +160,6 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format = ['✘ %d', '⚠ %d', '']
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:airline#extensions#tagbar#enabled = 0
 
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
@@ -186,7 +182,6 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " ack.vim, fuzzy find
 nnoremap <space>ff :Ack!<Space>
 nnoremap <space>\\ :NERDTreeToggle<CR>
-nnoremap <space>tt :TagbarToggle<CR>
 
 " format json
 nnoremap <space>json :%! python -m json.tool<CR>
