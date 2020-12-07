@@ -8,8 +8,12 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'w0rp/ale'
 
+" style
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Shows git diff in a sign column
+Plug 'airblade/vim-gitgutter'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
@@ -20,11 +24,10 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Completion
 Plug 'maralla/completor.vim', {'do': 'make js'}
 
-" Shows git diff in a sign column
-Plug 'airblade/vim-gitgutter'
-
+" search tool
 Plug 'mileszs/ack.vim'
 
+" formatting
 Plug 'tpope/vim-surround'
 
 Plug 'editorconfig/editorconfig-vim'
