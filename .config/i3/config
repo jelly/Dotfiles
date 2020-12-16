@@ -168,9 +168,9 @@ bindsym XF86Launch5 exec "spotify"
 # m3
 bindsym XF86Launch6 exec "steam"
 # m4
-bindsym XF86Launch7 exec "keepassx"
+bindsym XF86Launch7 exec "thunderbird"
 # m5
-bindsym XF86Launch8 exec "spotify"
+bindsym XF86Launch8 exec "pavucontrol"
 
 bindsym Mod1 + l exec "i3lock -c 000000"
 
