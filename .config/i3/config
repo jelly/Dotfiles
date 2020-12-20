@@ -16,6 +16,7 @@ for_window [class="Pinentry"] floating enable
 # Assign certain programs to a certain workspace
 assign [class="Spotify" instance="spotify"] 10
 assign [class="Chromium"] 2
+assign [class="Thunderbird"] 6
 assign [class="Steam"] 8
 
 # start a terminal
