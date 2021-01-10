@@ -140,7 +140,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # m1
-bindsym XF86Tools exec "chromium"
+bindsym XF86Tools exec "rofi -show calc -modi calc -no-show-match -no-sort"
 # m2
 bindsym XF86Launch5 exec "spotify"
 # m3
