@@ -14,7 +14,7 @@ font:
     family: "Source Code Pro"
 
   # Point size of the font
-  size: 12.0
+  size: 10.0
 
 # Colors (Blood Moon)
 colors:
