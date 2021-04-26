@@ -5,7 +5,7 @@ This git repo contains my dotfiles for popular software like mpv, vim, i3, newsb
 
 ### Window Manager setup
 
-* [i3](https://github.com/alacritty/alacritty/)
+* [i3](https://github.com/i3/i3/)
 * [i3lock](https://github.com/i3/i3lock)
 * [i3status](https://github.com/i3/i3status)
 * [alacritty](https://github.com/alacritty/alacritty/)
