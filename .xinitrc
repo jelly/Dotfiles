@@ -13,4 +13,4 @@ setxkbmap -layout us  -option compose:ralt -option caps:hyper &
 xset +dpms
 xset dpms 0 0 300
 
-exec i3
+exec dbus-launch i3
