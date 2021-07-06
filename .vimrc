@@ -34,10 +34,16 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'vimwiki/vimwiki', {'on' : ['VimwikiIndex', 'VimwikiUISelect'], 'for': 'wiki' }
 
+Plug 'rust-lang/rust.vim'
+Plug 'togglebyte/togglerust', { 'branch': 'main' }
+
 " Add plugins to &runtimepath
 call plug#end()
 
 filetype plugin indent on
+
+" Debug support
+packadd termdebug
 
 " Autocmd options
 " "--------------------------------
