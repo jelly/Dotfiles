@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-Plug 'dense-analysis/ale'
+Plug 'w0rp/ale'
 
 " style
 Plug 'bling/vim-airline'
@@ -24,15 +24,14 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Completion
 Plug 'maralla/completor.vim', {'do': 'make js'}
 
-" search tool
-Plug 'mileszs/ack.vim'
-
 " formatting
 Plug 'tpope/vim-surround'
 
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'vimwiki/vimwiki', {'on' : ['VimwikiIndex', 'VimwikiUISelect'], 'for': 'wiki' }
+
+Plug 'junegunn/fzf.vim'
 
 Plug 'rust-lang/rust.vim'
 Plug 'togglebyte/togglerust', { 'branch': 'main' }
@@ -88,6 +87,7 @@ nnoremap <space>gb :Git branch<Space>
 nnoremap <space>go :Git checkout<Space>
 nnoremap <space>gps :Git push<CR>
 nnoremap <space>gpl :Git pull<CR>
+nnoremap <space>gf :GFiles<CR>
 
 " notes
 nnoremap <F1> :terminal make serve<CR>
@@ -162,14 +162,17 @@ let g:ale_statusline_format = ['✘ %d', '⚠ %d', '']
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 nmap gd :ALEGoToDefinition<CR>
 nmap gr :ALEFindReferences<CR>
 nmap R :ALERename<CR>
 nmap K :ALEHover<CR>
 
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
+" FZF
+nmap F :Files<CR>
+nnoremap <space>ff :Ag<space>
 
 " Gitgutter
 autocmd BufWritePost * GitGutter
@@ -186,22 +189,10 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" ack.vim, fuzzy find
-nnoremap <space>ff :Ack!<Space>
 nnoremap <space>\\ :NERDTreeToggle<CR>
 
 " format json
 nnoremap <space>json :%! python -m json.tool<CR>
-
-" Use pacman -S the_silver_searcher if avaliable.
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
-let status = system('git status')
-if shell_error == 0
-	let g:ackprg = 'git grep -Hni'
-endif
 
 "{{{3 vimwiki:main
 let main_wiki = {}
