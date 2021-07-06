@@ -161,9 +161,11 @@ let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format = ['✘ %d', '⚠ %d', '']
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 1
 
 nmap gd :ALEGoToDefinition<CR>
 nmap gr :ALEFindReferences<CR>
+nmap R :ALERename<CR>
 nmap K :ALEHover<CR>
 
 " Set this. Airline will handle the rest.

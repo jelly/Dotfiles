@@ -8,3 +8,5 @@ nmap <Leader>b :Cargo test -- --nocapture<CR>
 nmap <F5> :call RunDebugger()<CR>
 nmap <leader>d :Break<CR>
 nmap <leader>r :Run<CR>
+
+let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
