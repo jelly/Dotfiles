@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " style
 Plug 'bling/vim-airline'
@@ -128,12 +128,6 @@ set spell spelllang=nl,en
 set nospell
 let g:tex_comment_nospell= 1
 
-" Python stuff
-autocmd FileType python let python_highlight_all = 1
-autocmd FileType python let python_slow_sync = 1
-autocmd FileType python set expandtab shiftwidth=4 softtabstop=4
-autocmd FileType python set completeopt=preview
-
 " set filetype of PKGBUILD
 augroup pkgbuild
     autocmd!
@@ -170,6 +164,11 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format = ['✘ %d', '⚠ %d', '']
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_completion_enabled = 1
+
+nmap gd :ALEGoToDefinition<CR>
+nmap gr :ALEFindReferences<CR>
+nmap K :ALEHover<CR>
 
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
