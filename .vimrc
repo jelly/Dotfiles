@@ -167,7 +167,7 @@ let g:airline#extensions#ale#enabled = 1
 
 nmap gd :ALEGoToDefinition<CR>
 nmap gr :ALEFindReferences<CR>
-nmap R :ALERename<CR>
+nmap gR :ALERename<CR>
 nmap K :ALEHover<CR>
 
 " FZF
