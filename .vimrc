@@ -89,11 +89,6 @@ nnoremap <space>gps :Git push<CR>
 nnoremap <space>gpl :Git pull<CR>
 nnoremap <space>gf :GFiles<CR>
 
-" notes
-nnoremap <F1> :terminal make serve<CR>
-nnoremap <F2> :!make rsync_upload<CR>
-nnoremap <F3> :!make commit_push<CR>
-
 " Vim-airline
 " -------------------------------
 
