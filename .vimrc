@@ -92,6 +92,7 @@ nnoremap <space>gf :GFiles<CR>
 " notes
 nnoremap <F1> :terminal make serve<CR>
 nnoremap <F2> :!make rsync_upload<CR>
+nnoremap <F3> :!make commit_push<CR>
 
 " Vim-airline
 " -------------------------------
@@ -173,6 +174,7 @@ nmap K :ALEHover<CR>
 " FZF
 nmap F :Files<CR>
 nnoremap <space>ff :Ag<space>
+nnoremap <space>ss :Snippets<CR>
 
 " Gitgutter
 autocmd BufWritePost * GitGutter
