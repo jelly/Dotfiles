@@ -9,4 +9,9 @@ nmap <F5> :call RunDebugger()<CR>
 nmap <leader>d :Break<CR>
 nmap <leader>r :Run<CR>
 
+nmap <F1> :Run<CR>
+nmap <F2> :Step<CR>
+nmap <F3> :Over<CR>
+nmap <F4> :Stop<CR>
+
 let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
