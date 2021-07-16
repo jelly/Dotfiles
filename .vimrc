@@ -215,7 +215,7 @@ let blog_wiki.syntax = 'markdown'
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_use_calendar=1
-let g:vimwiki_listsyms = '✗○◐●✓'
+let g:vimwiki_listsyms = ' x'
 let g:vimwiki_folding = ''
 let g:vimwiki_list = [main_wiki, blog_wiki]
 "}}}
