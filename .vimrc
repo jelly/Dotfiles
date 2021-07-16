@@ -30,6 +30,7 @@ Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'vimwiki/vimwiki', {'on' : ['VimwikiIndex', 'VimwikiUISelect'], 'for': 'wiki' }
+Plug 'mattn/calendar-vim'
 
 Plug 'junegunn/fzf.vim'
 
@@ -190,6 +191,8 @@ nnoremap <space>\\ :NERDTreeToggle<CR>
 
 " format json
 nnoremap <space>json :%! python -m json.tool<CR>
+
+let g:calendar_diary=$HOME.'/Notes/diary'
 
 "{{{3 vimwiki:main
 let main_wiki = {}
