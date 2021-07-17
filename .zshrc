@@ -171,6 +171,12 @@ bitpr() {
     _fetchpr $bitbucket $2 $3
 }
 
+# Checkout Gitlab MR function
+gitmr() {
+    gitlab="merge-requests/$1/head:$2"
+    _fetchpr $gitlab $2 $3
+}
+
 #------------------------------
 # Window title
 #------------------------------
