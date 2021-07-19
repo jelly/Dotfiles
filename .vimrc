@@ -162,6 +162,12 @@ let g:ale_fix_on_save = 1
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 
+let g:ale_linters = {}
+" Requires python-lanaguage-server flake8 bandit
+let g:ale_linters.python = ['pyls', 'flake8', 'bandit']
+" Requires: rust-analyzer
+let g:ale_linters.rust = ['analyzer']
+
 nmap gd :ALEGoToDefinition<CR>
 nmap gr :ALEFindReferences<CR>
 nmap gR :ALERename<CR>
