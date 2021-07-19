@@ -114,6 +114,12 @@ zstyle ':completion:*:kill:*'   force-list always
 zstyle ':completion:*:*:killall:*' menu yes select
 zstyle ':completion:*:killall:*'   force-list always
 
+autoload -U incremental-complete-word predict-on
+zle -N incremental-complete-word
+zle -N predict-on
+zle -N predict-off
+bindkey '^X1' predict-on
+bindkey '^X2' predict-off
 
 #------------------------------
 # Functions
