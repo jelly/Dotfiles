@@ -4,6 +4,7 @@
 nmap <C-b> :Compile<CR>
 nmap <Leader>x :Cargo run<CR>
 nmap <Leader>b :Cargo test -- --nocapture<CR>
+nmap <Leader>c :Cargo clippy<CR>
 
 nmap <F5> :call RunDebugger()<CR>
 nmap <leader>d :Break<CR>
