@@ -1,4 +1,5 @@
 function! Pkgrel()
+	" Bump pkgrel
 	let save_pos = getpos(".")
 	let pattern = 'pkgrel='
 	if search(pattern, 'eW') is 0
