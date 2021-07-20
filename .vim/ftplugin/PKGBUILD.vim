@@ -9,3 +9,4 @@ function! Pkgrel()
 endfunction
 
 nmap <F1> :call Pkgrel()<CR>
+nmap <F2> :!updpkgsums<CR>
