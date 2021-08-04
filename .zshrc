@@ -74,6 +74,7 @@ setopt hist_verify
 #------------------------------
 # Alias stuff
 #------------------------------
+alias cat="bat"
 alias ls="ls --color -F"
 alias grep="grep --color=always"
 
