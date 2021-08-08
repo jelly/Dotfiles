@@ -1,0 +1,57 @@
+#!/bin/python
+
+'''
+Small Python script to generate a RSS feed for the Python Weekly Newsletter.
+
+Dependencies:
+
+* python-requests
+* python-feedgen
+* python-beautifulSoup4
+'''
+
+from datetime import datetime, timezone
+
+import requests
+
+from feedgen.feed import FeedGenerator
+from bs4 import BeautifulSoup
+
+
+URL = 'https://us2.campaign-archive.com/home/?u=e2e180baf855ac797ef407fc7&id=9e26887fc5'
+
+
+def create_feed():
+    fg = FeedGenerator()
+    fg.id('https://dodgy.download/pythonweekly.rss')
+    fg.title('Python Weekly')
+    fg.description('Python Weekly')
+    fg.link(href=URL, rel='alternate')
+    fg.language('en')
+    return fg
+
+
+def main():
+    fg = create_feed()
+    r = requests.get(URL)
+    soup = BeautifulSoup(r.text, features='lxml')
+    episodes = soup.find_all("li", class_="campaign")
+    for episode in episodes:
+        datestr = episode.text[:10]
+        pubdate = datetime.strptime(datestr, '%m/%d/%Y')
+        pubdate = pubdate.replace(tzinfo=timezone.utc)
+        link = episode.a.get('href')
+        title = episode.a.get('title')
+
+        fe = fg.add_entry()
+        fe.id(link)
+        fe.title(title)
+        fe.description(title)
+        fe.link(href=link)
+        fe.pubDate(pubdate)
+
+    fg.rss_file('pythonweekly.xml')
+
+
+if __name__ == "__main__":
+    main()
