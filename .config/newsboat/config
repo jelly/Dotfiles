@@ -21,3 +21,10 @@ highlight article ".*URL:" magenta default bold
 highlight article "^Feed:.*" green default
 
 notify-program "notify-send"
+
+color listnormal_unread white black
+color listfocus         magenta black
+color listfocus_unread  magenta black
+color info              black green
+color background        white black
+color article           white black
