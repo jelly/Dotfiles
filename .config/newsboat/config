@@ -12,6 +12,8 @@ notify-format "RSS - %d new/%n unread articles"
 notify-xterm yes
 bind-key j down
 bind-key k up
+bind-key g home
+bind-key G end
 bind-key BACKSPACE quit
 article-sort-order date-asc
 highlight feedlist "^(N)" yellow default
