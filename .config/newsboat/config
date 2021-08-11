@@ -15,6 +15,7 @@ bind-key k up
 bind-key g home
 bind-key G end
 bind-key BACKSPACE quit
+bind-key i quit
 article-sort-order date-asc
 highlight feedlist "^(N)" yellow default
 highlight articlelist "^(N)" yellow default
