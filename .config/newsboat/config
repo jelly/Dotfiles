@@ -1,5 +1,5 @@
 max-items        100 # such comments are possible, too
-browser          chromium
+browser          w3m
 player mpv
 max-items 100 
 reload-time 30
@@ -24,6 +24,9 @@ highlight article "^Title:.*" green default bold
 highlight article ".*URL:" magenta default bold
 highlight article "^Feed:.*" green default
 
+bind-key b bookmark
+bookmark-cmd "newsboat-bookmark"
+bookmark-autopilot yes
 notify-program "notify-send"
 
 color listnormal_unread white black
