@@ -2,7 +2,6 @@ http://feeds.arstechnica.com/arstechnica/index
 http://news.ycombinator.com/rss
 http://feeds.guardian.co.uk/theguardian/rss news
 https://lwn.net/headlines/newrss linux
-http://www.reddit.com/r/archlinux/.rss
 https://archlinux.org/feeds/planet/
 http://feeds.feedburner.com/tweakers/mixed
 https://lobste.rs/rss
@@ -14,3 +13,4 @@ https://dodgy.download/pythonweekly.xml
 https://www.phoronix.com/rss.php
 http://feeds.nos.nl/nosnieuwsalgemeen
 https://reproducible-builds.org/blog/index.rss
+https://dodgy.download/webpages.rss
