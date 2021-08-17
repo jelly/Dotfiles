@@ -1,0 +1,5 @@
+#!/bin/sh
+
+PROJECTDIR=~/projects/readlater
+
+${PROJECTDIR}/target/debug/readlater newsboat "$@"
