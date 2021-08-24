@@ -26,6 +26,7 @@ Plug 'maralla/completor.vim', {'do': 'make js'}
 
 " formatting
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -104,6 +105,7 @@ syntax on
 " Mouse
 if has('mouse')
   set mouse=a
+  set mousemodel=popup_setpos
 endif
 
 " GUI Options GVIM
@@ -172,6 +174,7 @@ let g:ale_linters.rust = ['analyzer']
 nmap gd :ALEGoToDefinition<CR>
 nmap gr :ALEFindReferences<CR>
 nmap gR :ALERename<CR>
+nmap gs :ALESymbolSearch<space>
 nmap K :ALEHover<CR>
 
 " FZF
