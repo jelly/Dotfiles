@@ -165,8 +165,6 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {}
 " Requires python-language-server flake8 bandit
 let g:ale_linters.python = ['pylsp', 'flake8', 'bandit']
-" Note: should really use https://github.com/python-lsp/python-lsp-server
-let g:ale_python_pylsp_executable = 'pyls'
 
 " Requires: rust-analyzer
 let g:ale_linters.rust = ['analyzer']
