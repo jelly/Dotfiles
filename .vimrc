@@ -152,6 +152,9 @@ autocmd Filetype tex,latex let g:tex_flavor = "latex"
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
 
+" workaround snippets not working https://github.com/honza/vim-snippets/issues/1362
+au! BufNewFile,BufReadPost *.jsx set filetype=javascript foldmethod=indent
+
 " ALE
 " ------------------------------
 let g:ale_sign_column_always = 1
@@ -165,11 +168,15 @@ let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {}
+let g:ale_fixers = {}
 " Requires python-language-server flake8 bandit
 let g:ale_linters.python = ['pyright', 'flake8', 'bandit']
 
 " Requires: rust-analyzer
 let g:ale_linters.rust = ['analyzer']
+
+let g:ale_linters.javascript = ['tsserver']
+let g:ale_fixers.javascript = ['eslint']
 
 nmap gd :ALEGoToDefinition<CR>
 nmap gr :ALEFindReferences<CR>
