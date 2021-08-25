@@ -1,5 +1,5 @@
 max-items        100 # such comments are possible, too
-browser          w3m
+browser          chromium
 player mpv
 max-items 100 
 reload-time 30
