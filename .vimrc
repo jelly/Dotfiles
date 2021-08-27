@@ -127,15 +127,6 @@ set spell spelllang=nl,en
 set nospell
 let g:tex_comment_nospell= 1
 
-" set filetype of PKGBUILD
-augroup pkgbuild
-    autocmd!
-    autocmd BufRead,BufNewFile PKGBUILD set filetype=PKGBUILD
-augroup END
-
-" PKGBUILD stuff
-autocmd FileType PKGBUILD set expandtab shiftwidth=2 softtabstop=4
-"
 " sh stuff
 autocmd FileType sh set expandtab shiftwidth=2 softtabstop=4 
 
