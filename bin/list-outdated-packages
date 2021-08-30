@@ -1,0 +1,5 @@
+#!/bin/bash
+
+user=jelle
+
+curl -s "https://archlinux.org/packages/search/json/?maintainer=${user}&flagged=Flagged" | jq -r '.results[].pkgbase'
