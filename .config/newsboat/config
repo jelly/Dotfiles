@@ -24,6 +24,12 @@ highlight article "^Title:.*" green default bold
 highlight article ".*URL:" magenta default bold
 highlight article "^Feed:.*" green default
 
+urls-source "miniflux"
+miniflux-url "https://miniflux.vdwaa.nl"
+
+miniflux-login "jelle"
+miniflux-passwordeval "pass show internet/miniflux | head -n1"
+
 bind-key b bookmark
 bookmark-cmd "newsboat-bookmark"
 bookmark-autopilot yes
