@@ -166,6 +166,9 @@ let g:ale_linters.python = ['pyright', 'flake8', 'bandit']
 " Requires: rust-analyzer
 let g:ale_linters.rust = ['analyzer']
 
+" Requires: gopls
+let g:ale_linters.golang = ['gopls']
+
 let g:ale_linters.javascript = ['tsserver']
 let g:ale_fixers.javascript = ['eslint']
 
