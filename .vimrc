@@ -127,6 +127,9 @@ set spell spelllang=nl,en
 set nospell
 let g:tex_comment_nospell= 1
 
+"open matches from a file preview in a new tab
+set switchbuf+=newtab
+
 " sh stuff
 autocmd FileType sh set expandtab shiftwidth=2 softtabstop=4 
 
