@@ -13,3 +13,11 @@ This git repo contains my dotfiles for popular software like mpv, vim, i3, newsb
 * acpilight
 * libpulse (for pactl)
 * network-manager-applet (for nm-applet)
+
+### Git setup
+
+Global git ignore for taskell/custom run project scripts:
+
+```sh
+git config --global core.excludesfile ~/.globalgitignore
+```
