@@ -172,6 +172,9 @@ let g:ale_linters.rust = ['analyzer']
 " Requires: gopls
 let g:ale_linters.golang = ['gopls']
 
+" Requires: clangd
+let g:ale_linters.c = ['clangd']
+
 let g:ale_linters.javascript = ['tsserver']
 let g:ale_fixers.javascript = ['eslint']
 
