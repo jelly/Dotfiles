@@ -163,7 +163,7 @@ let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {}
 let g:ale_fixers = {}
-" Requires python-language-server flake8 bandit
+" Requires pyright flake8 bandit
 let g:ale_linters.python = ['pyright', 'flake8', 'bandit']
 
 " Requires: rust-analyzer
