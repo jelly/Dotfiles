@@ -165,6 +165,7 @@ let g:ale_linters = {}
 let g:ale_fixers = {}
 " Requires pyright flake8 bandit
 let g:ale_linters.python = ['pyright', 'flake8', 'bandit']
+let g:ale_fixers.python = ['trim_whitespace', 'autopep8']
 
 " Requires: rust-analyzer
 let g:ale_linters.rust = ['analyzer']
