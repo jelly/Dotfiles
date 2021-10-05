@@ -171,7 +171,8 @@ let g:ale_fixers.python = ['trim_whitespace', 'autopep8']
 let g:ale_linters.rust = ['analyzer']
 
 " Requires: gopls
-let g:ale_linters.golang = ['gopls']
+let g:ale_linters.golang = ['gopls', 'gofmt']
+let g:ale_fixers.golang = ['gofmt']
 
 " Requires: clangd
 let g:ale_linters.c = ['clangd']
