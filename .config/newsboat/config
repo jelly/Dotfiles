@@ -1,7 +1,6 @@
-max-items        100 # such comments are possible, too
 browser          chromium
 player mpv
-max-items 100 
+max-items 100
 reload-time 30
 reload-threads 3
 refresh-on-startup yes
