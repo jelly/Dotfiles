@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo TestApplication-*
+rm -I TestApplication-*
