@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mpv --no-video ytdl://ytsearch:"$@"
+mpv --no-video ytdl://ytsearch:"$*"
