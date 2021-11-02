@@ -177,6 +177,9 @@ let g:ale_fixers.golang = ['gofmt']
 " Requires: clangd
 let g:ale_linters.c = ['clangd']
 
+" Requires: shellcheck, bash-language-server
+let g:ale_linters.sh = ['shellcheck', 'language_server']
+
 let g:ale_linters.javascript = ['tsserver']
 let g:ale_fixers.javascript = ['eslint']
 
