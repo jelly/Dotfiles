@@ -1,4 +1,4 @@
-browser          chromium
+browser          /home/jelle/bin/newsboat-open-link
 player mpv
 max-items 100
 reload-time 30

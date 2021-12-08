@@ -1,0 +1,9 @@
+#!/bin/bash
+
+url=$1
+
+if [[ $url == *"youtube.com"* ]];then
+	mpv $url
+else
+	chromium $url 2> /dev/null
+fi
