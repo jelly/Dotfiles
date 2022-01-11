@@ -202,6 +202,10 @@ updategitfork() {
 	git push origin $branch
 }
 
+cockpit-queue-status() {
+	curl -s http://webhook-frontdoor.apps.ocp.ci.centos.org/inspect-queue
+}
+
 #------------------------------
 # Window title
 #------------------------------
