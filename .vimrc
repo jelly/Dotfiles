@@ -164,7 +164,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {}
 let g:ale_fixers = {}
 " Requires pyright flake8 bandit
-let g:ale_linters.python = ['pyright', 'flake8', 'bandit']
+let g:ale_linters.python = ['flake8', 'bandit']
 let g:ale_fixers.python = ['trim_whitespace', 'autopep8']
 
 " Requires: rust-analyzer
@@ -182,6 +182,8 @@ let g:ale_linters.sh = ['shellcheck', 'language_server']
 
 let g:ale_linters.javascript = ['tsserver']
 let g:ale_fixers.javascript = ['eslint']
+" Ignore webpack.config.js as it's usually formatted different
+let g:ale_javascript_eslint_options = '--ignore-pattern webpack.config.js'
 
 nmap gd :ALEGoToDefinition<CR>
 nmap gr :ALEFindReferences<CR>
