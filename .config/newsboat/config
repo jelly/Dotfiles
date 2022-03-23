@@ -32,7 +32,6 @@ miniflux-passwordeval "pass show internet/miniflux | head -n1"
 bind-key b bookmark
 bookmark-cmd "newsboat-bookmark"
 bookmark-autopilot yes
-notify-program "notify-send"
 
 color listnormal_unread white black
 color listfocus         magenta black
