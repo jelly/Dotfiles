@@ -16,6 +16,7 @@ export EDITOR=vim
 
 # Set DE to gnome for chromium
 export DE=gnome
+export LANG=en_GB.UTF-8
 
 # For NPM
 export PREFIX=~/.local
