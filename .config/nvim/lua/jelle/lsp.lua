@@ -23,6 +23,7 @@ local on_attach = function(client, bufnr)
 	keymap('<leader>e', vim.diagnostic.open_float)
 	keymap('[d', vim.diagnostic.goto_prev)
 	keymap(']d', vim.diagnostic.goto_next)
+        vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
 
@@ -37,12 +38,29 @@ end
 
 local null_ls = require("null-ls")
 null_ls.setup({
+    debug = true,
     sources = {
+        null_ls.builtins.code_actions.eslint.with({
+		extra_args = { "--ignore-pattern", "webpack.config.js" }
+	}),
         null_ls.builtins.diagnostics.eslint.with({
 		extra_args = { "--ignore-pattern", "webpack.config.js" }
 	}),
+	null_ls.builtins.formatting.trim_whitespace,
+	null_ls.builtins.diagnostics.shellcheck,
 	null_ls.builtins.code_actions.shellcheck,
-	null_ls.builtins.completion.spell,
+	-- null_ls.builtins.completion.spell,
 	null_ls.builtins.formatting.autopep8,
     },
+    -- Enable when formatting plugins are stable
+    -- on_attach = function(client)
+    --     if client.resolved_capabilities.document_formatting then
+    --         vim.cmd([[
+    --         augroup LspFormatting
+    --             autocmd! * <buffer>
+    --             autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+    --         augroup END
+    --         ]])
+    --     end
+    -- end,
 })

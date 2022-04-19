@@ -12,6 +12,7 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
+Plug 'j-hui/fidget.nvim'
 
 " Comments
 Plug 'numToStr/Comment.nvim'
@@ -27,7 +28,11 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 
+" Searching
+Plug 'nvim-telescope/telescope.nvim'
+
 call plug#end()
 
 lua require('Comment').setup()
 lua require("luasnip.loaders.from_vscode").lazy_load()
+lua require("fidget").setup{}
