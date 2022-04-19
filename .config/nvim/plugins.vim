@@ -37,6 +37,10 @@ Plug 'editorconfig/editorconfig-vim'
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'
 
+" Wiki
+Plug 'vimwiki/vimwiki', {'on' : ['VimwikiIndex', 'VimwikiUISelect'], 'for': 'wiki' }
+Plug 'ElPiloto/telescope-vimwiki.nvim'
+
 call plug#end()
 
 lua require('Comment').setup()
