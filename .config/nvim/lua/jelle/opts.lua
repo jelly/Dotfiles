@@ -13,3 +13,4 @@ vim.g.maplocalleader = ' '
 
 vim.cmd[[colorscheme tokyonight]]
 
+vim.o.termguicolors = true
