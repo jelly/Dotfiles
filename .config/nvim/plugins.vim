@@ -34,9 +34,8 @@ Plug 'nvim-telescope/telescope.nvim'
 " Editor config
 Plug 'editorconfig/editorconfig-vim'
 
-" Status line, requires ttf-nerd-fonts-symbols
-Plug 'https://github.com/adelarsq/neoline.vim'
-Plug 'https://github.com/ryanoasis/vim-devicons'
+" Statusline
+Plug 'nvim-lualine/lualine.nvim'
 
 call plug#end()
 
