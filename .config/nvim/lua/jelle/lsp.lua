@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 
 local on_attach = function(client, bufnr)
-    local opts = { noremap=true, silent=true }
+    local opts = { noremap=true, silent=true, buffer=bufnr }
 	local function keymap(key, fun)
 		vim.keymap.set('n', key, fun, opts)
 	end
@@ -31,6 +31,18 @@ local servers = {'clangd', 'pyright', 'rust_analyzer', 'tsserver'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
-		-- capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	}
 end
+
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.eslint.with({
+		extra_args = { "--ignore-pattern", "webpack.config.js" }
+	}),
+	null_ls.builtins.code_actions.shellcheck,
+	null_ls.builtins.completion.spell,
+	null_ls.builtins.formatting.autopep8,
+    },
+})
