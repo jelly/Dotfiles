@@ -31,6 +31,9 @@ Plug 'rafamadriz/friendly-snippets'
 " Searching
 Plug 'nvim-telescope/telescope.nvim'
 
+" Editor config
+Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 
 lua require('Comment').setup()
