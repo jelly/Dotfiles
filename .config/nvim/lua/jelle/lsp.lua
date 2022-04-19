@@ -36,6 +36,15 @@ for _, lsp in ipairs(servers) do
 	}
 end
 
+vim.lsp.handlers['textDocument/codeAction'] = require'telescope.builtin'.lsp_code_actions
+vim.lsp.handlers['textDocument/references'] = require'telescope.builtin'.lsp_references
+vim.lsp.handlers['textDocument/definition'] = require'telescope.builtin'.lsp_definitions
+vim.lsp.handlers['textDocument/typeDefinition'] = require'telescope.builtin'.lsp_type_definitions
+vim.lsp.handlers['textDocument/implementation'] = require'telescope.builtin'.lsp_implementations
+vim.lsp.handlers['textDocument/documentSymbol'] = require'telescope.builtin'.lsp_document_symbols
+vim.lsp.handlers['workspace/symbol'] = require'telescope.builtin'.lsp_workspace_symbols
+
+
 local null_ls = require("null-ls")
 null_ls.setup({
     debug = true,
