@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local bring = require('jelle.utils')
 
 local on_attach = function(client, bufnr)
     local opts = { noremap=true, silent=true, buffer=bufnr }
@@ -9,7 +10,7 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	keymap('gD', vim.lsp.buf.declaration)
-	keymap('gd', vim.lsp.buf.definition)
+	keymap('gd', bring.bring_or_create)
 	keymap('<leader>D', vim.lsp.buf.type_definition)
 	keymap('gi', vim.lsp.buf.implementation)
 	keymap('gr', vim.lsp.buf.references)
