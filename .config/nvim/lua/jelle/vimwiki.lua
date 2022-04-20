@@ -6,8 +6,7 @@ function keymap(key, fun)
 	vim.keymap.set('n', key, fun, opts)
 end
 
--- https://github.com/ElPiloto/telescope-vimwiki.nvim/issues/4
-keymap('fw', ":Telescope vimwiki<cr>")
+keymap('fw', require('telescope').extensions.vimwiki.vimwiki)
 keymap('fv', require('telescope').extensions.vimwiki.live_grep)
 
 local main_wiki = {
