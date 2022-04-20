@@ -28,7 +28,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 
-" Searching
+" Searching, requires ripgrep/fd
 Plug 'nvim-telescope/telescope.nvim'
 
 " Editor config
