@@ -9,7 +9,6 @@ local telescope = require('telescope.builtin')
 
 keymap("<leader>ga", ":Git add %:p<CR><CR>")
 keymap("<leader>gb", ":Git blame<CR>")
-keymap("<leader>gs", ":Git<CR>")
 keymap("<leader>gt", ":Git commit -v -q %:p<CR>")
 keymap("<leader>gd", ":Gdiff<CR>")
 keymap("<leader>ge", ":Gedit<CR>")
@@ -21,8 +20,12 @@ keymap("<leader>gm", ":Gmove<Space>")
 keymap("<leader>go", ":Git checkout<Space>")
 keymap("<leader>gps", ":Git push<CR>")
 keymap("<leader>gpl", ":Git pull<CR>")
-keymap('<leader>gf', telescope.git_files)
+keymap("<F1>", ":! updategitfork<CR>")
+keymap("<leader>gu", ":! updategitfork<CR>")
+
+keymap('<leader>gf', telescope.git_branches)
 keymap('<leader>gc', telescope.git_commits)
+keymap("<leader>gs", telescope.git_status)
 
 
 require('gitsigns').setup{
