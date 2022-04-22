@@ -164,7 +164,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {}
 let g:ale_fixers = {}
 " Requires pyright flake8 bandit
-let g:ale_linters.python = ['flake8', 'bandit']
+let g:ale_linters.python = ['flake8', 'bandit', 'pyright']
 let g:ale_fixers.python = ['trim_whitespace', 'autopep8']
 
 " Requires: rust-analyzer
