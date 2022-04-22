@@ -5,10 +5,11 @@ function keymap(key, fun)
 	vim.keymap.set('n', key, fun, opts)
 end
 
+local telescope = require('telescope.builtin')
+
 keymap("<leader>ga", ":Git add %:p<CR><CR>")
 keymap("<leader>gb", ":Git blame<CR>")
 keymap("<leader>gs", ":Git<CR>")
-keymap("<leader>gc", ":Git commit -v -q<CR>")
 keymap("<leader>gt", ":Git commit -v -q %:p<CR>")
 keymap("<leader>gd", ":Gdiff<CR>")
 keymap("<leader>ge", ":Gedit<CR>")
@@ -20,7 +21,8 @@ keymap("<leader>gm", ":Gmove<Space>")
 keymap("<leader>go", ":Git checkout<Space>")
 keymap("<leader>gps", ":Git push<CR>")
 keymap("<leader>gpl", ":Git pull<CR>")
-keymap("<leader>gf", ":GFiles<CR>")
+keymap('<leader>gf', telescope.git_files)
+keymap('<leader>gc', telescope.git_commits)
 
 
 require('gitsigns').setup{
