@@ -28,8 +28,9 @@ keymap("<leader>gpl", ":Git pull<CR>")
 keymap("<F1>", ":! updategitfork<CR>")
 keymap("<leader>gu", ":! updategitfork<CR>")
 
-keymap('<leader>gf', telescope.git_branches)
-keymap('<leader>gc', telescope.git_commits)
+keymap('<leader>gc', telescope.git_branches)
+keymap('<leader>gf', telescope.git_files)
+keymap('<leader>gl', telescope.git_commits)
 keymap("<leader>gs", telescope.git_status)
 
 
