@@ -7,12 +7,17 @@ end
 
 local telescope = require('telescope.builtin')
 
-keymap("<leader>ga", ":Git add %:p<CR><CR>")
 keymap("<leader>gb", ":Git blame<CR>")
 keymap("<leader>gt", ":Git commit -v -q %:p<CR>")
 keymap("<leader>gd", ":Gdiff<CR>")
 keymap("<leader>ge", ":Gedit<CR>")
-keymap("<leader>gr", ":Gread<CR>")
+
+-- Rebase in le neovim
+-- TODO: don't harcode main, but use git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+keymap("<leader>grm", ":Git rebase -i main<CR>")
+keymap("<leader>grc", ":Git rebase --continue<CR>")
+keymap("<leader>ga", ":Git commit --amend %:p<CR><CR>")
+
 keymap("<leader>gw", ":Gwrite<CR><CR>")
 keymap("<leader>gl", ":Gclog<CR>")
 keymap("<leader>gp", ":Ggrep<Space>")
