@@ -88,7 +88,7 @@ alias pacq='pacman -Q'
 alias pacu='sudo pacman -U'
 
 # vim wiki
-alias notes='cd ~/Notes && vim -c VimwikiIndex'
+alias notes='cd ~/Notes && nvim -c VimwikiIndex'
 alias diary='cd ~/Notes/diary/ && vim diary.md'
 alias vimwikis='vim -c VimwikiUISelect'
 
@@ -183,24 +183,6 @@ bitpr() {
 gitmr() {
     gitlab="merge-requests/$1/head:$2"
     _fetchpr $gitlab $2 $3
-}
-
-updategitfork() {
-	# check if the git working directory is clean
-	if [ -n "$(git status --untracked-files=no --porcelain)" ]; then 
-		echo "git working directory not clean, aborting..."
-		git status
-		return 1
-	fi
-
-	git fetch --prune --all
-	branch="master"
-	if ! git rev-parse --quiet --verify $branch > /dev/null; then
-		branch="main"
-	fi
-	git checkout $branch
-	git merge --ff-only upstream/$branch
-	git push origin $branch
 }
 
 cockpit-queue-status() {
