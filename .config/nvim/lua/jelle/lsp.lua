@@ -61,6 +61,9 @@ null_ls.setup({
 	null_ls.builtins.code_actions.shellcheck,
 	-- null_ls.builtins.completion.spell,
 	null_ls.builtins.formatting.autopep8,
+	null_ls.builtins.diagnostics.flake8.with({
+		extra_args = { "--max-line-length", "300" }
+	}),
     },
     -- Enable when formatting plugins are stable
     -- on_attach = function(client)
