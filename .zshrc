@@ -18,10 +18,6 @@ export EDITOR=vim
 export DE=gnome
 export LANG=en_GB.UTF-8
 
-# For NPM
-export PREFIX=~/.local
-export NODE_PATH=~/.local/lib/node_modules/
-
 export PATH=$PATH:/home/jelle/bin/
 
 # Fancier coloring in neovim
