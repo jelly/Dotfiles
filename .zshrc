@@ -20,10 +20,6 @@ export LANG=en_GB.UTF-8
 
 export PATH=$PATH:/home/jelle/bin/
 
-# Fancier coloring in neovim
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
-export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
 # Browser
 export BROWSER=chromium
 
