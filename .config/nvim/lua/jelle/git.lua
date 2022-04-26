@@ -20,7 +20,6 @@ keymap("<leader>ga", ":Git commit --amend %:p<CR><CR>")
 
 keymap("<leader>gw", ":Gwrite<CR><CR>")
 keymap("<leader>gl", ":Gclog<CR>")
-keymap("<leader>gp", ":Ggrep<Space>")
 keymap("<leader>gm", ":Gmove<Space>")
 keymap("<leader>go", ":Git checkout<Space>")
 keymap("<leader>gps", ":Git push<CR>")
