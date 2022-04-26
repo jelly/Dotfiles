@@ -2,6 +2,8 @@ require('telescope').setup({
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,
+    vimgrep_arguments = { "rg", "--color=never", "--no-heading",
+  			"--with-filename", "--line-number", "--column", "--smart-case", "--glob=!node_modules/*", },
     mappings = {
       i = {
         -- map actions.which_key to <C-h> (default: <C-/>)
