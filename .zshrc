@@ -12,7 +12,7 @@ SAVEHIST=50000
 # SLRN
 export NNTPSERVER='news.gmane.org'
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # Set DE to gnome for chromium
 export DE=gnome
@@ -26,6 +26,9 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 # Browser
 export BROWSER=chromium
+
+# I'm a cool kid now
+alias vim=nvim
 
 #------------------------------
 # Keybindings
