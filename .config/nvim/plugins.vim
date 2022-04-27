@@ -41,6 +41,10 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'vimwiki/vimwiki', {'on' : ['VimwikiIndex', 'VimwikiUISelect'], 'for': 'wiki' }
 Plug 'ElPiloto/telescope-vimwiki.nvim'
 
+" Rust
+Plug 'rust-lang/rust.vim'
+Plug 'togglebyte/togglerust', { 'branch': 'main' }
+
 call plug#end()
 
 lua require('Comment').setup()
