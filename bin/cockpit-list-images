@@ -1,0 +1,8 @@
+#!/bin/bash
+
+LOC=https://cockpit-images.eu-central-1.linodeobjects.com/
+WD=${PWD}
+
+cd ~/projects/cockpit-bots/ || exit 1
+python3 -m lib.s3 ls ${LOC}
+cd "$WD" || exit 1
