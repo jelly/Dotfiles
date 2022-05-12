@@ -3,7 +3,7 @@
 if [ -n "$(git status --untracked-files=no --porcelain)" ]; then 
 	echo "git working directory not clean, aborting..."
 	git status
-	return 1
+	exit 1
 fi
 
 git fetch --prune --all
