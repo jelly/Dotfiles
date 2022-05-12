@@ -50,10 +50,13 @@ local null_ls = require("null-ls")
 null_ls.setup({
     debug = true,
     sources = {
-        null_ls.builtins.code_actions.eslint.with({
+        null_ls.builtins.code_actions.eslint_d.with({
 		extra_args = { "--ignore-pattern", "webpack.config.js" }
 	}),
-        null_ls.builtins.diagnostics.eslint.with({
+        null_ls.builtins.formatting.eslint_d.with({
+		extra_args = { "--ignore-pattern", "webpack.config.js" }
+	}),
+        null_ls.builtins.diagnostics.eslint_d.with({
 		extra_args = { "--ignore-pattern", "webpack.config.js" }
 	}),
 	null_ls.builtins.formatting.trim_whitespace,
