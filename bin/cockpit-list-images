@@ -1,7 +1,15 @@
 #!/bin/bash
 
-LOC=https://cockpit-images.eu-central-1.linodeobjects.com/
+# https://cockpit-images.us-east-1.linodeobjects.com/
+if [ -z "$1" ]
+then
+	LOC=https://cockpit-images.eu-central-1.linodeobjects.com/
+else
+	LOC=$1
+fi
+
 WD=${PWD}
+
 
 cd ~/projects/cockpit-bots/ || exit 1
 python3 -m lib.s3 ls ${LOC}
