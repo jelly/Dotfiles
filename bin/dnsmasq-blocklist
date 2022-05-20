@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# dnsmasq addn-hosts config files
+
+trap 'rm -rf $TMPDIR' EXIT INT TERM QUIT
+TMPDIR=$(mktemp -d --tmpdir dnsmasq-blocklist.XXXXXXXX)
+
+cd "$TMPDIR"
+
+curl -so host1.txt "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt"
+curl -so host3.txt "https://hostsfile.mine.nu/Hosts"
+curl -so host4.txt "https://pgl.yoyo.org/as/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext"
+curl -so host5.txt "http://sysctl.org/cameleon/hosts"
+curl -so host6.txt "https://hosts.oisd.nl"
+
+cat *.txt | sed -e '/^\s*#/d' | uniq | sort | uniq > dnsmasq_blocklist.conf
