@@ -13,4 +13,4 @@ curl -so host4.txt "https://pgl.yoyo.org/as/serverlist.php?hostformat=hosts&show
 curl -so host5.txt "http://sysctl.org/cameleon/hosts"
 curl -so host6.txt "https://hosts.oisd.nl"
 
-cat *.txt | sed -e '/^\s*#/d' | uniq | sort | uniq > dnsmasq_blocklist.conf
+cat *.txt | sed -e '/^\s*#/d' | uniq | sort | uniq > /tmp/dnsmasq_blocklist.conf
