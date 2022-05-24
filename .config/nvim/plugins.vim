@@ -27,6 +27,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'Saecki/crates.nvim'
 
 " Searching, requires ripgrep/fd
 Plug 'nvim-telescope/telescope.nvim'

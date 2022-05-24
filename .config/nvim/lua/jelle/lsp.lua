@@ -47,6 +47,13 @@ vim.lsp.handlers['workspace/symbol'] = require'telescope.builtin'.lsp_workspace_
 
 
 local null_ls = require("null-ls")
+require('crates').setup {
+    null_ls = {
+        enabled = true,
+        name = "crates.nvim",
+    },
+}
+
 null_ls.setup({
     debug = true,
     sources = {
