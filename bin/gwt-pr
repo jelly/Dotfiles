@@ -4,7 +4,7 @@ ref=$1
 branch=$2
 origin=${3:-origin}
 
-github="pull/$1/head"
+github="pull/${ref}/head"
 
 if [[ $# != 2 && $# != 3 ]]; then
 	echo usage: gitpr id branchname \[remote\];
