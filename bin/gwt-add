@@ -1,0 +1,12 @@
+#!/bin/bash
+
+name=$1
+
+cd ~/projects/cockpit || exit 1
+git worktree add "$name"
+cd "$name"
+
+./autogen.sh
+./tools/webpack-jumpstart
+make
+make bots
