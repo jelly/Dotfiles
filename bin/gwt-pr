@@ -1,0 +1,24 @@
+#!/bin/bash
+
+ref=$1
+branch=$2
+origin=${3:-origin}
+
+github="pull/$1/head"
+
+if [[ $# != 2 && $# != 3 ]]; then
+	echo usage: gitpr id branchname \[remote\];
+	exit 1
+fi
+
+if git rev-parse --git-dir &> /dev/null; then
+	git fetch $origin $github
+	git worktree add $branch FETCH_HEAD
+	cd $branch
+	./autogen.sh
+	./tools/webpack-jumpstart
+	make -j $(nproc)
+	make bots
+else
+	echo 'error: not in git repo'
+fi
