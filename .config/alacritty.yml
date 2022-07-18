@@ -1,6 +1,9 @@
 env:
   TERM: xterm-256color
 
+window:
+  decorations: none
+
 font:
   normal:
     family: "Source Code Pro"
