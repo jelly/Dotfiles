@@ -1,7 +1,10 @@
 local lspconfig = require('lspconfig')
 local bring = require('jelle.utils')
+local navic = require("nvim-navic")
 
 local on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+
     local opts = { noremap=true, silent=true, buffer=bufnr }
 	local function keymap(key, fun)
 		vim.keymap.set('n', key, fun, opts)

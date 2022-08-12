@@ -38,7 +38,7 @@ Plug 'editorconfig/editorconfig-vim'
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'SmiteshP/nvim-gps'
+Plug 'SmiteshP/nvim-navic'
 
 " Wiki
 Plug 'vimwiki/vimwiki', {'on' : ['VimwikiIndex', 'VimwikiUISelect'], 'for': 'wiki' }
