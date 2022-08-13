@@ -68,7 +68,6 @@ require('crates').setup {
 }
 
 null_ls.setup({
-    debug = true,
     sources = {
         null_ls.builtins.code_actions.eslint_d.with({
 		extra_args = { "--ignore-pattern", "webpack.config.js" }
