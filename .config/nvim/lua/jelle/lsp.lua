@@ -37,6 +37,16 @@ for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
 		capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		settings = {
+			python = {
+				analysis = {
+					extraPaths = { "/home/jelle/projects/cockpit/main/test/common",
+						       "/home/jelle/projects/cockpit-bots/machine",
+						       "/home/jelle/projects/cockpit-bots",
+					}
+				}
+			}
+		}
 	}
 end
 
@@ -69,6 +79,7 @@ null_ls.setup({
         null_ls.builtins.diagnostics.eslint_d.with({
 		extra_args = { "--ignore-pattern", "webpack.config.js" }
 	}),
+	null_ls.builtins.diagnostics.stylelint,
 	null_ls.builtins.formatting.trim_whitespace,
 	null_ls.builtins.diagnostics.shellcheck,
 	null_ls.builtins.code_actions.shellcheck,
