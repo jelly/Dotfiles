@@ -31,6 +31,7 @@ Plug 'Saecki/crates.nvim'
 
 " Searching, requires ripgrep/fd
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 
 " Editor config
 Plug 'editorconfig/editorconfig-vim'

@@ -9,6 +9,8 @@ local yank_selection = function(prompt_bufnr)
     vim.fn.setreg('', content["text"])
 end
 
+local lga_actions = require("telescope-live-grep-args.actions")
+
 require('telescope').setup({
   defaults = {
     -- Default configuration for telescope goes here:
@@ -36,11 +38,16 @@ require('telescope').setup({
     -- builtin picker
   },
   extensions = {
-    -- Your extension configuration goes here:
-    -- extension_name = {
-    --   extension_config_key = value,
-    -- }
-    -- please take a look at the readme of the extension you want to configure
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      mappings = {
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-l>g"] = lga_actions.quote_prompt({ postfix = ' --iglob ' }),
+          ["<C-l>t"] = lga_actions.quote_prompt({ postfix = ' -t' }),
+        }
+      }
+    }
   }
 })
 
@@ -51,7 +58,7 @@ local function keymap(key, fun)
 end
 
 keymap('ff', telescope.find_files)
-keymap('fg', telescope.live_grep)
+keymap('fg', require("telescope").extensions.live_grep_args.live_grep_args)
 keymap('fb', telescope.buffers)
 keymap('fh', telescope.help_tags)
 keymap('fm', telescope.man_pages)
