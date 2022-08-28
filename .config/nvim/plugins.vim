@@ -49,6 +49,11 @@ Plug 'ElPiloto/telescope-vimwiki.nvim'
 Plug 'rust-lang/rust.vim'
 Plug 'togglebyte/togglerust', { 'branch': 'main' }
 
+"Debug
+Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
+
 call plug#end()
 
 lua require('Comment').setup()
