@@ -4,6 +4,9 @@ env:
 window:
   decorations: none
 
+key_bindings:
+  - { key: P, mods: Control|Shift, action: Paste }
+
 font:
   normal:
     family: "Source Code Pro"
