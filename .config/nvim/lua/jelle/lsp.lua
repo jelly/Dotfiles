@@ -21,6 +21,7 @@ local on_attach = function(client, bufnr)
 	keymap('ga', vim.lsp.buf.code_action)
 	keymap('gR', vim.lsp.buf.rename)
 	keymap('K', vim.lsp.buf.hover)
+        keymap('<C-k>', vim.lsp.buf.signature_help)
 	keymap('<leader>wa', vim.lsp.buf.add_workspace_folder)
 	keymap('<leader>wr', vim.lsp.buf.remove_workspace_folder)
 	keymap('<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders()))end)
@@ -36,7 +37,7 @@ local servers = {'ccls', 'pyright', 'rust_analyzer', 'tsserver', 'gopls'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
-		capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		settings = {
 			python = {
 				analysis = {
