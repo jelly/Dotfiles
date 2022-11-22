@@ -3,7 +3,7 @@
 name=$1
 
 cd ~/projects/cockpit || exit 1
-git worktree add "$name"
+git worktree add "$name" -b "$name" main
 cd "$name"
 
 ./autogen.sh

@@ -13,7 +13,7 @@ fi
 
 if git rev-parse --git-dir &> /dev/null; then
 	git fetch $origin $github
-	git worktree add $branch FETCH_HEAD
+	git worktree add $branch -b $branch FETCH_HEAD
 	cd $branch
 	./autogen.sh
 	./tools/webpack-jumpstart
