@@ -2,7 +2,7 @@
 
 url=$1
 
-if [[ $url == *"youtube.com"* ]];then
+if [[ $url == *"youtube.com"* || $url == *"tiktok.com"* ]];then
 	mpv $url
 else
 	chromium $url 2> /dev/null
