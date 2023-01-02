@@ -24,7 +24,7 @@ def convert_datestr(datestr):
         hours = int(match.group(1))
         return now - timedelta(hours=hours)
 
-    match = re.match(r'(\d+) days ago', datestr)
+    match = re.match(r'(\d+)d ago', datestr)
     if match:
         days = int(match.group(1))
         return now - timedelta(days=days)
