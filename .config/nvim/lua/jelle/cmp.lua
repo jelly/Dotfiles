@@ -46,3 +46,6 @@ cmp.setup {
     { name = "crates" },
   },
 }
+
+-- require("luasnip").filetype_extend("PKGBUILD", {"shell"})
+require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/PKGBUILD" } }

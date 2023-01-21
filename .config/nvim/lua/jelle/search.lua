@@ -9,6 +9,7 @@ local yank_selection = function(prompt_bufnr)
     vim.fn.setreg('', content["text"])
 end
 
+local luasnip = require('telescope').load_extension('luasnip')
 local lga_actions = require("telescope-live-grep-args.actions")
 
 require('telescope').setup({

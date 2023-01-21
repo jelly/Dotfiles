@@ -1,0 +1,13 @@
+{
+  "name": "PKGBUILD",
+  "version": "1.0.0",
+  "description": "PKGBUILD snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "PKGBUILD",
+        "path": "./PKGBUILD.json"
+      }
+    ]
+  }
+}
