@@ -3,5 +3,10 @@
     "prefix": "pyv",
     "body": "local python_version=$(python -c 'import sys; print(\".\".join(map(str, sys.version_info[:2])))')",
     "description": "Python Version"
+  },
+  "Site Packages": {
+    "prefix": "spkg",
+    "body": "local site_packages=$(python -c \"import site; print(site.getsitepackages()[0])\")",
+    "description": "Python Site Packages"
   }
 }
