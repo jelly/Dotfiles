@@ -84,7 +84,7 @@ alias pacu='sudo pacman -U'
 
 # vim wiki
 alias notes='cd ~/Notes && nvim -c VimwikiIndex'
-alias diary='cd ~/Notes/diary/ && vim diary.md'
+alias diary='cd ~/Notes/diary/ && nvim -c VimwikiIndex -c VimwikiDiaryIndex'
 alias vimwikis='vim -c VimwikiUISelect'
 
 # moving in dirs
