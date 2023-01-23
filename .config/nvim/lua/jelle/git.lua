@@ -73,3 +73,8 @@ require('gitsigns').setup{
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
+
+-- Set spelllang in git commit messages
+vim.cmd([[
+autocmd FileType gitcommit setlocal spell
+]])
