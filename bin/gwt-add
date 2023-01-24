@@ -8,5 +8,8 @@ cd "$name"
 
 ./autogen.sh
 ./tools/webpack-jumpstart
+./tools/systemd_ctypes
 make
 make bots
+python -m venv env
+source ./env/bin/activate && pip install -e . && deactivate
