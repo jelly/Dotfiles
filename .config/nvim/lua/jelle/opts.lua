@@ -20,3 +20,6 @@ vim.g.maplocalleader = ' '
 
 -- 24 bit colors
 vim.o.termguicolors = true
+
+-- Clipboard
+vim.opt.clipboard = 'unnamedplus'
