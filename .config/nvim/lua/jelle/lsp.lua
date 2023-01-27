@@ -33,23 +33,31 @@ end
 
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = {'ccls', 'pyright', 'rust_analyzer', 'tsserver', 'gopls'}
+local servers = {'ccls', 'rust_analyzer', 'tsserver', 'gopls'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
 		capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-		settings = {
-			python = {
-				analysis = {
-					extraPaths = { "/home/jelle/projects/cockpit/main/test/common",
-						       "/home/jelle/projects/cockpit-bots/machine",
-						       "/home/jelle/projects/cockpit-bots",
-					}
+	}
+end
+
+lspconfig.pyright.setup {
+	on_attach = on_attach,
+	capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	root_dir = function()
+		return vim.fn.getcwd()
+	end,
+	settings = {
+		python = {
+			analysis = {
+				extraPaths = { "/home/jelle/projects/cockpit/main/test/common",
+					       "/home/jelle/projects/cockpit-bots/machine",
+					       "/home/jelle/projects/cockpit-bots",
 				}
 			}
 		}
 	}
-end
+}
 
 vim.lsp.handlers['textDocument/codeAction'] = require'telescope.builtin'.lsp_code_actions
 vim.lsp.handlers['textDocument/references'] = require'telescope.builtin'.lsp_references
@@ -83,7 +91,7 @@ null_ls.setup({
 	null_ls.builtins.formatting.trim_whitespace,
 	null_ls.builtins.diagnostics.shellcheck,
 	null_ls.builtins.code_actions.shellcheck,
-	null_ls.builtins.completion.spell,
+	-- null_ls.builtins.completion.spell,
 	null_ls.builtins.formatting.autopep8,
 	null_ls.builtins.diagnostics.flake8.with({
 		extra_args = { "--max-line-length", "300" }
