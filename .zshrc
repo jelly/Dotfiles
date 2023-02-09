@@ -243,9 +243,9 @@ setprompt () {
         fi      
 
         # Check if we are on SSH or not  --{FIXME}--  always goes to |no SSH|
-	if [[ -f /run/.toolboxenv && -f /etc/toolbox-hostname ]]; then
-		local TOOLBOX_HOSTNAME=$(cat /etc/toolbox-hostname)
-                eval PR_HOST='${PR_ORANGE}${TOOLBOX_HOSTNAME}${PR_NO_COLOR}'
+	if [[ -f /run/.toolboxenv && -f /run/.containerenv ]]; then
+		local TOOLBOX_HOSTNAME=$(grep name /run/.containerenv | cut -d'"' -f 2)
+                eval PR_HOST='${PR_RED}⬢\ ${TOOLBOX_HOSTNAME}${PR_NO_COLOR}'
         elif [[ -z "$SSH_CLIENT"  ||  -z "$SSH2_CLIENT" ]]; then 
                 eval PR_HOST='${PR_GREEN}%M${PR_NO_COLOR}' # no SSH
         else 
