@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ $# != 1 ]]; then
+    echo "Missing project name [cockpit|cockpit-ostree|cockpit-machines|cockpit-podman]"
+    exit 1
+fi
+
+pkgname=$1
+
+curl -s "https://bodhi.fedoraproject.org/updates/?packages=${pkgname}" | jq -r '.updates[] | select(.user.name == "packit") | "["+(.title | split("-")[0])+" Fedora "+(.release.version)+"](https://bodhi.fedoraproject.org/updates/"+(.alias)+")"'
