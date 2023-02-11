@@ -20,6 +20,13 @@ for day in range(1, 8):
 optional_checklists = ""
 if dateobj.weekday() == 0:
     optional_checklists += "* [ ] Review previous week notes"
+    # Link previous week notes
+    previous = dateobj - datetime.timedelta(days=7)
+    while previous.weekday() != 5:
+        date = previous.strftime('%Y-%m-%d')
+        optional_checklists += f" [{date}](./{date}.md)"
+        previous = previous + datetime.timedelta(days=1)
+
 if dateobj.day == monthday.day:
     optional_checklists += "* [ ] Review previous month notes"
 
