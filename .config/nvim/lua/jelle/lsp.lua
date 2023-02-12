@@ -28,7 +28,7 @@ local on_attach = function(client, bufnr)
 	keymap('<leader>e', vim.diagnostic.open_float)
 	keymap('[d', vim.diagnostic.goto_prev)
 	keymap(']d', vim.diagnostic.goto_next)
-        vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+        vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async = true }' ]]
 end
 
 
