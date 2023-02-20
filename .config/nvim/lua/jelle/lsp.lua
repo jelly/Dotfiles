@@ -1,6 +1,7 @@
 local lspconfig = require('lspconfig')
 local bring = require('jelle.utils')
-local navic = require("nvim-navic")
+local navic = require('nvim-navic')
+local telescope = require('telescope.builtin')
 
 local on_attach = function(client, bufnr)
     navic.attach(client, bufnr)
@@ -59,13 +60,13 @@ lspconfig.pyright.setup {
 	}
 }
 
-vim.lsp.handlers['textDocument/codeAction'] = require'telescope.builtin'.lsp_code_actions
-vim.lsp.handlers['textDocument/references'] = require'telescope.builtin'.lsp_references
-vim.lsp.handlers['textDocument/definition'] = require'telescope.builtin'.lsp_definitions
-vim.lsp.handlers['textDocument/typeDefinition'] = require'telescope.builtin'.lsp_type_definitions
-vim.lsp.handlers['textDocument/implementation'] = require'telescope.builtin'.lsp_implementations
-vim.lsp.handlers['textDocument/documentSymbol'] = require'telescope.builtin'.lsp_document_symbols
-vim.lsp.handlers['workspace/symbol'] = require'telescope.builtin'.lsp_workspace_symbols
+vim.lsp.handlers['textDocument/codeAction'] = telescope.lsp_code_actions
+vim.lsp.handlers['textDocument/references'] = telescope.lsp_references
+vim.lsp.handlers['textDocument/definition'] = telescope.lsp_definitions
+vim.lsp.handlers['textDocument/typeDefinition'] = telescope.lsp_type_definitions
+vim.lsp.handlers['textDocument/implementation'] = telescope.lsp_implementations
+vim.lsp.handlers['textDocument/documentSymbol'] = telescope.lsp_document_symbols
+vim.lsp.handlers['workspace/symbol'] = telescope.lsp_workspace_symbols
 
 
 local null_ls = require("null-ls")
