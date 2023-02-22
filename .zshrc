@@ -76,6 +76,7 @@ alias grep="grep --color=always"
 
 # cockpit
 alias cpf='PYTHONPATH=src python3 -m cockpit.print'
+alias cpy='PYTHONPATH=src python3 -m cockpit.bridge'
 
 # pacman
 alias pacup='sudo pacman -Syu '
