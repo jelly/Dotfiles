@@ -1,2 +1,4 @@
 taskell.md
 run.sh
+# ccls language server cache
+.ccls-cache/
