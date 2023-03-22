@@ -1,0 +1,23 @@
+# Files
+data.location=~/.task
+
+# secrets
+include ~/.task/secrets
+
+# theme
+include /usr/share/doc/task/rc/dark-256.theme
+
+news.version=2.6.0
+
+context.personal.read=project:personal
+context.personal.write=project:personal
+context.work.read=project:work
+context.work.write=project:work
+context.archlinux.read=project:archlinux
+context.archlinux.write=project:archlinux
+
+# aliases
+alias.@=context
+uda.pkgname.type=string
+uda.pkgname.label=Package name
+context=work
