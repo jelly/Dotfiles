@@ -26,6 +26,9 @@ export BROWSER=chromium
 # I'm a cool kid now
 alias vim=nvim
 
+# my completions
+fpath=("$HOME/.zcompletions" "$fpath[@]")
+
 #------------------------------
 # Keybindings
 #------------------------------
