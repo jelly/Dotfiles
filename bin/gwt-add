@@ -7,7 +7,5 @@ git worktree add "$name" -b "$name" main
 cd "$name"
 
 ./autogen.sh
-./tools/webpack-jumpstart
-./tools/systemd_ctypes
 make
 make bots
