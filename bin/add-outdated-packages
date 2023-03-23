@@ -7,14 +7,15 @@ twproject=archlinux.packaging
 # task uda.pkgname.type=string
 # task uda.pkgname.label=Package name
 
+# Reset task context, as filtering does not work without it
+task context none
+
 curl -s "https://archlinux.org/packages/search/json/?maintainer=${user}&flagged=Flagged" | jq -r '.results[]|[.pkgname, .flag_date, .url] | @tsv' |
 	while IFS=$'\t' read -r pkgname date url; do
-		if task "project:$twproject" "pkgname:$pkgname" &> /dev/null; then
-			continue
+		if ! task "project:$twproject" "pkgname:$pkgname" &> /dev/null; then
+			task add "project:$twproject" "pkgname:$pkgname" "update $pkgname" due:30d
+			# taskwarrior does not allow an add and annotation
+			ID=$(task +LATEST ids)
+			task "$ID" annotate "upstream $url"
 		fi
-		echo "not here"
-		task add "project:$twproject" "pkgname:$pkgname" "update $pkgname" due:30d
-		# taskwarrior does not allow an add and annotation
-		ID=$(task +LATEST ids)
-		task "$ID" annotate "upstream $url"
 	done
