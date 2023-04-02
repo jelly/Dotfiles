@@ -18,6 +18,8 @@ context.archlinux.write=project:archlinux
 
 # aliases
 alias.@=context
+alias.dailystatus=status:completed end.after:today all
+
+# uda
 uda.pkgname.type=string
 uda.pkgname.label=Package name
-context=work
