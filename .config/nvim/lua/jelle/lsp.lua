@@ -7,34 +7,31 @@ local on_attach = function(client, bufnr)
     navic.attach(client, bufnr)
 
     local opts = { noremap=true, silent=true, buffer=bufnr }
-	local function keymap(key, fun)
+	local function keymap(key, fun, desc)
+		opts.desc = desc
 		vim.keymap.set('n', key, fun, opts)
 	end
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-	keymap('gD', vim.lsp.buf.declaration)
-	keymap('gd', bring.bring_or_create)
-	keymap('<leader>D', vim.lsp.buf.type_definition)
-	keymap('gi', vim.lsp.buf.implementation)
-	keymap('gr', vim.lsp.buf.references)
-	keymap('gs', telescope.lsp_dynamic_workspace_symbols)
-	keymap('ga', vim.lsp.buf.code_action)
-	keymap('gR', vim.lsp.buf.rename)
-	keymap('K', vim.lsp.buf.hover)
-        keymap('<C-k>', vim.lsp.buf.signature_help)
-	keymap('<leader>wa', vim.lsp.buf.add_workspace_folder)
-	keymap('<leader>wr', vim.lsp.buf.remove_workspace_folder)
-	keymap('<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders()))end)
-	keymap('<leader>e', vim.diagnostic.open_float)
-	keymap('[d', vim.diagnostic.goto_prev)
-	keymap(']d', vim.diagnostic.goto_next)
+	-- :Telescope keymaps
+	keymap('gD', vim.lsp.buf.declaration, "[G]o to [D]eclaration")
+	keymap('gd', bring.bring_or_create, "[G]oto [D]efinition")
+	keymap('<leader>D', vim.lsp.buf.type_definition, "Type [D]efinition")
+	keymap('gr', vim.lsp.buf.references, "[G]oto [R]eferences")
+	keymap('gs', telescope.lsp_dynamic_workspace_symbols, "[G]oto [S]ymbols show workspace symbols")
+	keymap('ga', vim.lsp.buf.code_action, "[G]o [A]ction")
+	keymap('gR', vim.lsp.buf.rename, "[G]o [R]ename")
+	keymap('K', vim.lsp.buf.hover, "Hover documentation")
+        keymap('<C-k>', vim.lsp.buf.signature_help, "Signature documentation")
+	keymap('[d', vim.diagnostic.goto_prev, "[d previous diagnostic")
+	keymap(']d', vim.diagnostic.goto_next, "]d next diagnostic")
         vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async = true }' ]]
 end
 
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = {'ccls', 'rust_analyzer', 'tsserver', 'gopls'}
+local servers = {'ccls', 'rust_analyzer', 'tsserver', 'gopls', 'marksman'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
