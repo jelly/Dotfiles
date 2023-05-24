@@ -4,7 +4,9 @@ local navic = require('nvim-navic')
 local telescope = require('telescope.builtin')
 
 local on_attach = function(client, bufnr)
-    navic.attach(client, bufnr)
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
 
     local opts = { noremap=true, silent=true, buffer=bufnr }
 	local function keymap(key, fun, desc)
