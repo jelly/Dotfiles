@@ -9,6 +9,7 @@ command! Diary VimwikiDiaryIndex
 autocmd BufRead,BufNewFile ~/Notes/diary/diary.md VimwikiDiaryGenerateLinks
 
 au BufNewFile ~/Notes/diary/*.md :silent 0r !~/bin/generate-vimwiki-diary-template '%'
+au BufRead,BufNewFile ~/Notes/diary/*.md Gwrite
 
 function g:LocalIndex()
   let route=substitute(expand("%:h"), '^.*/', '', '') . "/*.md"
