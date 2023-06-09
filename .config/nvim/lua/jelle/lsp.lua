@@ -93,9 +93,7 @@ null_ls.setup({
 	null_ls.builtins.code_actions.shellcheck,
 	-- null_ls.builtins.completion.spell,
 	null_ls.builtins.formatting.autopep8,
-	null_ls.builtins.diagnostics.ruff.with({
-		extra_args = { "--ignore", "E501" }
-	}),
+	null_ls.builtins.diagnostics.ruff,
     },
     -- Enable when formatting plugins are stable
     -- on_attach = function(client)
