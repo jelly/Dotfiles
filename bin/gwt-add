@@ -6,6 +6,4 @@ cd ~/projects/cockpit || exit 1
 git worktree add "$name" -b "$name" main
 cd "$name"
 
-./autogen.sh
-make
-make bots
+./test/common/make-bots
