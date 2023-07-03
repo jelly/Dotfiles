@@ -7,12 +7,14 @@ Plug 'kyazdani42/nvim-tree.lua'
 " Git integration
 Plug 'tpope/vim-fugitive'
 
+Plug 'kosayoda/nvim-lightbulb'
+
 " Colorscheme
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'j-hui/fidget.nvim'
+Plug 'j-hui/fidget.nvim', { 'branch': 'legacy' }
 
 " Comments
 Plug 'numToStr/Comment.nvim'
@@ -60,3 +62,4 @@ call plug#end()
 lua require('Comment').setup()
 lua require("luasnip.loaders.from_vscode").lazy_load()
 lua require("fidget").setup{}
+lua vim.cmd [[autocmd CursorHold,CursorHoldI * lua require('nvim-lightbulb').update_lightbulb()]]
