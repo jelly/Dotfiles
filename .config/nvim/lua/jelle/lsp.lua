@@ -40,7 +40,7 @@ end
 -- })
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = {'ccls', 'rust_analyzer', 'tsserver', 'gopls', 'marksman', 'ruff_lsp', 'eslint'}
+local servers = {'ccls', 'rust_analyzer', 'tsserver', 'gopls', 'marksman', 'ruff_lsp', 'eslint', 'bashls'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
