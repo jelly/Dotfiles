@@ -20,16 +20,13 @@ Plug 'j-hui/fidget.nvim', { 'branch': 'legacy' }
 Plug 'numToStr/Comment.nvim'
 
 " Linting
-" https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 Plug 'nvim-lua/plenary.nvim'
-Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
-Plug 'Saecki/crates.nvim'
 
 " Searching, requires ripgrep/fd
 Plug 'nvim-telescope/telescope.nvim'

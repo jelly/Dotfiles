@@ -28,12 +28,19 @@ local on_attach = function(client, bufnr)
         keymap('<C-k>', vim.lsp.buf.signature_help, "Signature documentation")
 	keymap('[d', vim.diagnostic.goto_prev, "[d previous diagnostic")
 	keymap(']d', vim.diagnostic.goto_next, "]d next diagnostic")
-        vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async = true }' ]]
+        vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { filter = function(client) return client.name ~= "tsserver" end, async = true }']]
 end
 
+-- Messes up function / JSX formatting in JSX.
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   buffer = buffer,
+--   callback = function()
+--     vim.lsp.buf.format { async = false }
+--   end
+-- })
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = {'ccls', 'rust_analyzer', 'tsserver', 'gopls', 'marksman'}
+local servers = {'ccls', 'rust_analyzer', 'tsserver', 'gopls', 'marksman', 'ruff_lsp', 'eslint'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
@@ -66,44 +73,3 @@ vim.lsp.handlers['textDocument/typeDefinition'] = telescope.lsp_type_definitions
 vim.lsp.handlers['textDocument/implementation'] = telescope.lsp_implementations
 vim.lsp.handlers['textDocument/documentSymbol'] = telescope.lsp_document_symbols
 vim.lsp.handlers['workspace/symbol'] = telescope.lsp_workspace_symbols
-
-
-local null_ls = require("null-ls")
-require('crates').setup {
-    null_ls = {
-        enabled = true,
-        name = "crates.nvim",
-    },
-}
-
-null_ls.setup({
-    sources = {
-        null_ls.builtins.code_actions.eslint_d.with({
-		extra_args = { "--ignore-pattern", "webpack.config.js" }
-	}),
-        null_ls.builtins.formatting.eslint_d.with({
-		extra_args = { "--ignore-pattern", "webpack.config.js" }
-	}),
-        null_ls.builtins.diagnostics.eslint_d.with({
-		extra_args = { "--ignore-pattern", "webpack.config.js" }
-	}),
-	null_ls.builtins.diagnostics.stylelint,
-	null_ls.builtins.formatting.trim_whitespace,
-	null_ls.builtins.diagnostics.shellcheck,
-	null_ls.builtins.code_actions.shellcheck,
-	-- null_ls.builtins.completion.spell,
-	null_ls.builtins.formatting.autopep8,
-	null_ls.builtins.diagnostics.ruff,
-    },
-    -- Enable when formatting plugins are stable
-    -- on_attach = function(client)
-    --     if client.resolved_capabilities.document_formatting then
-    --         vim.cmd([[
-    --         augroup LspFormatting
-    --             autocmd! * <buffer>
-    --             autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-    --         augroup END
-    --         ]])
-    --     end
-    -- end,
-})
