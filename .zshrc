@@ -188,7 +188,7 @@ gitmr() {
 }
 
 cockpit-queue-status() {
-	curl -s http://webhook-frontdoor.apps.ocp.ci.centos.org/inspect-queue
+	curl -s http://webhook-cockpit.apps.ocp.cloud.ci.centos.org/inspect-queue
 }
 
 #------------------------------
