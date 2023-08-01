@@ -16,3 +16,4 @@ nmap <F3> :Over<CR>
 nmap <F4> :Stop<CR>
 
 let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
+let g:rustfmt_autosave = 1
