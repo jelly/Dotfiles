@@ -7,4 +7,4 @@ fi
 
 pkgname=$1
 
-curl -s "https://bodhi.fedoraproject.org/updates/?packages=${pkgname}" | jq -r '.updates[] | select(.user.name == "packit") | "["+(.title | split("-")[0])+" Fedora "+(.release.version)+"](https://bodhi.fedoraproject.org/updates/"+(.alias)+")"'
+curl -s "https://bodhi.fedoraproject.org/updates/?packages=${pkgname}" | jq -r '.updates[] | select(.user.name == "packit") | "["+(.title | match("[a-z]+(-[a-z]+)?") | .string)+" Fedora "+(.release.version)+"](https://bodhi.fedoraproject.org/updates/"+(.alias)+")"'
