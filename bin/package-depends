@@ -1,0 +1,4 @@
+#!/bin/sh
+
+name=$1
+curl -s "https://archlinux.org/packages/search/json/?q=${name}" | jq ".results[] | select(.pkgbase == \"${name}\") | .depends"
