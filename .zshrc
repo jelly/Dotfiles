@@ -14,14 +14,13 @@ export NNTPSERVER='news.gmane.org'
 
 export EDITOR=nvim
 
-# Set DE to gnome for chromium
 export DE=gnome
 export LANG=en_GB.UTF-8
 
 export PATH=$PATH:/home/jelle/bin/
 
 # Browser
-export BROWSER=chromium
+export BROWSER=firefox
 
 # I'm a cool kid now
 alias vim=nvim
