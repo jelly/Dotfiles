@@ -13,6 +13,7 @@ This git repo contains my dotfiles for popular software like mpv, vim, i3, newsb
 * acpilight
 * libpulse (for pactl)
 * network-manager-applet (for nm-applet)
+* zoxide
 
 ### Git setup
 
