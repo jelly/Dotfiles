@@ -78,7 +78,7 @@ alias ls="ls --color -F"
 alias grep="grep --color=always"
 
 # cockpit
-alias cpf='PYTHONPATH=src python3 -m cockpit.print'
+alias cpf='PYTHONPATH=src python3 -m cockpit.misc.print'
 alias cpy='PYTHONPATH=src python3 -m cockpit.bridge'
 
 # pacman
