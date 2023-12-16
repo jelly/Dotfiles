@@ -20,7 +20,7 @@ def get_token():
 
 def search(gl, term):
     group = gl.groups.get(PACKAGING_GROUP)
-    results = group.search('blobs', term)
+    results = group.search('blobs', term, get_all=True)
     project_id_name_map = {}
 
     for result in results:
