@@ -1,0 +1,45 @@
+#!/usr/bin/python
+
+import argparse
+import os
+import os.path
+
+import appdirs
+import gitlab
+
+PACKAGING_GROUP = 11323
+
+def get_token():
+    config_dir = appdirs.user_config_dir('devtools')
+    token = ''
+    with open(os.path.join(config_dir, 'gitlab.conf')) as fp:
+        token = fp.read()
+
+    token = token.replace('GITLAB_TOKEN="', '').strip().strip('"')
+    return token
+
+def search(gl, term):
+    group = gl.groups.get(PACKAGING_GROUP)
+    results = group.search('blobs', term)
+    project_id_name_map = {}
+
+    for result in results:
+        project_id = result.get('project_id')
+        project_name = project_id_name_map.get(project_id)
+        if project_name is None:
+            project = gl.projects.get(project_id)
+            project_id_name_map[project_id] = project.name
+
+    print(' '.join(project_id_name_map.values()))
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('term')
+    args = parser.parse_args()
+
+    gl = gitlab.Gitlab('https://gitlab.archlinux.org', private_token=get_token())
+    search(gl, args.term)
+
+
+if __name__ == "__main__":
+    main()
