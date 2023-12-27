@@ -8,5 +8,20 @@
     "prefix": "sitepkg",
     "body": "local site_packages=$(python -c \"import site; print(site.getsitepackages()[0])\")",
     "description": "Python Site Packages"
+  },
+  "Python Build": {
+    "prefix": "pybuild",
+    "body": "python -m build --wheel --no-isolation",
+    "description": "Python PEP517 build"
+  },
+  "Python Install": {
+    "prefix": "pyinst",
+    "body": "python -m installer --destdir=\"$$pkgdir\" dist/*.whl",
+    "description": "Python PEP517 install"
+  },
+  "Python Makedepends": {
+    "prefix": "pybdep",
+    "body": "'python-build' 'python-installer' 'python-wheel'",
+    "description": "Python PEP517 makedepends"
   }
 }
