@@ -44,7 +44,6 @@ print(f"""# {date}
 * [ ] [Review requests](https://github.com/pulls/review-requested)
 * [ ] Email
 {optional_checklists}
-
 ## Todo
 
 ## Notes""")
