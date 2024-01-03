@@ -1,0 +1,46 @@
+import = ["/home/jelle/.config/alacritty/color.toml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 13
+
+[font.bold]
+family = "Source Code Pro"
+
+[font.italic]
+family = "Source Code Pro"
+
+[font.normal]
+family = "Source Code Pro"
+
+[[hints.enabled]]
+command = "chromium"
+post_processing = true
+regex = "(https:|http:|file:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.binding]
+key = "U"
+mods = "Control|Shift"
+
+[hints.enabled.mouse]
+enabled = true
+
+[[hints.enabled]]
+action = "Copy"
+post_processing = false
+regex = '([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})|([0-9a-f]{12,128})|([[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3})'
+
+[hints.enabled.binding]
+key = "I"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "P"
+mods = "Control|Shift"
+
+[window]
+decorations = "none"
