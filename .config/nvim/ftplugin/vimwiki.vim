@@ -4,6 +4,8 @@ nnoremap <F2> :!make rsync_upload<CR>
 nnoremap <F3> :!make commit_push<CR>
 nnoremap <F4> :VimwikiTabMakeDiaryNote<CR>
 nnoremap <F5> :tabnew \| :VimwikiDiaryIndex<CR>
+nnoremap <F6> :VimwikiDiaryPrevDay<CR>
+nnoremap <F7> :VimwikiDiaryNextDay<CR>
 
 command! Diary VimwikiDiaryIndex
 autocmd BufRead,BufNewFile ~/Notes/diary/diary.md VimwikiDiaryGenerateLinks
