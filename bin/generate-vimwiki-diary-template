@@ -27,10 +27,15 @@ if dateobj.weekday() == 0:
         optional_checklists += f" [{date}](./{date}.md)"
         previous = previous + datetime.timedelta(days=1)
 
+prev_day= (dateobj - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+next_day = (dateobj - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+
 if dateobj.day == monthday.day:
     optional_checklists += "* [ ] Review previous month notes"
 
 print(f"""# {date}
+
+[Prev]({prev_day}) [Next]({next_day})
 
 ## Daily checklist
 
