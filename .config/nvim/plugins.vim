@@ -33,9 +33,6 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 Plug 'benfowler/telescope-luasnip.nvim'
 
-" Editor config
-Plug 'editorconfig/editorconfig-vim'
-
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
