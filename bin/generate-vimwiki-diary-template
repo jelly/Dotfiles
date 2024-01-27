@@ -28,7 +28,7 @@ if dateobj.weekday() == 0:
         previous = previous + datetime.timedelta(days=1)
 
 prev_day= (dateobj - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
-next_day = (dateobj - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+next_day = (dateobj + datetime.timedelta(days=1)).strftime('%Y-%m-%d')
 
 if dateobj.day == monthday.day:
     optional_checklists += "* [ ] Review previous month notes"
