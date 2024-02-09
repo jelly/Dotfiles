@@ -40,13 +40,23 @@ end
 -- })
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = {'clangd', 'rust_analyzer', 'tsserver', 'gopls', 'marksman', 'ruff_lsp', 'eslint', 'bashls'}
+local servers = {'clangd', 'rust_analyzer', 'tsserver', 'gopls', 'marksman', 'ruff_lsp', 'bashls'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
 		capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	}
 end
+
+lspconfig.eslint.setup {
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+   end,
+}
 
 lspconfig.pyright.setup {
 	on_attach = on_attach,
