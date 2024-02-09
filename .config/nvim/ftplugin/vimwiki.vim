@@ -20,3 +20,6 @@ endfun
 
 let g:auto_generate_links=1
 autocmd BufEnter *index.md :call LocalIndex()
+
+filetype plugin on
+syntax on
