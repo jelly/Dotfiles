@@ -23,5 +23,10 @@
     "prefix": "pybdep",
     "body": "'python-build' 'python-installer' 'python-wheel'",
     "description": "Python PEP517 makedepends"
+  },
+  "Prepare": {
+    "prefix": "prep",
+    "body": "prepare() {\n}\n",
+    "description": "prepare function"
   }
 }
