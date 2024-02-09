@@ -282,4 +282,6 @@ export GPG_TTY
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # setup zoxide
-eval "$(zoxide init --cmd a zsh)"
+if command -v zoxide > /dev/null; then
+  eval "$(zoxide init --cmd j zsh)"
+fi
