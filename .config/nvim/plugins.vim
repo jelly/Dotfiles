@@ -55,6 +55,10 @@ Plug 'rcarriga/nvim-dap-ui'
 "Coverage
 Plug 'andythigpen/nvim-coverage'
 
+"Neotest
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/neotest-python'
 
 call plug#end()
 
