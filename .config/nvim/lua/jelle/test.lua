@@ -18,10 +18,7 @@ neotest.setup({
   }
 })
 
-local debug_test = function()
-	neotest.run.run({ strategy = 'dap' })
-end
-
 keymap("<leader>dm", neotest.run.run, "Test method")
-keymap("<leader>dM", debug_test, "Test method (with debugging)")
+keymap("<leader>dM", function() neotest.run.run({ strategy = 'dap' }) end, "Test method (with debugging)")
+keymap("<leader>dF", function() neotest.run.run(vim.fn.expand("%")) end, "Run all tests in the current file")
 keymap("<leader>ds", neotest.summary.toggle, "Test Summary")
