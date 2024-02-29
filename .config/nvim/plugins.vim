@@ -52,6 +52,10 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'
 
+"Coverage
+Plug 'andythigpen/nvim-coverage'
+
+
 call plug#end()
 
 lua require('Comment').setup()
