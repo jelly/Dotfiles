@@ -14,7 +14,7 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'j-hui/fidget.nvim', { 'branch': 'legacy' }
+Plug 'j-hui/fidget.nvim', { 'tag': 'v1.4.0' }
 
 " Comments
 Plug 'numToStr/Comment.nvim'
