@@ -1,8 +1,6 @@
 local dap = require('dap')
 local dapui = require("dapui")
-local dap_python = require('dap-python')
 local dap_virtual_text = require("nvim-dap-virtual-text")
-
 
 dapui.setup()
 dap_virtual_text.setup()
@@ -51,5 +49,27 @@ dap.configurations.c = {
     end,
     cwd = "${workspaceFolder}",
     stopAtBeginningOfMainSubprogram = false,
+  },
+}
+
+dap.adapters.python = {
+  type = 'executable';
+  command = "/usr/bin/python";
+  args = { '-m', 'debugpy.adapter' };
+}
+
+
+dap.configurations.python = {
+  {
+    -- The first three options are required by nvim-dap
+    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
+    request = 'launch';
+    name = "Launch file";
+    cwd = "${workspaceFolder}",
+
+    program = "${file}"; -- This configuration will launch the current file if used.
+    pythonPath = function()
+        return '/usr/bin/python'
+    end;
   },
 }
