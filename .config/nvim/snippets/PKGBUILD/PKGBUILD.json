@@ -1,7 +1,7 @@
 {
   "Python Version": {
     "prefix": "pyv",
-    "body": "local python_version=$(python -c 'import sys; print(\".\".join(map(str, sys.version_info[:2])))')",
+    "body": "local python_version=$(python -c 'import sys; print(\"\".join(map(str, sys.version_info[:2])))')",
     "description": "Python Version"
   },
   "Site Packages": {
