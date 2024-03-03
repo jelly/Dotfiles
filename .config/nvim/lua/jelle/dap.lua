@@ -32,7 +32,6 @@ keymap('<leader>b', dap.toggle_breakpoint)
 vim.keymap.set('n', '<leader>B', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 keymap('<leader>dd', dap.continue)
 
-
 dap.adapters.gdb = {
   type = "executable",
   command = "gdb",
@@ -46,6 +45,32 @@ dap.configurations.c = {
     request = "launch",
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = "${workspaceFolder}",
+    stopAtBeginningOfMainSubprogram = false,
+  },
+}
+
+dap.adapters.rust_gdb = {
+  type = "executable",
+  command = "rust-gdb",
+  args = { "-i", "dap" }
+}
+
+dap.configurations.rust = {
+  {
+    name = "Launch",
+    type = "rust_gdb",
+    request = "launch",
+    program = function()
+      -- cargo metadata --no-deps --format-version 1 | jq -r '[.packages[].targets[] | select(.kind | index("bin"))][0] | .name'
+      -- cargo metadata --format-version 1 --no-deps | jq | jq .workspace_root
+      local output = vim.fn.system("cargo metadata --no-deps --format-version 1 | jq -r '[.packages[].targets[] | select(.kind | index(\"bin\"))][0] | .name'")
+      -- return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/' .. output, 'file')
+      return vim.fn.getcwd() .. '/target/debug/' .. output
+    end,
+    args = function()
+      local args_string = vim.fn.input("Arguments: ") return vim.split(args_string, " ")
     end,
     cwd = "${workspaceFolder}",
     stopAtBeginningOfMainSubprogram = false,

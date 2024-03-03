@@ -17,6 +17,7 @@ neotest.setup({
     }),
     -- Requires: cargo-nextest
     require("neotest-rust")({
+        dap_adapter = "rust_gdb",
     }),
   }
 })
