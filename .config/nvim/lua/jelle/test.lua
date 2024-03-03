@@ -14,7 +14,10 @@ neotest.setup({
       },
       args = { "--log-level", "DEBUG", "--quiet" },
       runner = "pytest",
-    })
+    }),
+    -- Requires: cargo-nextest
+    require("neotest-rust")({
+    }),
   }
 })
 

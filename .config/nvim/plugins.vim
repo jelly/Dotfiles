@@ -59,6 +59,7 @@ Plug 'andythigpen/nvim-coverage'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-python', { 'for': 'python' }
+Plug 'rouge8/neotest-rust', { 'for': 'rust' }
 
 call plug#end()
 
