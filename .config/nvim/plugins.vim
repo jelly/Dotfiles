@@ -16,6 +16,9 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'j-hui/fidget.nvim', { 'tag': 'v1.4.0' }
 
+"LSP errors
+Plug 'folke/trouble.nvim'
+
 " Comments
 Plug 'numToStr/Comment.nvim'
 
@@ -60,6 +63,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-python', { 'for': 'python' }
 Plug 'rouge8/neotest-rust', { 'for': 'rust' }
+
 
 call plug#end()
 

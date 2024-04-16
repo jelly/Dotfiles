@@ -2,6 +2,7 @@ local lspconfig = require('lspconfig')
 local bring = require('jelle.utils')
 local navic = require('nvim-navic')
 local telescope = require('telescope.builtin')
+local trouble = require("trouble")
 
 local on_attach = function(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
@@ -92,3 +93,11 @@ vim.lsp.handlers['textDocument/typeDefinition'] = telescope.lsp_type_definitions
 vim.lsp.handlers['textDocument/implementation'] = telescope.lsp_implementations
 vim.lsp.handlers['textDocument/documentSymbol'] = telescope.lsp_document_symbols
 vim.lsp.handlers['workspace/symbol'] = telescope.lsp_workspace_symbols
+
+-- trouble
+vim.keymap.set("n", "<leader>xx", trouble.toggle)
+vim.keymap.set("n", "<leader>xw", function() trouble.toggle("workspace_diagnostics") end)
+vim.keymap.set("n", "<leader>xd", function() trouble.toggle("document_diagnostics") end)
+vim.keymap.set("n", "<leader>xq", function() trouble.toggle("quickfix") end)
+vim.keymap.set("n", "<leader>xl", function() trouble.toggle("loclist") end)
+vim.keymap.set("n", "gR", function() troubletoggle("lsp_references") end)
