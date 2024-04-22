@@ -28,5 +28,10 @@
     "prefix": "prep",
     "body": "prepare() {\n}\n",
     "description": "prepare function"
+  },
+  "Python test": {
+    "prefix": "pytc",
+    "body": "PYTHONPATH=\"$$PWD/build/lib.linux-$$CARCH-cpython-$$python_version\" pytest",
+    "description": "run pytests against a C module"
   }
 }
