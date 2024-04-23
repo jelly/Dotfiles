@@ -52,6 +52,7 @@ Plug 'togglebyte/togglerust', { 'branch': 'main' }
 "Debug
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-neotest/nvim-nio'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'
 
