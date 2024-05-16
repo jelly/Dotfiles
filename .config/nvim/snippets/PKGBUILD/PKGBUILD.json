@@ -33,5 +33,10 @@
     "prefix": "pytc",
     "body": "PYTHONPATH=\"$$PWD/build/lib.linux-$$CARCH-cpython-$$python_version\" pytest",
     "description": "run pytests against a C module"
+  },
+  "Python unittest test": {
+    "prefix": "pyunit",
+    "body": "python -m unittest discover -vs .",
+    "description": "run python unittests"
   }
 }
