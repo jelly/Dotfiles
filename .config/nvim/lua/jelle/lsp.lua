@@ -26,7 +26,6 @@ local on_attach = function(client, bufnr)
 	keymap('ga', vim.lsp.buf.code_action, "[G]o [A]ction")
 	keymap('gR', vim.lsp.buf.rename, "[G]o [R]ename")
         keymap('<C-k>', vim.lsp.buf.signature_help, "Signature documentation")
-        vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { filter = function(client) return client.name ~= "tsserver" end, async = true }']]
 end
 
 -- Messes up function / JSX formatting in JSX.
