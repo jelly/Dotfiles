@@ -25,10 +25,7 @@ local on_attach = function(client, bufnr)
 	keymap('gs', telescope.lsp_dynamic_workspace_symbols, "[G]oto [S]ymbols show workspace symbols")
 	keymap('ga', vim.lsp.buf.code_action, "[G]o [A]ction")
 	keymap('gR', vim.lsp.buf.rename, "[G]o [R]ename")
-	keymap('K', vim.lsp.buf.hover, "Hover documentation")
         keymap('<C-k>', vim.lsp.buf.signature_help, "Signature documentation")
-	keymap('[d', vim.diagnostic.goto_prev, "[d previous diagnostic")
-	keymap(']d', vim.diagnostic.goto_next, "]d next diagnostic")
         vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { filter = function(client) return client.name ~= "tsserver" end, async = true }']]
 end
 
