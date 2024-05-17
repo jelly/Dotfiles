@@ -7,8 +7,6 @@ Plug 'kyazdani42/nvim-tree.lua'
 " Git integration
 Plug 'tpope/vim-fugitive'
 
-Plug 'kosayoda/nvim-lightbulb'
-
 " Colorscheme
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
@@ -71,4 +69,3 @@ call plug#end()
 lua require('Comment').setup()
 lua require("luasnip.loaders.from_vscode").lazy_load()
 lua require("fidget").setup{}
-lua vim.cmd [[autocmd CursorHold,CursorHoldI * lua require('nvim-lightbulb').update_lightbulb()]]
