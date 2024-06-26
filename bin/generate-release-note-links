@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $# != 1 ]]; then
-    echo "Missing project name [cockpit|cockpit-ostree|cockpit-machines|cockpit-podman]"
+    echo "Missing project name [cockpit|cockpit-ostree|cockpit-machines|cockpit-podman|cockpit-files]"
     exit 1
 fi
 
