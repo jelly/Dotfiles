@@ -13,7 +13,7 @@ keymap("<leader>gd", ":Gdiff<CR>")
 keymap("<leader>ge", ":Gedit<CR>")
 
 -- Rebase in le neovim
--- TODO: don't harcode main, but use git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+-- TODO: don't hardcode main, but use git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
 keymap("<leader>grm", ":Git rebase -i main<CR>")
 keymap("<leader>grc", ":Git rebase --continue<CR>")
 keymap("<leader>ga", ":Git commit --amend %:p<CR><CR>")
