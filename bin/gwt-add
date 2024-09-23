@@ -7,3 +7,4 @@ git worktree add "$name" -b "$name" main
 cd "$name"
 
 ./test/common/make-bots
+./tools/node-modules checkout

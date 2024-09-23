@@ -15,6 +15,7 @@ if git rev-parse --git-dir &> /dev/null; then
 	git fetch $origin $github
 	git worktree add $branch -b $branch FETCH_HEAD
 	cd $branch && ./test/common/make-bots
+	cd $branch && ./tools/node-modules checkout
 else
 	echo 'error: not in git repo'
 fi
