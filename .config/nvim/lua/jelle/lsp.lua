@@ -40,14 +40,14 @@ end
 require('lspconfig.configs').oxlint = {
   default_config = {
     cmd = {"oxc_language_server"},
-    filetypes = {'javascript', 'javascriptreact'},
+    filetypes = {'ts_ls', 'javascript', 'javascriptreact'},
     root_dir = lspconfig.util.root_pattern(".eslintrc.json"),
     settings = {},
   };
 }
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = {'clangd', 'rust_analyzer', 'tsserver', 'gopls', 'marksman', 'ruff_lsp', 'bashls'}
+local servers = {'clangd', 'rust_analyzer', 'ts_ls', 'gopls', 'marksman', 'ruff_lsp', 'bashls', 'oxlint'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
