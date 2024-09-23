@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 
 name=$1
-curl -s "https://archlinux.org/packages/search/json/?q=${name}" | jq ".results[] | select(.pkgbase == \"${name}\") | .depends"
+thing=${2:depends}
+curl -s "https://archlinux.org/packages/search/json/?q=${name}" | jq ".results[] | select(.pkgbase == \"${name}\") | .${thing}"
