@@ -6,6 +6,8 @@ nnoremap <F4> :VimwikiTabMakeDiaryNote<CR>
 nnoremap <F5> :tabnew \| :VimwikiDiaryIndex<CR>
 nnoremap <F6> :VimwikiDiaryPrevDay<CR>
 nnoremap <F7> :VimwikiDiaryNextDay<CR>
+nnoremap <F8> :VimwikiTabDropLink<CR>
+nnoremap <Leader>tl :VimwikiTabDropLink<CR>
 
 command! Diary VimwikiDiaryIndex
 autocmd BufRead,BufNewFile ~/Notes/diary/diary.md VimwikiDiaryGenerateLinks
