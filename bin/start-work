@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SESSION=work
+PROJECTS=/home/jelle/projects
+
+tmux new-session -d -s ${SESSION} -n notes
+tmux send-keys "notes" C-m
+
+tmux new-window -t ${SESSION}:1 -n cockpit "cd ${PROJECTS}/cockpit/main; zsh"
+tmux new-window -t ${SESSION}:2 -n files "cd ${PROJECTS}/cockpit-files; zsh"
+tmux new-window -t ${SESSION}:3 -n podman "cd ${PROJECTS}/cockpit-podman; zsh"
+tmux new-window -t ${SESSION}:4 -n machines "cd ${PROJECTS}/cockpit-machines; zsh"
+tmux new-window -t ${SESSION}:5 -n bots "cd ${PROJECTS}/cockpit-bots; zsh"
+
+# Set default window
+tmux select-window -t $SESSION:+1
+
+# Attach to session
+tmux attach-session -t $SESSION
