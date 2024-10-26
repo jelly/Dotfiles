@@ -1,5 +1,3 @@
-import = ["/home/jelle/.config/alacritty/color.toml"]
-live_config_reload = true
 
 [env]
 TERM = "xterm-256color"
@@ -44,3 +42,7 @@ mods = "Control|Shift"
 
 [window]
 decorations = "none"
+
+[general]
+live_config_reload = true
+import = ["/home/jelle/.config/alacritty/color.toml"]
