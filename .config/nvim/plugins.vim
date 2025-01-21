@@ -58,7 +58,6 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'andythigpen/nvim-coverage'
 
 "Neotest
-Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-python', { 'for': 'python' }
 Plug 'rouge8/neotest-rust', { 'for': 'rust' }
