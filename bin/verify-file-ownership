@@ -1,0 +1,47 @@
+#!/usr/bin/python
+
+import argparse
+import glob
+import multiprocessing
+import os
+import os.path
+import sys
+
+import libarchive
+
+
+def read_package(filename):
+    try:
+        with libarchive.file_reader(filename) as pkg:
+            for entry in pkg:
+                if entry.uname != "root" or entry.gname != "root":
+                    uname = ""
+                    gname = ""
+                    if entry.uname == "":
+                        uname = str(entry.uid)
+                    else:
+                        uname = entry.uname
+                    if entry.gname == "":
+                        gname = str(entry.gid)
+                    else:
+                        gname = entry.gname
+                    print(f"incorrect-owner {entry.name} ({uname}:{gname})")
+                    return f"incorrect-owner {entry.name} ({uname}:{gname})"
+    except libarchive.exception.ArchiveError as exc:
+        print(f"{filename} {exc}", file=sys.stderr)
+
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(metavar="DIRECTORY", dest="directory")
+    args = parser.parse_args()
+
+    packages = glob.glob(os.path.join(args.directory, '*.pkg.tar.*'))
+    packages = [pkg for pkg in packages if not pkg.endswith('.sig')]
+
+    with multiprocessing.Pool(processes=os.process_cpu_count() // 2) as pool:
+        pool.map(read_package, packages)
+
+if __name__ == "__main__":
+    main()
