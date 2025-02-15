@@ -14,9 +14,6 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'j-hui/fidget.nvim', { 'tag': 'v1.4.0' }
 
-" Comments
-Plug 'numToStr/Comment.nvim'
-
 " Linting
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
@@ -62,6 +59,5 @@ Plug 'rouge8/neotest-rust', { 'for': 'rust' }
 
 call plug#end()
 
-lua require('Comment').setup()
 lua require("luasnip.loaders.from_vscode").lazy_load()
 lua require("fidget").setup{}
