@@ -14,9 +14,6 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'j-hui/fidget.nvim', { 'tag': 'v1.4.0' }
 
-"LSP errors
-Plug 'folke/trouble.nvim'
-
 " Comments
 Plug 'numToStr/Comment.nvim'
 
