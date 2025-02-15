@@ -47,7 +47,7 @@ require('lspconfig.configs').oxlint = {
 }
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = {'clangd', 'rust_analyzer', 'ts_ls', 'gopls', 'marksman', 'ruff_lsp', 'bashls', 'oxlint'}
+local servers = {'clangd', 'rust_analyzer', 'ts_ls', 'gopls', 'marksman', 'ruff', 'bashls', 'oxlint'}
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
