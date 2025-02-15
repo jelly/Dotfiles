@@ -1,9 +1,11 @@
 local dap = require('dap')
 local dapui = require("dapui")
 local dap_virtual_text = require("nvim-dap-virtual-text")
+local telescope = require('telescope')
 
 dapui.setup()
 dap_virtual_text.setup()
+telescope.load_extension('dap')
 
 -- Dap UI configuration
 dap.listeners.before.attach.dapui_config = function()
@@ -31,6 +33,7 @@ keymap('<F12>', dap.step_out)
 keymap('<leader>b', dap.toggle_breakpoint)
 vim.keymap.set('n', '<leader>B', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 keymap('<leader>dd', dap.continue)
+keymap('fB', telescope.extensions.dap.list_breakpoints)
 
 dap.adapters.gdb = {
   type = "executable",
