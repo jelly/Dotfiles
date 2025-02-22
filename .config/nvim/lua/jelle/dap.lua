@@ -1,10 +1,8 @@
 local dap = require('dap')
 local dapui = require("dapui")
-local dap_virtual_text = require("nvim-dap-virtual-text")
 local telescope = require('telescope')
 
 dapui.setup()
-dap_virtual_text.setup()
 telescope.load_extension('dap')
 
 -- Dap UI configuration
