@@ -39,7 +39,6 @@ Plug 'ElPiloto/telescope-vimwiki.nvim', { 'for': 'wiki' }
 
 " Rust
 Plug 'rust-lang/rust.vim'
-Plug 'togglebyte/togglerust', { 'branch': 'main' }
 
 "Debug
 Plug 'nvim-telescope/telescope-dap.nvim'
