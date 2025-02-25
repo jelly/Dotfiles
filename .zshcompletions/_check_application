@@ -1,0 +1,28 @@
+#compdef check-application
+
+_completions_all_tests() {
+	typeset -U tests
+	tests=($(_call_program tests $words[1] -l))
+	compadd - "${(@)tests}"
+}
+
+_args=(
+	'(-h --help)'{-h,--help}'[Show this help message and exit]'
+	'(-v --verbose)'{-v,--verbose}'[Verbose output]'
+	'(-t --trace)'{-t,--trace}'[Trace machine boot and commands]'
+	'(-q --quiet)'{-q,--quiet}'[Quiet output]'
+	'(-s --sit)'{-s,--sit}'[Sit and wait after test failure]'
+	'(-l --list)'{-l,--list}'[Print the list of tests that would be executed]'
+	'--nonet[Do not go online to download images or data]'
+	'--enable-network[Enable network access for tests]'
+	'--coverage[Collect code coverage data]'
+	'--machine=[Run this test against an already running machine]'
+	'--browser=[When using --machine, use this cockpit web address]'
+	'*:tests:_completions_all_tests'
+)
+
+_check-application() {
+	_arguments -s "${_args[@]}"
+}
+
+_check-application "$@"
