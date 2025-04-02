@@ -19,3 +19,7 @@ fi
 git checkout $branch
 git merge --ff-only upstream/$branch
 git push origin $branch
+
+if [ -f tools/node_modules ]; then
+	./tools/node_modules checkout
+fi
