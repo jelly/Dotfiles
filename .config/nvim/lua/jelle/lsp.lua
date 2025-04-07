@@ -1,5 +1,4 @@
 local lspconfig = require('lspconfig')
-local bring = require('jelle.utils')
 local navic = require('nvim-navic')
 local telescope = require('telescope.builtin')
 
@@ -18,7 +17,7 @@ local on_attach = function(client, bufnr)
 
 	-- :Telescope keymaps
 	keymap('gD', vim.lsp.buf.declaration, "[G]o to [D]eclaration")
-	keymap('gd', bring.bring_or_create, "[G]oto [D]efinition")
+	keymap('gd', vim.lsp.buf.definition, "[G]oto [D]efinition")
 	keymap('<leader>D', vim.lsp.buf.type_definition, "Type [D]efinition")
 	keymap('gi', vim.lsp.buf.implementation, "[G]oto [I]implementation")
 	keymap('gr', vim.lsp.buf.references, "[G]oto [R]eferences")
