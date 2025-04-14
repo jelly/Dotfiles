@@ -69,16 +69,6 @@ lspconfig.pyright.setup {
 	root_dir = function()
 		return vim.fn.getcwd()
 	end,
-	settings = {
-		python = {
-			analysis = {
-				extraPaths = { "/home/jelle/projects/cockpit/main/test/common",
-					       "/home/jelle/projects/cockpit-bots/machine",
-					       "/home/jelle/projects/cockpit-bots",
-				}
-			}
-		}
-	}
 }
 
 vim.lsp.handlers['textDocument/codeAction'] = telescope.lsp_code_actions
