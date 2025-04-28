@@ -80,3 +80,13 @@ vim.lsp.handlers['textDocument/documentSymbol'] = telescope.lsp_document_symbols
 vim.lsp.handlers['workspace/symbol'] = telescope.lsp_workspace_symbols
 
 vim.keymap.set("n", "<leader>dl", function() vim.diagnostic.open_float(0, {scope='line'}) end)
+
+
+vim.diagnostic.config({
+    severity = {
+        min = vim.diagnostic.severity.INFO,
+    },
+    virtual_lines = {
+        current_line = true,
+    },
+})
