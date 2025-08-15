@@ -1,0 +1,42 @@
+#!/usr/bin/python
+
+import json
+import sys
+import subprocess
+import tomllib
+
+
+def main():
+    with open(".nvchecker.toml", "rb") as f:
+        data = tomllib.load(f)
+        assert len(data.keys()) == 1
+        key = list(data.keys())[0]
+
+        if data[key]['source'] != 'git':
+            print('Only git sources are supported')
+            sys.exit(1)
+            return
+
+        url = data[key]['git']
+        if 'github' not in url:
+            print('Only GitHub sources are supported')
+            sys.exit(1)
+            return
+
+        prefix = data[key].get('prefix', '')
+        url = url.replace('.git', '')
+        update_infos = json.loads(subprocess.check_output(["pkgctl", "version", "check", "--json"]))
+        assert len(update_infos) == 1
+        
+        before = f'{prefix}{update_infos[0]["local_version"]}'
+        after = f'{prefix}{update_infos[0]["upstream_version"]}'
+
+        if before == after:
+            print('Package already up to date')
+            sys.exit(1)
+            return
+
+        print(f'{url}/compare/{before}...{after}')
+
+if __name__ == "__main__":
+    main()
