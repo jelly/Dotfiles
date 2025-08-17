@@ -1,0 +1,200 @@
+#!/usr/bin/python
+
+from license_expression import BaseSymbol, LicenseSymbol, LicenseWithExceptionSymbol, get_spdx_licensing
+
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+
+licensing = get_spdx_licensing()
+
+
+def get_license_canonicalized(license: str) -> str:
+    """Get the canonicalized form of a license string
+
+    This function may raise an Exception if it's not possible to derive any meaning from the input string
+    """
+    return str(licensing.parse(license, strict=True))
+
+
+def strip_plus_from_license(license: BaseSymbol) -> BaseSymbol:
+    """Remove a "+" suffix from the license symbol if it contains one
+
+    The license_expression module does not support the SPDX "+" operator, but parses it as part of the license
+    symbol instead. This function strips the operator from the symbol if it is found.
+
+    License identifiers ending with "-only" or "-or-later" should not be used with the plus operator. If such
+    license identifier is detected, the plus operator is left intact and this will be later reported as an
+    unknown license symbol.
+    """
+    license_str = str(license)
+    if license_str[-1] != "+" or license_str.startswith("LicenseRef-"):
+        return license
+    license_id = license_str[:-1]
+    if license_id.endswith(("-only", "-or-later")):
+        return license
+    else:
+        return LicenseSymbol(license_id)
+
+
+def get_license_symbols(pkg_license: str) -> set[BaseSymbol]:
+    """Extract all license symbols from a license string
+
+    This function may raise an Exception if it's not possible to derive any meaning from the input string.
+    This may be due to being unable to parse the string at all or if a license exception in the string is not a valid
+    SPDX license exception identifier.
+    """
+    if (license_expression := licensing.parse(pkg_license, strict=True)) is None:
+        raise ValueError("Empty license string")
+    license_symbols: set[BaseSymbol] = set()
+    for symbol in license_expression.symbols:
+        if isinstance(symbol, LicenseWithExceptionSymbol):
+            license, exception = list(symbol.decompose())
+            license = strip_plus_from_license(license)
+            license_symbols.add(LicenseWithExceptionSymbol(license, exception))
+        else:
+            license_symbols.add(strip_plus_from_license(symbol))
+    return license_symbols
+
+
+def get_common_spdx_license_identifiers() -> set[BaseSymbol]:
+    """Get all common license identifiers (those that are provided system-wide and can be shared)"""
+    common: list[BaseSymbol] = [
+        LicenseSymbol(f"{x.stem}") for x in sorted(Path("/usr/share/licenses/spdx/").glob("*.txt")) if x.is_file()
+    ]
+    return set(common)
+
+
+def get_common_spdx_license_exceptions() -> set[BaseSymbol]:
+    """Get all common license exceptions (those that are provided system-wide and can be shared)"""
+    common: list[BaseSymbol] = [
+        LicenseSymbol(f"{x.stem}", is_exception=True)
+        for x in sorted(Path("/usr/share/licenses/spdx/exceptions/").glob("*.txt"))
+        if x.is_file()
+    ]
+    return set(common)
+
+
+def get_known_spdx_license_identifiers() -> set[BaseSymbol]:
+    """Get all known SPDX license identifiers"""
+    all_spdx_licenses: list[BaseSymbol] = []
+
+    with open("/usr/share/licenses/known_spdx_license_identifiers.txt") as file:
+        while line := file.readline():
+            all_spdx_licenses.append(LicenseSymbol(line.rstrip("\n")))
+
+    return set(all_spdx_licenses)
+
+
+def get_known_spdx_license_exceptions() -> set[BaseSymbol]:
+    """Get all known SPDX license exceptions"""
+    all_spdx_licenses: list[BaseSymbol] = []
+
+    with open("/usr/share/licenses/known_spdx_license_exceptions.txt") as file:
+        while line := file.readline():
+            all_spdx_licenses.append(LicenseSymbol(line.rstrip("\n"), is_exception=True))
+
+    return set(all_spdx_licenses)
+
+
+def get_uncommon_license_symbols(
+    licenses: set[BaseSymbol],
+    known_licenses: set[BaseSymbol],
+    known_exceptions: set[BaseSymbol],
+    common_licenses: set[BaseSymbol],
+    common_exceptions: set[BaseSymbol],
+) -> set[BaseSymbol]:
+    """Get the set of all uncommon licenses from a set of licenses
+
+    This function compares against all uncommon, but known SPDX license symbols (those that require a custom file) or
+    those prefixed with "LicenseRef-".
+    When encountering LicenseWithExceptionSymbols, both the LicenseSymbol and the exception are checked.
+    """
+    uncommon_licenses = known_licenses - common_licenses
+    uncommon_exceptions = known_exceptions - common_exceptions
+
+    uncommon_symbols: list[BaseSymbol] = []
+    for symbol in licenses:
+        # if the symbol also carries an exception match license symbol and exception symbol separately
+        if isinstance(symbol, LicenseWithExceptionSymbol):
+            license, exception = list(symbol.decompose())
+            if license in uncommon_licenses or str(license).startswith("LicenseRef-"):
+                uncommon_symbols.append(license)
+            if exception in uncommon_exceptions or str(exception).startswith("LicenseRef-"):
+                uncommon_symbols.append(exception)
+        else:
+            if symbol in uncommon_licenses or str(list(symbol.decompose())[0]).startswith("LicenseRef-"):
+                uncommon_symbols.append(symbol)
+
+    return set(uncommon_symbols)
+
+
+def get_unknown_license_symbols(
+    licenses: set[BaseSymbol], known_licenses: set[BaseSymbol], known_exceptions: set[BaseSymbol]
+) -> set[BaseSymbol]:
+    """Get the set of all unknown license symbols from a set of licenses
+
+    This function also evaluates LicenseWithExceptionSymbols and considers licenses and exceptions separately.
+    """
+    unknown_symbols: list[BaseSymbol] = []
+    for symbol in licenses:
+        # if the symbol also carries an exception match license symbol and exception symbol separately
+        if isinstance(symbol, LicenseWithExceptionSymbol):
+            license, exception = list(symbol.decompose())
+            if license not in known_licenses:
+                unknown_symbols.append(symbol)
+            if exception not in known_exceptions:
+                unknown_symbols.append(symbol)
+        else:
+            if symbol not in known_licenses:
+                unknown_symbols.append(symbol)
+
+    return set(unknown_symbols)
+
+
+def get_pkgname_license() -> dict[str, list[str]]:
+    packages: dict[str, list[str]] = {}
+    output = subprocess.check_output(['expac', '-S', '-l %', '%e|%L']).decode()
+    for line in output.splitlines():
+        pkgbase, license_str = line.split('|')
+        licenses = license_str.split('%')
+        packages[pkgbase] = licenses
+
+    return packages
+
+def main():
+    invalid = set()
+    unknown = set()
+
+
+    known_licenses = get_known_spdx_license_identifiers()
+    known_exceptions = get_known_spdx_license_exceptions()
+
+    for pkgbase, licenses in get_pkgname_license().items():
+        # print(pkgbase, licenses)
+        license_symbols: set[BaseSymbol] = set()
+        for license in licenses:
+            try:
+                new_license_symbols = get_license_symbols(license)
+                license_symbols.update(new_license_symbols)
+            except Exception as exc:
+                print(f'{pkgbase} has an invalid spdx-license "{license} - {exc}', file=sys.stderr)
+                invalid.add(pkgbase)
+
+        # check if any license (ignoring exception) symbols are unknown
+        # (and add errors for them, if they are not prefixed with LicenseRef-)
+        for license in get_unknown_license_symbols(license_symbols, known_licenses, known_exceptions):
+            if not str(license).startswith("LicenseRef-"):
+                print(f'{pkgbase} has unknown spdx license identifer "{license}', file=sys.stderr)
+                unknown.add(pkgbase)
+
+
+    print(f'Summary, invalid: {len(invalid)} unknown: {len(unknown)}', file=sys.stderr)
+    print(json.dumps({'unknown': list(unknown), 'invalid': list(invalid)}))
+
+
+if __name__ == "__main__":
+    main()
+
