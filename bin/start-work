@@ -12,7 +12,7 @@ tmux new-window -t ${SESSION}:3 -n podman "cd ${PROJECTS}/cockpit-podman; zsh"
 tmux new-window -t ${SESSION}:4 -n machines "cd ${PROJECTS}/cockpit-machines; zsh"
 tmux new-window -t ${SESSION}:5 -n bots "cd ${PROJECTS}/cockpit-bots; zsh"
 tmux new-window -t ${SESSION}:6 -n varlink "cd ${PROJECTS}/python-varlink; zsh"
-tmux new-window -t ${SESSION}:6 -n systemd "cd ${PROJECTS}/systemd; zsh"
+tmux new-window -t ${SESSION}:7 -n systemd "cd ${PROJECTS}/systemd; zsh"
 
 # Set default window
 tmux select-window -t $SESSION:+1
