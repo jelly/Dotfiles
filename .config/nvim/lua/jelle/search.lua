@@ -11,6 +11,7 @@ end
 
 local luasnip = require('telescope').load_extension('luasnip')
 local lga_actions = require("telescope-live-grep-args.actions")
+local actions = require "telescope.actions"
 
 require('telescope').setup({
   defaults = {
@@ -26,7 +27,8 @@ require('telescope').setup({
         -- actions.which_key shows the mappings for your picker,
         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
         ["<C-h>"] = "which_key",
-	["<C-y>"] = yank_selection
+	["<C-y>"] = yank_selection,
+	["<CR>"] = actions.select_tab_drop,
       }
     }
   },
