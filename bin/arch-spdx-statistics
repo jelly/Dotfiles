@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 from license_expression import BaseSymbol, LicenseSymbol, LicenseWithExceptionSymbol, get_spdx_licensing
 
@@ -168,12 +169,10 @@ def main():
     invalid = set()
     unknown = set()
 
-
     known_licenses = get_known_spdx_license_identifiers()
     known_exceptions = get_known_spdx_license_exceptions()
 
     for pkgbase, licenses in get_pkgname_license().items():
-        # print(pkgbase, licenses)
         license_symbols: set[BaseSymbol] = set()
         for license in licenses:
             try:
@@ -187,12 +186,12 @@ def main():
         # (and add errors for them, if they are not prefixed with LicenseRef-)
         for license in get_unknown_license_symbols(license_symbols, known_licenses, known_exceptions):
             if not str(license).startswith("LicenseRef-"):
-                print(f'{pkgbase} has unknown spdx license identifer "{license}', file=sys.stderr)
+                print(f'{pkgbase} has unknown spdx license identifer "{license}"', file=sys.stderr)
                 unknown.add(pkgbase)
 
 
     print(f'Summary, invalid: {len(invalid)} unknown: {len(unknown)}', file=sys.stderr)
-    print(json.dumps({'unknown': list(unknown), 'invalid': list(invalid)}))
+    # print(json.dumps({'unknown': list(unknown), 'invalid': list(invalid)}))
 
 
 if __name__ == "__main__":
