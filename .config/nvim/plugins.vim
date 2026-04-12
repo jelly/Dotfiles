@@ -29,7 +29,7 @@ Plug 'benfowler/telescope-luasnip.nvim'
 
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'main', 'do' : ':TSUpdate' }
 Plug 'SmiteshP/nvim-navic'
 
 " Wiki
