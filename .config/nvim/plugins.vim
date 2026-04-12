@@ -11,7 +11,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " LSP
-Plug 'neovim/nvim-lspconfig'
 Plug 'j-hui/fidget.nvim', { 'tag': 'v1.6.1' }
 
 " Linting

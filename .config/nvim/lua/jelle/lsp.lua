@@ -1,6 +1,13 @@
-local lspconfig = require('lspconfig')
 local navic = require('nvim-navic')
 local telescope = require('telescope.builtin')
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+if capabilities.workspace then
+  capabilities.workspace.didChangeWatchedFiles = nil
+end
+vim.lsp.config('*', {
+  capabilities = capabilities,
+})
 
 local on_attach = function(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
@@ -27,40 +34,58 @@ local on_attach = function(client, bufnr)
         keymap('<C-k>', vim.lsp.buf.signature_help, "Signature documentation")
 end
 
--- Messes up function / JSX formatting in JSX.
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   buffer = buffer,
---   callback = function()
---     vim.lsp.buf.format { async = false }
---   end
--- })
-
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = {'clangd', 'rust_analyzer', 'ts_ls', 'gopls', 'marksman', 'ruff', 'bashls'}
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup {
-		on_attach = on_attach,
-		capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-	}
-end
-
-lspconfig.eslint.setup {
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
-    })
-   end,
-}
-
-lspconfig.pyright.setup {
+vim.lsp.config('clangd', {
 	on_attach = on_attach,
-	capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-	root_dir = function()
-		return vim.fn.getcwd()
-	end,
-}
+        cmd = { 'clangd', '--background-index' },
+        filetypes = { 'c', 'cpp' },
+        root_markers = { '.clang-tidy', 'compile_commands.json', 'build/compile_commands.json', 'configure.ac' },
+        settings = {},
+})
+vim.lsp.enable('clangd')
+
+vim.lsp.config('ts_ls', {
+	on_attach = on_attach,
+        cmd = { 'typescript-language-server', '--stdio' },
+        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        root_markers = { 'package.json' },
+        settings = {},
+})
+vim.lsp.enable('ts_ls')
+
+vim.lsp.config('pyright', {
+	on_attach = on_attach,
+	cmd = { "pyright-langserver", "--stdio"},
+	filetypes = { "python" },
+	settings = {
+	  python = {
+	    analysis = {
+	      autoSearchPaths = true,
+	      diagnosticMode = "workspace",
+	      useLibraryCodeForTypes = true
+	    }
+	  }
+       },
+})
+vim.lsp.enable('pyright')
+
+vim.lsp.config('ruff', {
+	on_attach = on_attach,
+        cmd = { 'ruff', 'server' },
+        filetypes = { 'python' },
+        root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml' },
+        settings = {},
+})
+vim.lsp.enable('ruff')
+
+vim.lsp.config('marksman', {
+	on_attach = on_attach,
+        cmd = { 'marksman', 'server' },
+        filetypes = { 'markdown', 'vimwiki' },
+        root_markers = { '.git' },
+        settings = {},
+})
+vim.lsp.enable('marksman')
+
 
 vim.lsp.handlers['textDocument/codeAction'] = telescope.lsp_code_actions
 vim.lsp.handlers['textDocument/references'] = telescope.lsp_references
