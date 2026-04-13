@@ -65,6 +65,7 @@ vim.lsp.config('pyright', {
 	    }
 	  }
        },
+       root_dir = vim.fn.getcwd(0)
 })
 vim.lsp.enable('pyright')
 
