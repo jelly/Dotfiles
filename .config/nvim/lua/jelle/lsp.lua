@@ -78,6 +78,15 @@ vim.lsp.config('ruff', {
 })
 vim.lsp.enable('ruff')
 
+-- vim.lsp.config('ty', {
+-- 	on_attach = on_attach,
+--         cmd = { 'ty', 'server' },
+--         filetypes = { 'python' },
+--         root_markers = { 'pyproject.toml' },
+--         settings = {},
+-- })
+vim.lsp.enable('ty')
+
 vim.lsp.config('marksman', {
 	on_attach = on_attach,
         cmd = { 'marksman', 'server' },
