@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+# Usage: git-remotes.sh <fork-user> <upstream-owner/repo>
+# Example: configure-git-remotes.sh jelly systemd/systemd
+set -euo pipefail
+
+if [[ $# -ne 2 || $2 != */* ]]; then
+    echo "usage: ${0##*/} <fork-user> <upstream-owner/repo>" >&2
+    exit 1
+fi
+
+user=$1
+upstream=$2
+repo=${upstream#*/}
+
+set_remote() {
+    local name=$1 url=$2
+    if git remote get-url "$name" &>/dev/null; then
+        git remote set-url "$name" "$url"
+    else
+        git remote add "$name" "$url"
+    fi
+}
+
+set_remote origin "https://github.com/$user/$repo.git"
+git remote set-url --push origin "git@github.com:$user/$repo.git"
+
+set_remote upstream "https://github.com/$upstream.git"
+
+git remote -v
