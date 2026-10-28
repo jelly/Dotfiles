@@ -1,0 +1,38 @@
+#!/usr/bin/bash
+
+# List (and optionally delete) branches on a remote whose commits are all
+# already in the upstream branch. Works for merge, rebase & merge and
+# fast-forward; not for squash merges.
+#
+# Usage: merged-branches.sh [--delete] [remote] [upstream-ref]
+# Defaults: remote=origin upstream-ref=upstream/main
+set -euo pipefail
+
+delete=0
+if [[ ${1:-} == --delete ]]; then
+    delete=1
+    shift
+fi
+remote=${1:-origin}
+base=${2:-upstream/main}
+
+git fetch --all --prune --quiet
+
+merged=()
+while read -r branch; do
+    [[ $branch == HEAD || $branch == main || $branch == master ]] && continue
+    if ! git cherry "$base" "$remote/$branch" | grep -q '^+'; then
+        merged+=("$branch")
+    fi
+done < <(git for-each-ref --format='%(refname:strip=3)' "refs/remotes/$remote")
+
+if [[ ${#merged[@]} -eq 0 ]]; then
+    echo "nothing to clean up"
+    exit 0
+fi
+
+printf '%s\n' "${merged[@]}"
+
+if [[ $delete -eq 1 ]]; then
+    git push "$remote" --delete "${merged[@]}"
+fi
